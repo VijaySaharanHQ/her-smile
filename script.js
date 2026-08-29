@@ -7,10 +7,10 @@
 // ⚙️ CONFIGURATION - CUSTOMIZE HERE
 // ==========================================
 const CONFIG = {
-  sisterName: "Sister", // e.g., "Choti", "Priya", "Aisha"
-  brotherName: "Your Annoying Brother", // e.g., "Rahul", "Your Bro"
-  secretPassword: "smile", // Password for Screen 6 (Case insensitive)
-  musicFile: "assets/music/song.mp3" // Ensure audio is placed in assets/music/
+    sisterName: "Sister",               // Replace with her actual name/nickname
+    brotherName: "Your Annoying Brother", // Replace with your name
+    secretPassword: "smile",            // Password to unlock Screen 6
+    musicFile: "assets/music/song.mp3"  // Path to your custom background music
 };
 
 // ==========================================
