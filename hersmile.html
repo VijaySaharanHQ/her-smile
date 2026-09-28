@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Special Sister ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(135deg,#fff0f5,#f8e8ff,#eaf5ff);
+    color:#333;
+    overflow-x:hidden;
+}
+
+/* Floating Hearts */
+.heart{
+    position:fixed;
+    bottom:-30px;
+    font-size:20px;
+    animation:floatUp linear forwards;
+    pointer-events:none;
+    z-index:999;
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Hero */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px 20px;
+    position:relative;
+}
+
+.hero-content{
+    max-width:850px;
+    animation:fadeIn 1.5s ease;
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 20px;
+    background:rgba(255,255,255,.7);
+    border-radius:50px;
+    font-size:14px;
+    margin-bottom:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,90px);
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#ff4f81,#a855f7,#ff4f81);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    font-size:20px;
+    line-height:1.7;
+    color:#555;
+    max-width:650px;
+    margin:auto;
+}
+
+.btn{
+    border:none;
+    padding:15px 28px;
+    border-radius:50px;
+    font-size:16px;
+    cursor:pointer;
+    margin:12px 5px;
+    transition:.3s;
+    font-weight:bold;
+}
+
+.btn:hover{
+    transform:translateY(-4px) scale(1.03);
+}
+
+.primary{
+    background:linear-gradient(135deg,#ff4f81,#ff7aa2);
+    color:white;
+    box-shadow:0 10px 25px rgba(255,79,129,.3);
+}
+
+.secondary{
+    background:white;
+    color:#ff4f81;
+    box-shadow:0 8px 25px rgba(0,0,0,.1);
+}
+
+/* Sections */
+section{
+    padding:90px 20px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.section-title p{
+    color:#777;
+}
+
+/* Letter */
+.letter{
+    background:rgba(255,255,255,.8);
+    backdrop-filter:blur(12px);
+    padding:45px;
+    border-radius:30px;
+    box-shadow:0 20px 60px rgba(0,0,0,.08);
+    line-height:1.9;
+    font-size:18px;
+}
+
+.letter .signature{
+    margin-top:30px;
+    text-align:right;
+    font-weight:bold;
+    color:#ff4f81;
+}
+
+/* Cards */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:rgba(255,255,255,.75);
+    padding:30px 20px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.07);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card .icon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+/* Memories */
+.memories{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.memory{
+    height:250px;
+    border-radius:25px;
+    overflow:hidden;
+    position:relative;
+    background:linear-gradient(135deg,#ffd6e5,#e7d7ff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.memory img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.memory span{
+    position:absolute;
+    bottom:15px;
+    left:15px;
+    right:15px;
+    padding:10px;
+    background:rgba(0,0,0,.5);
+    color:white;
+    border-radius:12px;
+    text-align:center;
+}
+
+/* Promise */
+.promise{
+    text-align:center;
+    background:linear-gradient(135deg,#ffedf4,#f3eaff);
+}
+
+.promise-box{
+    max-width:750px;
+    margin:auto;
+    background:white;
+    padding:45px;
+    border-radius:30px;
+    box-shadow:0 20px 60px rgba(0,0,0,.08);
+}
+
+.promise-box p{
+    font-size:20px;
+    line-height:1.8;
+}
+
+/* Forgive */
+.forgive{
+    text-align:center;
+}
+
+.response{
+    min-height:70px;
+    font-size:22px;
+    font-weight:bold;
+    color:#ff4f81;
+    margin-top:20px;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:40px 20px;
+    background:#211827;
+    color:white;
+}
+
+footer span{
+    color:#ff6f9b;
+}
+
+/* Modal */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+    padding:20px;
+}
+
+.modal-box{
+    background:white;
+    max-width:500px;
+    width:100%;
+    padding:40px;
+    border-radius:30px;
+    text-align:center;
+    animation:pop .4s ease;
+}
+
+.modal-box h2{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.close{
+    margin-top:20px;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes pop{
+    from{
+        transform:scale(.7);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+@media(max-width:700px){
+    .cards,
+    .memories{
+        grid-template-columns:1fr;
+    }
+
+    .letter,
+    .promise-box{
+        padding:25px;
+    }
+
+    .section-title h2{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            💌 A Little Something From Your Brother
+        </div>
+
+        <!-- EDIT HERE: Sister Name -->
+        <h1>
+            Hey <span class="gradient">My Shambhavi ❤️</span>
+        </h1>
+
+        <p>
+            I don't know if you're angry, upset, or just pretending
+            not to talk to me... but I know one thing —
+            <b>I don't like seeing you upset.</b>
+        </p>
+
+        <div>
+            <button class="btn primary" onclick="showSorry()">
+                🥺 Click This, Please
+            </button>
+
+            <button class="btn secondary" onclick="scrollToLetter()">
+                💌 Read My Message
+            </button>
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     LETTER
+========================= -->
+
+<section id="letter">
+
+<div class="container">
+
+    <div class="section-title">
+        <h2>💌 From My Heart</h2>
+        <p>Just read this once...</p>
+    </div>
+
+    <div class="letter">
+
+        <!-- EDIT HERE: YOUR PERSONAL MESSAGE -->
+
+        <p>
+            Dear Shambhavi,
+        </p>
+
+        <br>
+
+        <p>
+            If I did something that hurt you, irritated you,
+            or made you feel bad, then
+            <b>I'm genuinely sorry. ❤️</b>
+        </p>
+
+        <br>
+
+        <p>
+            Maybe sometimes I say stupid things.
+            Maybe sometimes I don't understand what you're feeling.
+            And maybe sometimes I annoy you more than I should.
+        </p>
+
+        <br>
+
+        <p>
+            But one thing I never want is for you to think
+            that you don't matter to me.
+        </p>
+
+        <br>
+
+        <p>
+            You are my sister, my partner in random conversations,
+            my occasional headache 😭,
+            and someone I genuinely care about.
+        </p>
+
+        <br>
+
+        <p>
+            So I'm not here to give a hundred excuses.
+            I'm simply saying:
+        </p>
+
+        <br>
+
+        <p style="text-align:center;font-size:28px;">
+            <b>I'm Sorry. 🥺❤️</b>
+        </p>
+
+        <p>
+            And whenever you're ready...
+            come back and talk to your annoying brother again. 😭😂
+        </p>
+
+        <div class="signature">
+            — Your Brother, Vijay ❤️
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SPECIAL THINGS
+========================= -->
+
+<section>
+
+<div class="container">
+
+    <div class="section-title">
+        <h2>🌸 Why You're Special</h2>
+        <p>Some things I probably don't say enough.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">❤️</div>
+            <h3>You Matter</h3>
+            <p>
+                No matter how busy life gets,
+                you'll always have a special place in my life.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">😂</div>
+            <h3>You Make Me Smile</h3>
+            <p>
+                Even our stupid conversations become
+                memories that I'll remember.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🫶</div>
+            <h3>Our Bond</h3>
+            <p>
+                We may fight, annoy each other and get angry,
+                but that's not going to erase our bond.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     MEMORIES
+========================= -->
+
+<section>
+
+<div class="container">
+
+    <div class="section-title">
+        <h2>📸 Our Memories</h2>
+        <p>Replace these with your real photos.</p>
+    </div>
+
+    <div class="memories">
+
+        <!--
+        To add your own photo:
+
+        Replace:
+        memory1.jpg
+
+        with your image file name.
+
+        Example:
+        sister1.jpg
+        -->
+
+        <div class="memory">
+            <img src="memory1.jpg"
+                 alt="Our Memory"
+                 onerror="this.style.display='none'">
+            <span>One of those memories ❤️</span>
+        </div>
+
+        <div class="memory">
+            <img src="memory2.jpg"
+                 alt="Our Memory"
+                 onerror="this.style.display='none'">
+            <span>Always worth remembering 🫶</span>
+        </div>
+
+        <div class="memory">
+            <img src="memory3.jpg"
+                 alt="Our Memory"
+                 onerror="this.style.display='none'">
+            <span>More memories to come ✨</span>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     PROMISE
+========================= -->
+
+<section class="promise">
+
+<div class="container">
+
+    <div class="section-title">
+        <h2>🤝 One Little Promise</h2>
+    </div>
+
+    <div class="promise-box">
+
+        <p>
+            I can't promise that we'll never fight.
+            We're siblings — that's probably impossible. 😂
+        </p>
+
+        <br>
+
+        <p>
+            But I can promise that whenever things get difficult,
+            I'll still care.
+        </p>
+
+        <br>
+
+        <p>
+            <b>
+            No matter how angry you get,
+            you're still my sister. ❤️
+            </b>
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FORGIVE SECTION
+========================= -->
+
+<section class="forgive">
+
+<div class="container">
+
+    <div class="section-title">
+        <h2>🥺 So... Are You Still Angry?</h2>
+        <p>You have two options. Choose wisely. 😂</p>
+    </div>
+
+    <button class="btn secondary"
+            onclick="stillAngry()">
+        😤 Yes, Still Angry
+    </button>
+
+    <button class="btn primary"
+            onclick="forgiveMe()">
+        ❤️ Okay, I Forgive You
+    </button>
+
+    <div class="response" id="response"></div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    Made with ❤️ by
+    <span>Vijay</span>
+
+    <br><br>
+
+    For the best sister ever 🌸
+
+</footer>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div class="modal" id="sorryModal">
+
+    <div class="modal-box">
+
+        <div style="font-size:60px;">
+            🥺❤️
+        </div>
+
+        <h2>I'm Really Sorry</h2>
+
+        <p style="line-height:1.7;">
+            I don't want a fight to become bigger than
+            our relationship.
+
+            <br><br>
+
+            So here's your annoying brother
+            officially saying...
+        </p>
+
+        <h2 style="color:#ff4f81;">
+            SORRY! ❤️
+        </h2>
+
+        <button class="btn primary close"
+                onclick="closeModal()">
+            Okay... 🥹
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    const hearts = ["❤️","💗","💕","💖","💓","🌸","✨"];
+
+    heart.innerHTML =
+        hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left =
+        Math.random()*100 + "vw";
+
+    heart.style.animationDuration =
+        (4 + Math.random()*5) + "s";
+
+    heart.style.fontSize =
+        (15 + Math.random()*20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },9000);
+}
+
+setInterval(createHeart,700);
+
+
+/* =========================
+   MODAL
+========================= */
+
+function showSorry(){
+
+    document.getElementById("sorryModal")
+        .style.display="flex";
+}
+
+function closeModal(){
+
+    document.getElementById("sorryModal")
+        .style.display="none";
+}
+
+
+/* =========================
+   SCROLL
+========================= */
+
+function scrollToLetter(){
+
+    document.getElementById("letter")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+}
+
+
+/* =========================
+   STILL ANGRY
+========================= */
+
+function stillAngry(){
+
+    const response =
+        document.getElementById("response");
+
+    response.innerHTML =
+        "Okay 😭... I'll wait. But I'm still going to try again. ❤️";
+
+    createHeart();
+}
+
+
+/* =========================
+   FORGIVEN
+========================= */
+
+function forgiveMe(){
+
+    const response =
+        document.getElementById("response");
+
+    response.innerHTML =
+        "YAYYY! 🥹❤️ Now come here, Shambhavi! 🤗";
+
+    for(let i=0;i<15;i++){
+
+        setTimeout(()=>{
+            createHeart();
+        },i*100);
+    }
+}
+
+
+/* =========================
+   CLOSE MODAL ON BACKGROUND
+========================= */
+
+document.getElementById("sorryModal")
+.addEventListener("click",function(e){
+
+    if(e.target === this){
+        closeModal();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
