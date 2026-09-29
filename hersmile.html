@@ -2,134 +2,154 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Sister ❤️ | From Vijay</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For You, Sister ❤️</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 
 :root{
-    --pink:#ff4f81;
-    --pink2:#ff8fab;
-    --purple:#9b5de5;
-    --text:#292333;
-    --muted:#756f7e;
-    --white:#ffffff;
-    --glass:rgba(255,255,255,.72);
-}
-
-html{
-    scroll-behavior:smooth;
+ --pink:#ff4d88;
+ --purple:#9d5cff;
+ --dark:#090711;
+ --card:rgba(255,255,255,.08);
+ --line:rgba(255,255,255,.14);
+ --white:#fff;
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    color:var(--text);
-    background:
-        radial-gradient(circle at 10% 10%,#ffe1ec 0,transparent 28%),
-        radial-gradient(circle at 90% 20%,#eadcff 0,transparent 28%),
-        linear-gradient(135deg,#fff7fa,#f8f3ff,#f4faff);
-    overflow-x:hidden;
+ font-family:Arial,Helvetica,sans-serif;
+ background:var(--dark);
+ color:#fff;
+ overflow-x:hidden;
 }
 
 /* =========================
-   LOADING / OPENING
+   STAR BACKGROUND
 ========================= */
 
-.intro{
-    position:fixed;
-    inset:0;
-    z-index:9999;
-    background:linear-gradient(135deg,#ffedf4,#f1e6ff);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    transition:opacity .8s,visibility .8s;
+body:before{
+ content:"";
+ position:fixed;
+ inset:0;
+ z-index:-3;
+ background:
+ radial-gradient(circle at 20% 20%,rgba(255,77,136,.15),transparent 25%),
+ radial-gradient(circle at 80% 30%,rgba(157,92,255,.18),transparent 25%),
+ radial-gradient(circle at 50% 80%,rgba(255,120,180,.08),transparent 30%);
 }
 
-.intro.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-.intro-box{
-    width:min(90%,520px);
-    padding:35px 25px;
-}
-
-.intro-icon{
-    font-size:80px;
-    animation:pulse 1.6s infinite;
-}
-
-.intro h1{
-    font-size:clamp(35px,8vw,65px);
-    margin:15px 0;
-}
-
-.intro p{
-    color:var(--muted);
-    line-height:1.7;
-    font-size:17px;
-}
-
-.open-btn{
-    margin-top:25px;
-    padding:16px 32px;
-    border:0;
-    border-radius:50px;
-    background:linear-gradient(135deg,var(--pink),var(--purple));
-    color:#fff;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 15px 35px rgba(155,93,229,.25);
-    transition:.3s;
-}
-
-.open-btn:hover{
-    transform:translateY(-4px) scale(1.03);
+#stars{
+ position:fixed;
+ inset:0;
+ z-index:-2;
+ pointer-events:none;
 }
 
 /* =========================
-   GLOBAL
+   INTRO
 ========================= */
 
-section{
-    padding:90px 20px;
+#intro{
+ position:fixed;
+ inset:0;
+ z-index:9999;
+ background:#05040a;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ transition:1.2s;
 }
 
-.container{
-    max-width:1050px;
-    margin:auto;
+#intro.hide{
+ opacity:0;
+ visibility:hidden;
+ pointer-events:none;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:45px;
+.intro-inner{
+ width:min(90%,650px);
 }
 
-.section-title .small{
-    color:var(--pink);
-    font-weight:bold;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    font-size:13px;
+.intro-small{
+ color:#aaa;
+ letter-spacing:4px;
+ font-size:12px;
+ text-transform:uppercase;
+ margin-bottom:25px;
 }
 
-.section-title h2{
-    font-size:clamp(32px,5vw,48px);
-    margin:10px 0;
+.intro-title{
+ font-size:clamp(42px,9vw,85px);
+ line-height:1;
+ margin-bottom:20px;
 }
 
-.section-title p{
-    color:var(--muted);
-    line-height:1.6;
+.intro-title span{
+ background:linear-gradient(90deg,#ff5a91,#d18aff,#ff5a91);
+ -webkit-background-clip:text;
+ color:transparent;
+}
+
+.intro-text{
+ color:#aaa;
+ line-height:1.8;
+ max-width:500px;
+ margin:auto;
+}
+
+.start{
+ margin-top:35px;
+ padding:17px 35px;
+ border-radius:50px;
+ border:1px solid rgba(255,255,255,.2);
+ color:white;
+ background:linear-gradient(135deg,#ff4d88,#8f54ff);
+ font-weight:bold;
+ font-size:16px;
+ cursor:pointer;
+ box-shadow:0 0 40px rgba(255,77,136,.25);
+ transition:.3s;
+}
+
+.start:hover{
+ transform:scale(1.06);
+ box-shadow:0 0 60px rgba(255,77,136,.4);
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+.music{
+ position:fixed;
+ right:20px;
+ top:20px;
+ z-index:500;
+ width:52px;
+ height:52px;
+ border-radius:50%;
+ border:1px solid var(--line);
+ background:rgba(15,12,22,.75);
+ backdrop-filter:blur(12px);
+ color:#fff;
+ cursor:pointer;
+ font-size:20px;
+ box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.music.playing{
+ animation:musicPulse 1.5s infinite;
+}
+
+.youtube{
+ position:fixed;
+ width:1px;
+ height:1px;
+ opacity:0;
+ pointer-events:none;
 }
 
 /* =========================
@@ -137,377 +157,402 @@ section{
 ========================= */
 
 .hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:100px 20px 60px;
-    position:relative;
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ padding:80px 20px;
+ position:relative;
 }
 
-.hero-content{
-    max-width:850px;
-    animation:fadeUp 1s ease;
+.hero-inner{
+ max-width:950px;
 }
 
-.badge{
-    display:inline-block;
-    background:rgba(255,255,255,.8);
-    padding:10px 18px;
-    border-radius:50px;
-    box-shadow:0 10px 30px rgba(0,0,0,.07);
-    font-size:14px;
-    margin-bottom:25px;
+.eyebrow{
+ color:#aaa;
+ letter-spacing:5px;
+ font-size:12px;
+ text-transform:uppercase;
+ margin-bottom:25px;
 }
 
 .hero h1{
-    font-size:clamp(50px,10vw,100px);
-    line-height:.95;
-    margin-bottom:25px;
+ font-size:clamp(60px,12vw,145px);
+ line-height:.82;
+ letter-spacing:-6px;
 }
 
-.gradient{
-    background:linear-gradient(90deg,var(--pink),var(--purple),var(--pink));
-    background-size:200%;
-    -webkit-background-clip:text;
-    color:transparent;
-    animation:gradientMove 4s infinite linear;
+.hero h1 .pink{
+ background:linear-gradient(90deg,#ff4d88,#ff9abb);
+ -webkit-background-clip:text;
+ color:transparent;
 }
 
-.hero p{
-    max-width:700px;
-    margin:auto;
-    color:var(--muted);
-    font-size:19px;
-    line-height:1.8;
+.hero-sub{
+ margin:35px auto 0;
+ max-width:650px;
+ color:#aaa;
+ line-height:1.9;
+ font-size:18px;
 }
 
 .scroll{
-    margin-top:45px;
-    color:var(--pink);
-    animation:bounce 1.5s infinite;
+ margin-top:70px;
+ color:#777;
+ font-size:12px;
+ letter-spacing:3px;
+ animation:bounce 1.5s infinite;
 }
 
 /* =========================
-   BUTTONS
+   GENERAL
 ========================= */
 
-.btn{
-    border:0;
-    border-radius:50px;
-    padding:15px 27px;
-    margin:10px 5px;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
+section{
+ padding:130px 20px;
 }
 
-.btn:hover{
-    transform:translateY(-4px);
+.container{
+ width:min(1100px,100%);
+ margin:auto;
 }
 
-.primary{
-    color:#fff;
-    background:linear-gradient(135deg,var(--pink),var(--purple));
-    box-shadow:0 12px 30px rgba(255,79,129,.25);
+.heading{
+ text-align:center;
+ margin-bottom:65px;
 }
 
-.secondary{
-    background:#fff;
-    color:var(--pink);
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
+.heading small{
+ color:var(--pink);
+ letter-spacing:4px;
+ text-transform:uppercase;
+}
+
+.heading h2{
+ font-size:clamp(38px,6vw,70px);
+ margin:12px 0;
+}
+
+.heading p{
+ color:#888;
+ line-height:1.7;
+ max-width:600px;
+ margin:auto;
 }
 
 /* =========================
-   ENVELOPE
+   STORY
 ========================= */
 
-.envelope-area{
-    display:flex;
-    justify-content:center;
+.story{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:70px;
+ align-items:center;
 }
 
-.envelope{
-    width:min(90%,650px);
-    background:var(--glass);
-    backdrop-filter:blur(15px);
-    border-radius:30px;
-    padding:45px;
-    box-shadow:0 25px 70px rgba(0,0,0,.09);
-    text-align:center;
+.story-visual{
+ height:550px;
+ border-radius:35px;
+ position:relative;
+ overflow:hidden;
+ background:
+ linear-gradient(145deg,rgba(255,77,136,.2),rgba(157,92,255,.15)),
+ #111;
+ border:1px solid var(--line);
 }
 
-.envelope-icon{
-    font-size:85px;
-    cursor:pointer;
-    transition:.4s;
+.story-visual:after{
+ content:"❤️";
+ position:absolute;
+ font-size:180px;
+ opacity:.06;
+ inset:0;
+ display:flex;
+ align-items:center;
+ justify-content:center;
 }
 
-.envelope-icon:hover{
-    transform:scale(1.1) rotate(-3deg);
+.story-number{
+ position:absolute;
+ top:30px;
+ left:30px;
+ color:#777;
+ font-size:13px;
+ letter-spacing:3px;
 }
 
-.letter-content{
-    max-height:0;
-    overflow:hidden;
-    transition:max-height 1s ease;
-    text-align:left;
+.story-words{
+ position:absolute;
+ bottom:35px;
+ left:35px;
+ right:35px;
 }
 
-.letter-content.open{
-    max-height:1000px;
-    margin-top:30px;
+.story-words h3{
+ font-size:42px;
+ margin-bottom:12px;
 }
 
-.letter-content p{
-    line-height:1.9;
-    margin-bottom:16px;
-    color:#4e4757;
+.story-words p{
+ color:#aaa;
+ line-height:1.7;
 }
 
-.signature{
-    text-align:right;
-    color:var(--pink);
-    font-weight:bold;
+.story-text h3{
+ font-size:42px;
+ margin-bottom:25px;
+}
+
+.story-text p{
+ color:#999;
+ line-height:2;
+ font-size:17px;
+ margin-bottom:18px;
 }
 
 /* =========================
-   CARDS
+   CONFESSION
 ========================= */
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+.confession{
+ background:
+ linear-gradient(rgba(9,7,17,.85),rgba(9,7,17,.95)),
+ radial-gradient(circle at center,#ff4d8830,transparent 55%);
 }
 
-.card{
-    background:var(--glass);
-    backdrop-filter:blur(12px);
-    padding:30px 22px;
-    border-radius:25px;
-    box-shadow:0 15px 45px rgba(0,0,0,.07);
-    text-align:center;
-    transition:.3s;
+.confession-box{
+ max-width:850px;
+ margin:auto;
+ padding:55px;
+ border:1px solid var(--line);
+ border-radius:35px;
+ background:var(--card);
+ backdrop-filter:blur(15px);
 }
 
-.card:hover{
-    transform:translateY(-9px);
+.confession-line{
+ font-size:clamp(22px,4vw,36px);
+ line-height:1.5;
+ margin-bottom:28px;
 }
 
-.card-icon{
-    font-size:48px;
-    margin-bottom:15px;
+.confession-line span{
+ color:#777;
 }
 
-.card h3{
-    margin-bottom:10px;
+.reveal-btn{
+ padding:14px 25px;
+ border:1px solid var(--line);
+ background:rgba(255,255,255,.06);
+ color:#fff;
+ border-radius:50px;
+ cursor:pointer;
 }
 
-.card p{
-    color:var(--muted);
-    line-height:1.7;
+.reveal-text{
+ display:none;
+ margin-top:30px;
+ color:#aaa;
+ line-height:2;
 }
 
-/* =========================
-   TIMELINE
-========================= */
-
-.timeline{
-    max-width:750px;
-    margin:auto;
-    position:relative;
-}
-
-.timeline::before{
-    content:"";
-    position:absolute;
-    left:20px;
-    top:0;
-    bottom:0;
-    width:3px;
-    background:linear-gradient(var(--pink),var(--purple));
-    border-radius:10px;
-}
-
-.timeline-item{
-    position:relative;
-    padding:0 0 35px 60px;
-}
-
-.timeline-dot{
-    position:absolute;
-    left:8px;
-    top:0;
-    width:27px;
-    height:27px;
-    border-radius:50%;
-    background:#fff;
-    border:6px solid var(--pink);
-}
-
-.timeline-item h3{
-    margin-bottom:8px;
-}
-
-.timeline-item p{
-    color:var(--muted);
-    line-height:1.7;
+.reveal-text.show{
+ display:block;
+ animation:fadeUp .8s;
 }
 
 /* =========================
    MEMORIES
 ========================= */
 
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+.memories{
+ display:grid;
+ grid-template-columns:2fr 1fr 1fr;
+ grid-auto-rows:250px;
+ gap:15px;
 }
 
-.photo{
-    height:270px;
-    border-radius:25px;
-    overflow:hidden;
-    position:relative;
-    cursor:pointer;
-    background:linear-gradient(135deg,#ffd8e6,#e4d5ff);
-    box-shadow:0 12px 35px rgba(0,0,0,.08);
+.memory{
+ overflow:hidden;
+ border-radius:25px;
+ position:relative;
+ background:linear-gradient(135deg,#241525,#171121);
+ border:1px solid var(--line);
+ cursor:pointer;
 }
 
-.photo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:.5s;
+.memory.big{
+ grid-row:span 2;
 }
 
-.photo:hover img{
-    transform:scale(1.08);
+.memory img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ transition:.7s;
 }
 
-.photo-text{
-    position:absolute;
-    bottom:12px;
-    left:12px;
-    right:12px;
-    padding:10px;
-    color:white;
-    background:rgba(0,0,0,.48);
-    border-radius:12px;
-    text-align:center;
+.memory:hover img{
+ transform:scale(1.08);
+}
+
+.memory:after{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:linear-gradient(transparent 50%,rgba(0,0,0,.8));
+}
+
+.memory-caption{
+ position:absolute;
+ z-index:2;
+ bottom:20px;
+ left:20px;
+ right:20px;
+ font-size:15px;
 }
 
 /* =========================
-   FUNNY SECTION
+   SIBLING SECTION
 ========================= */
 
-.funny{
-    background:linear-gradient(135deg,#fff1f5,#f4edff);
+.sibling-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:20px;
 }
 
-.funny-box{
-    max-width:800px;
-    margin:auto;
-    background:white;
-    padding:40px;
-    border-radius:30px;
-    text-align:center;
-    box-shadow:0 20px 60px rgba(0,0,0,.08);
+.sibling-card{
+ min-height:200px;
+ padding:30px;
+ border:1px solid var(--line);
+ border-radius:28px;
+ background:var(--card);
+ transition:.4s;
 }
 
-.funny-box h3{
-    font-size:28px;
-    margin-bottom:20px;
+.sibling-card:hover{
+ transform:translateY(-7px);
+ border-color:rgba(255,77,136,.5);
 }
 
-.funny-list{
-    text-align:left;
-    max-width:600px;
-    margin:25px auto;
+.sibling-card .emoji{
+ font-size:42px;
+ margin-bottom:18px;
 }
 
-.funny-list div{
-    padding:13px 0;
-    border-bottom:1px solid #eee;
+.sibling-card h3{
+ margin-bottom:10px;
+}
+
+.sibling-card p{
+ color:#999;
+ line-height:1.7;
 }
 
 /* =========================
-   SURPRISE
+   GAME
 ========================= */
 
-.surprise{
-    text-align:center;
+.game{
+ text-align:center;
 }
 
-.surprise-box{
-    max-width:700px;
-    margin:auto;
-    background:linear-gradient(135deg,#fff,#fff2f7);
-    padding:45px 25px;
-    border-radius:30px;
-    box-shadow:0 20px 60px rgba(0,0,0,.08);
+.game-box{
+ max-width:750px;
+ margin:auto;
+ border:1px solid var(--line);
+ background:var(--card);
+ border-radius:35px;
+ padding:50px 25px;
 }
 
-.hidden-message{
-    display:none;
-    margin-top:25px;
-    padding:25px;
-    border-radius:20px;
-    background:#fff;
-    animation:pop .5s ease;
+.heart-button{
+ width:130px;
+ height:130px;
+ border-radius:50%;
+ border:1px solid rgba(255,255,255,.2);
+ background:radial-gradient(circle,#ff6b9d,#b53e70);
+ color:white;
+ font-size:55px;
+ cursor:pointer;
+ box-shadow:0 0 50px rgba(255,77,136,.25);
+ transition:.2s;
 }
 
-.hidden-message.show{
-    display:block;
+.heart-button:active{
+ transform:scale(.9);
 }
 
-.hidden-message h3{
-    color:var(--pink);
-    font-size:30px;
-    margin-bottom:12px;
+.score{
+ margin-top:25px;
+ font-size:20px;
+ color:#aaa;
 }
 
-.hidden-message p{
-    color:var(--muted);
-    line-height:1.8;
+.score b{
+ color:#fff;
 }
 
 /* =========================
-   FINAL
+   FINAL QUESTION
 ========================= */
 
 .final{
-    text-align:center;
+ min-height:90vh;
+ display:flex;
+ align-items:center;
+ text-align:center;
 }
 
-.final-box{
-    max-width:800px;
-    margin:auto;
-    padding:55px 25px;
-    border-radius:35px;
-    background:linear-gradient(135deg,#ffedf4,#eee4ff);
+.final-inner{
+ width:min(850px,100%);
+ margin:auto;
 }
 
-.final-box h2{
-    font-size:clamp(35px,6vw,60px);
-    margin-bottom:15px;
+.final h2{
+ font-size:clamp(45px,8vw,90px);
+ line-height:1;
 }
 
-.final-box p{
-    color:var(--muted);
-    line-height:1.8;
-    font-size:18px;
+.final h2 span{
+ color:var(--pink);
+}
+
+.final p{
+ margin:30px auto;
+ color:#999;
+ line-height:1.8;
+ max-width:600px;
+}
+
+.actions button{
+ padding:16px 30px;
+ border-radius:50px;
+ border:0;
+ cursor:pointer;
+ font-weight:bold;
+ margin:7px;
+}
+
+.yes{
+ background:#ff4d88;
+ color:white;
+}
+
+.wait{
+ background:#fff;
+ color:#222;
 }
 
 .answer{
-    min-height:40px;
-    margin-top:20px;
-    color:var(--pink);
-    font-weight:bold;
-    font-size:20px;
+ min-height:45px;
+ margin-top:25px;
+ color:#ff86ad;
+ font-size:20px;
 }
 
 /* =========================
@@ -515,112 +560,105 @@ section{
 ========================= */
 
 footer{
-    background:#201a27;
-    color:white;
-    text-align:center;
-    padding:45px 20px;
+ padding:60px 20px;
+ text-align:center;
+ border-top:1px solid var(--line);
+ color:#777;
 }
 
-footer .heart{
-    color:#ff6f9b;
-}
-
-/* =========================
-   FLOATING HEARTS
-========================= */
-
-.floating-heart{
-    position:fixed;
-    bottom:-40px;
-    pointer-events:none;
-    z-index:100;
-    animation:floatHeart linear forwards;
-}
-
-@keyframes floatHeart{
-    from{
-        transform:translateY(0) rotate(0);
-        opacity:1;
-    }
-    to{
-        transform:translateY(-110vh) rotate(360deg);
-        opacity:0;
-    }
+footer strong{
+ color:#ff6b9d;
 }
 
 /* =========================
-   PHOTO MODAL
+   MODAL
 ========================= */
 
 .modal{
-    position:fixed;
-    inset:0;
-    z-index:10000;
-    background:rgba(15,10,20,.88);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+ position:fixed;
+ inset:0;
+ background:rgba(0,0,0,.92);
+ z-index:9998;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
 }
 
 .modal.show{
-    display:flex;
+ display:flex;
 }
 
 .modal img{
-    max-width:95%;
-    max-height:85vh;
-    border-radius:20px;
+ max-width:95%;
+ max-height:85vh;
+ border-radius:20px;
 }
 
-.close-modal{
-    position:absolute;
-    right:25px;
-    top:20px;
-    color:white;
-    font-size:40px;
-    cursor:pointer;
+.close{
+ position:absolute;
+ top:20px;
+ right:25px;
+ font-size:40px;
+ color:white;
+ cursor:pointer;
 }
 
 /* =========================
-   ANIMATIONS
+   PARTICLES
 ========================= */
 
-@keyframes pulse{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.1);}
+.particle{
+ position:fixed;
+ width:2px;
+ height:2px;
+ background:white;
+ border-radius:50%;
+ opacity:.5;
+ pointer-events:none;
+ z-index:-1;
 }
+
+.heart{
+ position:fixed;
+ pointer-events:none;
+ z-index:1000;
+ animation:heartUp 3s linear forwards;
+}
+
+/* =========================
+   ANIMATION
+========================= */
 
 @keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(35px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@keyframes gradientMove{
-    0%{background-position:0%;}
-    100%{background-position:200%;}
+ from{
+  opacity:0;
+  transform:translateY(30px);
+ }
+ to{
+  opacity:1;
+  transform:translateY(0);
+ }
 }
 
 @keyframes bounce{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(10px);}
+ 0%,100%{transform:translateY(0)}
+ 50%{transform:translateY(10px)}
 }
 
-@keyframes pop{
-    from{
-        transform:scale(.7);
-        opacity:0;
-    }
-    to{
-        transform:scale(1);
-        opacity:1;
-    }
+@keyframes musicPulse{
+ 50%{box-shadow:0 0 0 12px rgba(255,77,136,.08)}
+}
+
+@keyframes heartUp{
+  from{
+   transform:translateY(0) scale(1);
+   opacity:1;
+  }
+  to{
+   transform:translateY(-100vh) scale(.4) rotate(30deg);
+   opacity:0;
+  }
 }
 
 /* =========================
@@ -629,67 +667,110 @@ footer .heart{
 
 @media(max-width:750px){
 
-    section{
-        padding:70px 15px;
-    }
+ section{
+  padding:90px 15px;
+ }
 
-    .cards,
-    .gallery{
-        grid-template-columns:1fr;
-    }
+ .hero h1{
+  letter-spacing:-3px;
+ }
 
-    .hero{
-        min-height:95vh;
-    }
+ .story{
+  grid-template-columns:1fr;
+  gap:30px;
+ }
 
-    .hero p{
-        font-size:16px;
-    }
+ .story-visual{
+  height:400px;
+ }
 
-    .envelope{
-        padding:30px 20px;
-    }
+ .story-text h3{
+  font-size:34px;
+ }
 
-    .funny-box,
-    .surprise-box{
-        padding:30px 20px;
-    }
+ .confession-box{
+  padding:30px 22px;
+ }
 
-    .photo{
-        height:300px;
-    }
+ .memories{
+  grid-template-columns:1fr;
+  grid-auto-rows:280px;
+ }
+
+ .memory.big{
+  grid-row:span 1;
+ }
+
+ .sibling-grid{
+  grid-template-columns:1fr;
+ }
+
+ .music{
+  right:15px;
+  top:15px;
+ }
+
 }
 </style>
 </head>
 
-
 <body>
+
+<!-- ==================================================
+     INTRO
+================================================== -->
+
+<div id="intro">
+
+ <div class="intro-inner">
+
+  <div class="intro-small">
+   A website made for one special person
+  </div>
+
+  <div class="intro-title">
+   For <span>My Sister</span> ❤️
+  </div>
+
+  <p class="intro-text">
+   This isn't just a website.<br>
+   It's a small piece of my heart,
+   turned into something you can open.
+  </p>
+
+  <button class="start" onclick="startExperience()">
+   Enter Our Little World ✨
+  </button>
+
+ </div>
+
+</div>
 
 
 <!-- ==================================================
-     OPENING SCREEN
+     MUSIC BUTTON
 ================================================== -->
 
-<div class="intro" id="intro">
+<button class="music"
+        id="musicBtn"
+        onclick="toggleMusic()"
+        title="Music">
+ 🎵
+</button>
 
-    <div class="intro-box">
 
-        <div class="intro-icon">💌</div>
+<!-- ==================================================
+     YOUTUBE MUSIC
+     VIDEO ID FROM USER'S LINK:
+     riU4OScbAdA
+================================================== -->
 
-        <h1>For My Sister</h1>
-
-        <p>
-            I made something for you.<br>
-            It's not perfect... but it's from my heart. ❤️
-        </p>
-
-        <button class="open-btn" onclick="openWebsite()">
-            Open My Message ❤️
-        </button>
-
-    </div>
-
-</div>
+<iframe
+ id="youtube"
+ class="youtube"
+ src="https://www.youtube.com/embed/riU4OScbAdA?enablejsapi=1&loop=1&playlist=riU4OScbAdA"
+ allow="autoplay">
+</iframe>
 
 
 <!-- ==================================================
@@ -698,294 +779,169 @@ footer .heart{
 
 <header class="hero">
 
-    <div class="hero-content">
+ <div class="hero-inner">
 
-        <div class="badge">
-            🌸 A Little Website Made With Love
-        </div>
+  <div class="eyebrow">
+   For someone who means a lot
+  </div>
 
-        <h1>
-            Hey <span class="gradient">Sister ❤️</span>
-        </h1>
+  <h1>
+   Hey<br>
+   <span class="pink">Sister.</span>
+  </h1>
 
-        <p>
-            Sometimes saying "sorry" isn't enough...
-            so I decided to build an entire website for it. 😂
-        </p>
+  <p class="hero-sub">
+   If you're reading this,
+   maybe you're still angry with me.
+   Maybe you're not.
+   Either way, I wanted to say something
+   that I couldn't properly say in a normal message.
+  </p>
 
-        <br>
+  <div class="scroll">
+   SCROLL TO BEGIN ↓
+  </div>
 
-        <button class="btn primary"
-                onclick="document.getElementById('letter').scrollIntoView()">
-            💌 Read My Letter
-        </button>
-
-        <button class="btn secondary"
-                onclick="showSurprise()">
-            🎁 Surprise
-        </button>
-
-        <div class="scroll">
-            ↓ Scroll slowly ↓
-        </div>
-
-    </div>
+ </div>
 
 </header>
 
 
 <!-- ==================================================
-     LETTER
+     STORY
 ================================================== -->
 
-<section id="letter">
+<section>
 
-<div class="container">
+ <div class="container">
 
-    <div class="section-title">
+  <div class="heading">
+   <small>01 — Our Story</small>
+   <h2>It's complicated.</h2>
+   <p>
+    But that's exactly what makes it ours.
+   </p>
+  </div>
 
-        <div class="small">From My Heart</div>
 
-        <h2>💌 One Letter</h2>
+  <div class="story">
 
-        <p>
-            Click the envelope.
-        </p>
+   <div class="story-visual">
+
+    <div class="story-number">
+     CHAPTER 01
+    </div>
+
+    <div class="story-words">
+
+     <h3>Us.</h3>
+
+     <p>
+      Two people who can argue about absolutely anything...
+      and still somehow care about each other.
+     </p>
 
     </div>
 
-    <div class="envelope-area">
+   </div>
 
-        <div class="envelope">
 
-            <div class="envelope-icon"
-                 onclick="openLetter()">
-                💌
-            </div>
+   <div class="story-text">
 
-            <h3>Tap the envelope</h3>
+    <h3>
+     We fight.<br>
+     We laugh.<br>
+     We annoy each other.
+    </h3>
 
-            <div class="letter-content"
-                 id="letterContent">
+    <p>
+     Sometimes words come out wrong.
+     Sometimes someone gets hurt.
+     Sometimes both of us need some space.
+    </p>
 
-                <p>
-                    Dear Sister,
-                </p>
+    <p>
+     But one bad moment doesn't erase
+     every good moment that came before it.
+    </p>
 
-                <p>
-                    If you're angry with me because of something
-                    I said or did, then first of all...
-                    <b>I'm genuinely sorry. 🥺</b>
-                </p>
+    <p>
+     And that's what I wanted you to remember.
+     ❤️
+    </p>
 
-                <p>
-                    I know sometimes I can be annoying,
-                    stupid, overdramatic and impossible to tolerate. 😂
-                </p>
+   </div>
 
-                <p>
-                    But behind all that stupidity is a brother
-                    who genuinely cares about you.
-                </p>
+  </div>
 
-                <p>
-                    I don't want one argument,
-                    one misunderstanding or one bad moment
-                    to become bigger than our bond.
-                </p>
-
-                <p>
-                    So today I'm not going to make excuses.
-                </p>
-
-                <p style="text-align:center;font-size:25px;">
-                    <b>I'm Sorry. ❤️</b>
-                </p>
-
-                <p>
-                    Whenever you're ready,
-                    your annoying brother is still here. 🫶
-                </p>
-
-                <div class="signature">
-                    — Vijay ❤️
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
+ </div>
 
 </section>
 
 
 <!-- ==================================================
-     SPECIAL
+     CONFESSION
 ================================================== -->
 
-<section>
+<section class="confession">
 
-<div class="container">
+ <div class="container">
 
-    <div class="section-title">
+  <div class="heading">
 
-        <div class="small">Things I Don't Say Enough</div>
+   <small>02 — What I Couldn't Say</small>
 
-        <h2>🌸 You Are Special</h2>
+   <h2>One confession.</h2>
 
-    </div>
+  </div>
 
-    <div class="cards">
 
-        <div class="card">
+  <div class="confession-box">
 
-            <div class="card-icon">❤️</div>
+   <div class="confession-line">
+    “I don't always say it...
+    <span>but I care.</span>”
+   </div>
 
-            <h3>You Matter</h3>
+   <button class="reveal-btn"
+           onclick="revealConfession()">
+    Read what I really mean →
+   </button>
 
-            <p>
-                Even when we don't talk,
-                you're still someone I care about.
-            </p>
+   <div class="reveal-text"
+        id="confessionText">
 
-        </div>
+    <p>
+     I might joke around.
+     I might act like nothing matters.
+     I might even annoy you five minutes
+     after saying sorry. 😂
+    </p>
 
+    <br>
 
-        <div class="card">
+    <p>
+     But if you're genuinely hurt,
+     it bothers me more than I usually show.
+    </p>
 
-            <div class="card-icon">😂</div>
+    <br>
 
-            <h3>You Make Me Smile</h3>
+    <p>
+     So this is me dropping the jokes for a moment:
+    </p>
 
-            <p>
-                Some of our most random conversations
-                become the best memories.
-            </p>
+    <br>
 
-        </div>
+    <p style="font-size:28px;color:#fff;">
+     You matter to me. ❤️
+    </p>
 
+   </div>
 
-        <div class="card">
+  </div>
 
-            <div class="card-icon">🫶</div>
-
-            <h3>You're Family</h3>
-
-            <p>
-                Fights can happen,
-                but family isn't something I want to lose.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- ==================================================
-     OUR BOND TIMELINE
-================================================== -->
-
-<section>
-
-<div class="container">
-
-    <div class="section-title">
-
-        <div class="small">Our Story</div>
-
-        <h2>🫶 Our Little Timeline</h2>
-
-        <p>
-            Not exact dates. Just moments that matter.
-        </p>
-
-    </div>
-
-
-    <div class="timeline">
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <h3>🌱 The Beginning</h3>
-
-            <p>
-                Somewhere along the way,
-                you became more than just my sister —
-                you became an important part of my life.
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <h3>😂 The Random Moments</h3>
-
-            <p>
-                The jokes, arguments, teasing,
-                random conversations and nonsense.
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <h3>🥺 The Fights</h3>
-
-            <p>
-                Yes... we've had them.
-                And somehow we always end up talking again.
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <h3>❤️ Today</h3>
-
-            <p>
-                Even if you're angry right now,
-                this brother still cares about you.
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <div class="timeline-dot"></div>
-
-            <h3>✨ What's Next</h3>
-
-            <p>
-                More memories.
-                More laughs.
-                More fights.
-                And hopefully... fewer reasons for apology websites. 😂
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
+ </div>
 
 </section>
 
@@ -994,238 +950,275 @@ footer .heart{
      MEMORIES
 ================================================== -->
 
-<section id="memories">
+<section>
 
-<div class="container">
+ <div class="container">
 
-    <div class="section-title">
+  <div class="heading">
 
-        <div class="small">Our Memories</div>
+   <small>03 — Memories</small>
 
-        <h2>📸 Moments</h2>
+   <h2>Keep these forever.</h2>
 
-        <p>
-            Replace these images with your real photos.
-        </p>
+   <p>
+    Replace the images with your real memories.
+   </p>
 
+  </div>
+
+
+  <div class="memories">
+
+   <div class="memory big"
+        onclick="openPhoto('memory1.jpg')">
+
+    <img src="memory1.jpg"
+         alt="Memory 1"
+         onerror="this.style.display='none'">
+
+    <div class="memory-caption">
+     That one memory ❤️
     </div>
 
-
-    <div class="gallery">
-
-        <div class="photo"
-             onclick="openPhoto('memory1.jpg')">
-
-            <img src="memory1.jpg"
-                 alt="Memory 1"
-                 onerror="this.style.display='none'">
-
-            <div class="photo-text">
-                A memory worth keeping ❤️
-            </div>
-
-        </div>
+   </div>
 
 
-        <div class="photo"
-             onclick="openPhoto('memory2.jpg')">
+   <div class="memory"
+        onclick="openPhoto('memory2.jpg')">
 
-            <img src="memory2.jpg"
-                 alt="Memory 2"
-                 onerror="this.style.display='none'">
+    <img src="memory2.jpg"
+         alt="Memory 2"
+         onerror="this.style.display='none'">
 
-            <div class="photo-text">
-                One of our moments 🫶
-            </div>
-
-        </div>
-
-
-        <div class="photo"
-             onclick="openPhoto('memory3.jpg')">
-
-            <img src="memory3.jpg"
-                 alt="Memory 3"
-                 onerror="this.style.display='none'">
-
-            <div class="photo-text">
-                More memories coming ✨
-            </div>
-
-        </div>
-
+    <div class="memory-caption">
+     Random moment ✨
     </div>
 
-</div>
+   </div>
+
+
+   <div class="memory"
+        onclick="openPhoto('memory3.jpg')">
+
+    <img src="memory3.jpg"
+         alt="Memory 3"
+         onerror="this.style.display='none'">
+
+    <div class="memory-caption">
+     One for the memories 🫶
+    </div>
+
+   </div>
+
+
+   <div class="memory"
+        onclick="openPhoto('memory4.jpg')">
+
+    <img src="memory4.jpg"
+         alt="Memory 4"
+         onerror="this.style.display='none'">
+
+    <div class="memory-caption">
+     Another chapter 📸
+    </div>
+
+   </div>
+
+
+   <div class="memory"
+        onclick="openPhoto('memory5.jpg')">
+
+    <img src="memory5.jpg"
+         alt="Memory 5"
+         onerror="this.style.display='none'">
+
+    <div class="memory-caption">
+     More to come ❤️
+    </div>
+
+   </div>
+
+  </div>
+
+ </div>
 
 </section>
 
 
 <!-- ==================================================
-     FUNNY SIBLING SECTION
+     SIBLING REALITY
 ================================================== -->
 
-<section class="funny">
+<section>
 
-<div class="container">
+ <div class="container">
 
-    <div class="section-title">
+  <div class="heading">
 
-        <div class="small">Official Sibling Report</div>
+   <small>04 — Sibling Reality</small>
 
-        <h2>😂 Things Siblings Do</h2>
+   <h2>Let's be honest. 😂</h2>
 
-    </div>
+   <p>
+    Our relationship deserves its own statistics.
+   </p>
+
+  </div>
 
 
-    <div class="funny-box">
+  <div class="sibling-grid">
 
-        <h3>Our Relationship Statistics 📊</h3>
+   <div class="sibling-card">
 
-        <div class="funny-list">
+    <div class="emoji">😂</div>
 
-            <div>
-                😂 Random arguments — <b>99%</b>
-            </div>
+    <h3>Annoying Each Other</h3>
 
-            <div>
-                🤦 Annoying each other — <b>100%</b>
-            </div>
+    <p>
+     Almost professionally trained.
+    </p>
 
-            <div>
-                ❤️ Caring secretly — <b>100%</b>
-            </div>
+   </div>
 
-            <div>
-                🥺 Saying sorry — <b>Depends on who started it</b>
-            </div>
 
-            <div>
-                🍕 Sharing food — <b>Under investigation</b>
-            </div>
+   <div class="sibling-card">
 
-        </div>
+    <div class="emoji">😤</div>
 
-        <p>
-            Official conclusion:
-            <b>We're stuck with each other. 😂❤️</b>
-        </p>
+    <h3>Random Arguments</h3>
 
-    </div>
+    <p>
+     Sometimes the reason isn't even remembered.
+    </p>
 
-</div>
+   </div>
+
+
+   <div class="sibling-card">
+
+    <div class="emoji">🤫</div>
+
+    <h3>Secretly Caring</h3>
+
+    <p>
+     We may not say it every day,
+     but it's there.
+    </p>
+
+   </div>
+
+
+   <div class="sibling-card">
+
+    <div class="emoji">❤️</div>
+
+    <h3>Still Family</h3>
+
+    <p>
+     This one doesn't have a percentage.
+     It's permanent.
+    </p>
+
+   </div>
+
+  </div>
+
+ </div>
 
 </section>
 
 
 <!-- ==================================================
-     SURPRISE
+     HEART GAME
 ================================================== -->
 
-<section class="surprise" id="surprise">
+<section class="game">
 
-<div class="container">
+ <div class="container">
 
-    <div class="section-title">
+  <div class="heading">
 
-        <div class="small">One More Thing</div>
+   <small>05 — A Tiny Game</small>
 
-        <h2>🎁 Hidden Surprise</h2>
+   <h2>Press the heart.</h2>
 
-        <p>
-            You have to press the button.
-        </p>
+   <p>
+    Every click adds one more reason to smile.
+   </p>
 
-    </div>
-
-
-    <div class="surprise-box">
-
-        <div style="font-size:70px;">
-            🎁
-        </div>
-
-        <button class="btn primary"
-                onclick="showSurprise()">
-            Open Surprise
-        </button>
+  </div>
 
 
-        <div class="hidden-message"
-             id="hiddenMessage">
+  <div class="game-box">
 
-            <h3>❤️ Hey, Sister...</h3>
+   <button class="heart-button"
+           onclick="heartClick()">
+    ❤️
+   </button>
 
-            <p>
-                No matter how many arguments we have,
-                no matter how annoying I become,
-                and no matter how angry you get...
-            </p>
+   <div class="score">
+    Hearts sent:
+    <b id="score">0</b>
+   </div>
 
-            <br>
+   <p id="gameText"
+      style="margin-top:20px;color:#777;">
+    Start pressing...
+   </p>
 
-            <p>
-                <b>
-                    I'll always be your brother.
-                </b>
-            </p>
+  </div>
 
-            <br>
-
-            <p>
-                And yes...
-                you are stuck with me forever. 😂🫶
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
+ </div>
 
 </section>
 
 
 <!-- ==================================================
-     FINAL
+     FINAL QUESTION
 ================================================== -->
 
 <section class="final">
 
-<div class="container">
+ <div class="final-inner">
 
-    <div class="final-box">
+  <div class="eyebrow">
+   06 — One Last Thing
+  </div>
 
-        <div style="font-size:70px;">
-            🥺❤️
-        </div>
+  <h2>
+   Can we<br>
+   <span>be okay?</span>
+  </h2>
 
-        <h2>So... Are We Good?</h2>
+  <p>
+   You don't have to answer immediately.
+   You don't even have to stop being angry immediately.
+   I just wanted you to know that this brother
+   loves and cares about you.
+   ❤️
+  </p>
 
-        <p>
-            You can stay angry for a little while...
-            but please don't stay angry forever.
-        </p>
 
-        <br>
+  <div class="actions">
 
-        <button class="btn secondary"
-                onclick="stillAngry()">
-            😤 Still Angry
-        </button>
+   <button class="yes"
+           onclick="forgive()">
+    ❤️ Okay, we're good
+   </button>
 
-        <button class="btn primary"
-                onclick="forgive()">
-            ❤️ I Forgive You
-        </button>
+   <button class="wait"
+           onclick="stillAngry()">
+    😤 I'm still angry
+   </button>
 
-        <div class="answer"
-             id="answer">
-        </div>
+  </div>
 
-    </div>
 
-</div>
+  <div class="answer"
+       id="answer">
+  </div>
+
+ </div>
 
 </section>
 
@@ -1236,15 +1229,17 @@ footer .heart{
 
 <footer>
 
-    Made with ❤️ by <b>Vijay</b>
+ Made with ❤️ by <strong>Vijay</strong>
 
-    <br><br>
+ <br><br>
 
-    For my sister 🌸
+ For one very special sister.
 
-    <br><br>
+ <br><br>
 
-    <span class="heart">∞</span>
+ No matter how many fights...
+ <br>
+ <strong>Always family. ∞</strong>
 
 </footer>
 
@@ -1257,103 +1252,104 @@ footer .heart{
      id="photoModal"
      onclick="closePhoto()">
 
-    <div class="close-modal">
-        ×
-    </div>
+ <div class="close">×</div>
 
-    <img id="modalImage"
-         src=""
-         alt="Memory">
+ <img id="modalImage"
+      src=""
+      alt="Memory">
 
 </div>
 
 
-<!-- ==================================================
-     JAVASCRIPT
-================================================== -->
-
 <script>
 
 /* =========================
-   OPEN WEBSITE
+   INTRO
 ========================= */
 
-function openWebsite(){
+function startExperience(){
 
-    document
-        .getElementById("intro")
-        .classList.add("hide");
+ document
+  .getElementById("intro")
+  .classList.add("hide");
 
-    createHeartBurst();
-}
+ startMusic();
 
-
-/* =========================
-   LETTER
-========================= */
-
-function openLetter(){
-
-    const letter =
-        document.getElementById("letterContent");
-
-    letter.classList.toggle("open");
-
-    createHeartBurst();
-}
-
-
-/* =========================
-   SURPRISE
-========================= */
-
-function showSurprise(){
-
-    const message =
-        document.getElementById("hiddenMessage");
-
-    message.classList.add("show");
-
-    document
-        .getElementById("surprise")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-    createHeartBurst();
-}
-
-
-/* =========================
-   FORGIVEN
-========================= */
-
-function forgive(){
-
-    const answer =
-        document.getElementById("answer");
-
-    answer.innerHTML =
-        "YAYYY! 🥹❤️ Thank you! Now smile please. 🤗";
-
-    createHeartBurst(30);
+ createHearts(15);
 
 }
 
 
 /* =========================
-   STILL ANGRY
+   YOUTUBE MUSIC
 ========================= */
 
-function stillAngry(){
+let musicPlaying=false;
 
-    const answer =
-        document.getElementById("answer");
+function startMusic(){
 
-    answer.innerHTML =
-        "Okay 😭... I'll wait. But I'm not giving up. ❤️";
+ const frame=document.getElementById("youtube");
 
-    createHeartBurst(8);
+ frame.contentWindow.postMessage(
+  '{"event":"command","func":"playVideo","args":""}',
+  '*'
+ );
+
+ musicPlaying=true;
+
+ document
+  .getElementById("musicBtn")
+  .classList.add("playing");
+
+}
+
+function toggleMusic(){
+
+ const frame=document.getElementById("youtube");
+
+ if(!musicPlaying){
+
+  frame.contentWindow.postMessage(
+   '{"event":"command","func":"playVideo","args":""}',
+   '*'
+  );
+
+  musicPlaying=true;
+
+  document
+   .getElementById("musicBtn")
+   .classList.add("playing");
+
+ }else{
+
+  frame.contentWindow.postMessage(
+   '{"event":"command","func":"pauseVideo","args":""}',
+   '*'
+  );
+
+  musicPlaying=false;
+
+  document
+   .getElementById("musicBtn")
+   .classList.remove("playing");
+
+ }
+
+}
+
+
+/* =========================
+   CONFESSION
+========================= */
+
+function revealConfession(){
+
+ const box=
+  document.getElementById("confessionText");
+
+ box.classList.add("show");
+
+ createHearts(10);
 
 }
 
@@ -1364,85 +1360,182 @@ function stillAngry(){
 
 function openPhoto(src){
 
-    const modal =
-        document.getElementById("photoModal");
+ const modal=
+  document.getElementById("photoModal");
 
-    const image =
-        document.getElementById("modalImage");
+ const image=
+  document.getElementById("modalImage");
 
-    image.src = src;
+ image.src=src;
 
-    modal.classList.add("show");
+ modal.classList.add("show");
 
 }
 
 function closePhoto(){
 
-    document
-        .getElementById("photoModal")
-        .classList.remove("show");
+ document
+  .getElementById("photoModal")
+  .classList.remove("show");
 
 }
 
 
 /* =========================
-   FLOATING HEARTS
+   HEART GAME
+========================= */
+
+let score=0;
+
+function heartClick(){
+
+ score++;
+
+ document
+  .getElementById("score")
+  .innerText=score;
+
+ const messages=[
+
+  "Okay... that's one. ❤️",
+
+  "Another one! 🥹",
+
+  "You're making this emotional. 😭",
+
+  "Okay, I get it... lots of love. 🫶",
+
+  "Infinite hearts loading... ❤️",
+
+  "Fine. You win. 😂❤️"
+
+ ];
+
+ document
+  .getElementById("gameText")
+  .innerText=
+   messages[Math.min(score-1,messages.length-1)];
+
+ createHearts(3);
+
+}
+
+
+/* =========================
+   FINAL ANSWERS
+========================= */
+
+function forgive(){
+
+ document
+  .getElementById("answer")
+  .innerHTML=
+  "🥹❤️ Best answer ever. Now please smile.";
+
+ createHearts(35);
+
+}
+
+function stillAngry(){
+
+ document
+  .getElementById("answer")
+  .innerHTML=
+  "Okay... 😭 I'll wait. But the apology stays active forever. ❤️";
+
+ createHearts(8);
+
+}
+
+
+/* =========================
+   HEARTS
 ========================= */
 
 function createHeart(){
 
-    const heart =
-        document.createElement("div");
+ const h=
+  document.createElement("div");
 
-    heart.className =
-        "floating-heart";
+ h.className="heart";
 
-    const icons = [
-        "❤️",
-        "💗",
-        "💕",
-        "💖",
-        "💓",
-        "🌸",
-        "✨"
-    ];
+ const icons=[
+  "❤️","💗","💕","💖","💓","🫶","✨"
+ ];
 
-    heart.innerHTML =
-        icons[Math.floor(Math.random()*icons.length)];
+ h.innerHTML=
+  icons[Math.floor(Math.random()*icons.length)];
 
-    heart.style.left =
-        Math.random()*100 + "vw";
+ h.style.left=
+  Math.random()*100+"vw";
 
-    heart.style.fontSize =
-        (15 + Math.random()*22) + "px";
+ h.style.bottom="-30px";
 
-    heart.style.animationDuration =
-        (4 + Math.random()*5) + "s";
+ h.style.fontSize=
+  (15+Math.random()*25)+"px";
 
-    document.body.appendChild(heart);
+ h.style.animationDuration=
+  (2.5+Math.random()*2)+"s";
 
-    setTimeout(()=>{
-        heart.remove();
-    },9000);
+ document.body.appendChild(h);
+
+ setTimeout(()=>{
+  h.remove();
+ },5000);
+
+}
+
+function createHearts(count){
+
+ for(let i=0;i<count;i++){
+
+  setTimeout(()=>{
+   createHeart();
+  },i*70);
+
+ }
 
 }
 
 
 /* =========================
-   HEART BURST
+   STARS
 ========================= */
 
-function createHeartBurst(count=15){
+function createStars(){
 
-    for(let i=0;i<count;i++){
+ const stars=
+  document.getElementById("stars");
 
-        setTimeout(()=>{
-            createHeart();
-        },i*70);
+ for(let i=0;i<120;i++){
 
-    }
+  const p=
+   document.createElement("div");
+
+  p.className="particle";
+
+  p.style.left=
+   Math.random()*100+"vw";
+
+  p.style.top=
+   Math.random()*100+"vh";
+
+  p.style.opacity=
+   Math.random();
+
+  const size=
+   Math.random()*3;
+
+  p.style.width=size+"px";
+  p.style.height=size+"px";
+
+  stars.appendChild(p);
+
+ }
 
 }
+
+createStars();
 
 
 /* =========================
@@ -1450,30 +1543,27 @@ function createHeartBurst(count=15){
 ========================= */
 
 setInterval(()=>{
-    createHeart();
-},1200);
+
+ if(Math.random()>.55){
+  createHeart();
+ }
+
+},1800);
 
 
 /* =========================
-   ESCAPE CLOSE MODAL
+   ESC KEY
 ========================= */
 
-document.addEventListener("keydown",function(e){
+document.addEventListener(
+ "keydown",
+ function(e){
 
-    if(e.key==="Escape"){
-        closePhoto();
-    }
+  if(e.key==="Escape"){
+   closePhoto();
+  }
 
-});
-
-
-/* =========================
-   SAVE VISIT
-========================= */
-
-localStorage.setItem(
-    "sisterWebsiteVisited",
-    "true"
+ }
 );
 
 </script>
