@@ -1,1570 +1,1056 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>For You, Sister ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tum — Meri Duniya ❤️</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-:root{
- --pink:#ff4d88;
- --purple:#9d5cff;
- --dark:#090711;
- --card:rgba(255,255,255,.08);
- --line:rgba(255,255,255,.14);
- --white:#fff;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
- font-family:Arial,Helvetica,sans-serif;
- background:var(--dark);
- color:#fff;
- overflow-x:hidden;
+    font-family:Georgia, "Times New Roman", serif;
+    background:#050509;
+    color:#fff;
+    overflow-x:hidden;
 }
 
-/* =========================
-   STAR BACKGROUND
-========================= */
+/* ================= BACKGROUND ================= */
 
-body:before{
- content:"";
- position:fixed;
- inset:0;
- z-index:-3;
- background:
- radial-gradient(circle at 20% 20%,rgba(255,77,136,.15),transparent 25%),
- radial-gradient(circle at 80% 30%,rgba(157,92,255,.18),transparent 25%),
- radial-gradient(circle at 50% 80%,rgba(255,120,180,.08),transparent 30%);
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,0,70,.12), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(120,0,255,.12), transparent 30%),
+        #050509;
 }
 
-#stars{
- position:fixed;
- inset:0;
- z-index:-2;
- pointer-events:none;
+canvas{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    pointer-events:none;
 }
 
-/* =========================
-   INTRO
-========================= */
+/* ================= LOADER ================= */
 
-#intro{
- position:fixed;
- inset:0;
- z-index:9999;
- background:#05040a;
- display:flex;
- align-items:center;
- justify-content:center;
- text-align:center;
- transition:1.2s;
+#loader{
+    position:fixed;
+    inset:0;
+    background:#050509;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    transition:1s;
 }
 
-#intro.hide{
- opacity:0;
- visibility:hidden;
- pointer-events:none;
+.loader-heart{
+    font-size:55px;
+    animation:heartbeat 1.2s infinite;
 }
 
-.intro-inner{
- width:min(90%,650px);
+.loader-text{
+    margin-top:20px;
+    letter-spacing:4px;
+    color:#aaa;
+    font-size:12px;
 }
 
-.intro-small{
- color:#aaa;
- letter-spacing:4px;
- font-size:12px;
- text-transform:uppercase;
- margin-bottom:25px;
+/* ================= NAV ================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:100;
+    background:rgba(0,0,0,.25);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.05);
 }
 
-.intro-title{
- font-size:clamp(42px,9vw,85px);
- line-height:1;
- margin-bottom:20px;
+.logo{
+    font-size:20px;
+    color:#ff315b;
+    font-weight:bold;
 }
 
-.intro-title span{
- background:linear-gradient(90deg,#ff5a91,#d18aff,#ff5a91);
- -webkit-background-clip:text;
- color:transparent;
+.music-btn{
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.05);
+    color:white;
+    padding:9px 15px;
+    border-radius:30px;
+    cursor:pointer;
 }
 
-.intro-text{
- color:#aaa;
- line-height:1.8;
- max-width:500px;
- margin:auto;
+/* ================= HERO ================= */
+
+section{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:100px 8%;
 }
-
-.start{
- margin-top:35px;
- padding:17px 35px;
- border-radius:50px;
- border:1px solid rgba(255,255,255,.2);
- color:white;
- background:linear-gradient(135deg,#ff4d88,#8f54ff);
- font-weight:bold;
- font-size:16px;
- cursor:pointer;
- box-shadow:0 0 40px rgba(255,77,136,.25);
- transition:.3s;
-}
-
-.start:hover{
- transform:scale(1.06);
- box-shadow:0 0 60px rgba(255,77,136,.4);
-}
-
-/* =========================
-   MUSIC
-========================= */
-
-.music{
- position:fixed;
- right:20px;
- top:20px;
- z-index:500;
- width:52px;
- height:52px;
- border-radius:50%;
- border:1px solid var(--line);
- background:rgba(15,12,22,.75);
- backdrop-filter:blur(12px);
- color:#fff;
- cursor:pointer;
- font-size:20px;
- box-shadow:0 10px 30px rgba(0,0,0,.3);
-}
-
-.music.playing{
- animation:musicPulse 1.5s infinite;
-}
-
-.youtube{
- position:fixed;
- width:1px;
- height:1px;
- opacity:0;
- pointer-events:none;
-}
-
-/* =========================
-   HERO
-========================= */
 
 .hero{
- min-height:100vh;
- display:flex;
- align-items:center;
- justify-content:center;
- text-align:center;
- padding:80px 20px;
- position:relative;
+    text-align:center;
+    flex-direction:column;
 }
 
-.hero-inner{
- max-width:950px;
-}
-
-.eyebrow{
- color:#aaa;
- letter-spacing:5px;
- font-size:12px;
- text-transform:uppercase;
- margin-bottom:25px;
+.small-title{
+    text-transform:uppercase;
+    letter-spacing:7px;
+    font-size:12px;
+    color:#aaa;
+    margin-bottom:25px;
 }
 
 .hero h1{
- font-size:clamp(60px,12vw,145px);
- line-height:.82;
- letter-spacing:-6px;
+    font-size:clamp(55px,12vw,150px);
+    line-height:.9;
+    background:linear-gradient(90deg,#fff,#ff315b,#fff);
+    -webkit-background-clip:text;
+    color:transparent;
+    background-size:200%;
+    animation:shine 5s linear infinite;
 }
 
-.hero h1 .pink{
- background:linear-gradient(90deg,#ff4d88,#ff9abb);
- -webkit-background-clip:text;
- color:transparent;
-}
-
-.hero-sub{
- margin:35px auto 0;
- max-width:650px;
- color:#aaa;
- line-height:1.9;
- font-size:18px;
+.hero p{
+    max-width:700px;
+    margin:35px auto;
+    color:#bbb;
+    font-size:18px;
+    line-height:1.9;
 }
 
 .scroll{
- margin-top:70px;
- color:#777;
- font-size:12px;
- letter-spacing:3px;
- animation:bounce 1.5s infinite;
+    position:absolute;
+    bottom:35px;
+    color:#777;
+    font-size:11px;
+    letter-spacing:4px;
+    animation:float 2s infinite;
 }
 
-/* =========================
-   GENERAL
-========================= */
-
-section{
- padding:130px 20px;
-}
-
-.container{
- width:min(1100px,100%);
- margin:auto;
-}
-
-.heading{
- text-align:center;
- margin-bottom:65px;
-}
-
-.heading small{
- color:var(--pink);
- letter-spacing:4px;
- text-transform:uppercase;
-}
-
-.heading h2{
- font-size:clamp(38px,6vw,70px);
- margin:12px 0;
-}
-
-.heading p{
- color:#888;
- line-height:1.7;
- max-width:600px;
- margin:auto;
-}
-
-/* =========================
-   STORY
-========================= */
+/* ================= STORY ================= */
 
 .story{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:70px;
- align-items:center;
-}
-
-.story-visual{
- height:550px;
- border-radius:35px;
- position:relative;
- overflow:hidden;
- background:
- linear-gradient(145deg,rgba(255,77,136,.2),rgba(157,92,255,.15)),
- #111;
- border:1px solid var(--line);
-}
-
-.story-visual:after{
- content:"❤️";
- position:absolute;
- font-size:180px;
- opacity:.06;
- inset:0;
- display:flex;
- align-items:center;
- justify-content:center;
+    flex-direction:column;
+    text-align:center;
 }
 
 .story-number{
- position:absolute;
- top:30px;
- left:30px;
- color:#777;
- font-size:13px;
- letter-spacing:3px;
+    color:#ff315b;
+    font-size:14px;
+    letter-spacing:5px;
+    margin-bottom:20px;
 }
 
-.story-words{
- position:absolute;
- bottom:35px;
- left:35px;
- right:35px;
+.story h2{
+    font-size:clamp(35px,6vw,75px);
+    margin-bottom:30px;
 }
 
-.story-words h3{
- font-size:42px;
- margin-bottom:12px;
+.story-text{
+    max-width:900px;
+    color:#d0d0d0;
+    font-size:clamp(18px,2.2vw,25px);
+    line-height:2;
 }
 
-.story-words p{
- color:#aaa;
- line-height:1.7;
+.highlight{
+    color:#ff5478;
 }
 
-.story-text h3{
- font-size:42px;
- margin-bottom:25px;
+.quote{
+    margin-top:40px;
+    font-size:14px;
+    color:#777;
+    letter-spacing:2px;
 }
 
-.story-text p{
- color:#999;
- line-height:2;
- font-size:17px;
- margin-bottom:18px;
+/* ================= PHOTO ================= */
+
+.photo-section{
+    min-height:auto;
+    padding-top:80px;
+    padding-bottom:80px;
 }
 
-/* =========================
-   CONFESSION
-========================= */
-
-.confession{
- background:
- linear-gradient(rgba(9,7,17,.85),rgba(9,7,17,.95)),
- radial-gradient(circle at center,#ff4d8830,transparent 55%);
+.photo-grid{
+    width:min(1100px,100%);
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
-.confession-box{
- max-width:850px;
- margin:auto;
- padding:55px;
- border:1px solid var(--line);
- border-radius:35px;
- background:var(--card);
- backdrop-filter:blur(15px);
+.photo-card{
+    height:380px;
+    border-radius:22px;
+    overflow:hidden;
+    position:relative;
+    background:#111;
+    border:1px solid rgba(255,255,255,.08);
 }
 
-.confession-line{
- font-size:clamp(22px,4vw,36px);
- line-height:1.5;
- margin-bottom:28px;
+.photo-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.7s;
 }
 
-.confession-line span{
- color:#777;
+.photo-card:hover img{
+    transform:scale(1.08);
 }
 
-.reveal-btn{
- padding:14px 25px;
- border:1px solid var(--line);
- background:rgba(255,255,255,.06);
- color:#fff;
- border-radius:50px;
- cursor:pointer;
+.photo-card span{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:30px 20px 20px;
+    background:linear-gradient(transparent,rgba(0,0,0,.9));
 }
 
-.reveal-text{
- display:none;
- margin-top:30px;
- color:#aaa;
- line-height:2;
+/* ================= DREAM ================= */
+
+.dream{
+    text-align:center;
+    flex-direction:column;
+    background:
+        radial-gradient(circle,rgba(255,49,91,.08),transparent 50%);
 }
 
-.reveal-text.show{
- display:block;
- animation:fadeUp .8s;
+.dream h2{
+    font-size:clamp(40px,7vw,90px);
 }
 
-/* =========================
-   MEMORIES
-========================= */
-
-.memories{
- display:grid;
- grid-template-columns:2fr 1fr 1fr;
- grid-auto-rows:250px;
- gap:15px;
+.dream-line{
+    margin-top:25px;
+    color:#aaa;
+    font-size:18px;
+    line-height:2;
 }
 
-.memory{
- overflow:hidden;
- border-radius:25px;
- position:relative;
- background:linear-gradient(135deg,#241525,#171121);
- border:1px solid var(--line);
- cursor:pointer;
+.dream-box{
+    margin-top:50px;
+    padding:35px 50px;
+    border:1px solid rgba(255,49,91,.3);
+    border-radius:25px;
+    background:rgba(255,255,255,.025);
+    box-shadow:0 0 50px rgba(255,0,70,.08);
 }
 
-.memory.big{
- grid-row:span 2;
+.dream-box strong{
+    color:#ff315b;
+    font-size:30px;
 }
 
-.memory img{
- width:100%;
- height:100%;
- object-fit:cover;
- transition:.7s;
+/* ================= RED DIAMOND ================= */
+
+.diamond-section{
+    flex-direction:column;
+    text-align:center;
+    overflow:hidden;
 }
 
-.memory:hover img{
- transform:scale(1.08);
+.diamond{
+    width:180px;
+    height:180px;
+    position:relative;
+    transform:rotate(45deg);
+    background:linear-gradient(135deg,#ff003c,#750019,#ff496b);
+    box-shadow:
+        0 0 40px #ff1744,
+        0 0 100px rgba(255,0,60,.5);
+    animation:diamondPulse 3s infinite;
+    margin-bottom:80px;
 }
 
-.memory:after{
- content:"";
- position:absolute;
- inset:0;
- background:linear-gradient(transparent 50%,rgba(0,0,0,.8));
+.diamond::after{
+    content:"";
+    position:absolute;
+    inset:18px;
+    border:2px solid rgba(255,255,255,.4);
 }
 
-.memory-caption{
- position:absolute;
- z-index:2;
- bottom:20px;
- left:20px;
- right:20px;
- font-size:15px;
+.diamond-content{
+    transform:rotate(-45deg);
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
 }
 
-/* =========================
-   SIBLING SECTION
-========================= */
-
-.sibling-grid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:20px;
+.diamond-section h2{
+    font-size:clamp(45px,8vw,100px);
 }
 
-.sibling-card{
- min-height:200px;
- padding:30px;
- border:1px solid var(--line);
- border-radius:28px;
- background:var(--card);
- transition:.4s;
+.diamond-section p{
+    max-width:850px;
+    margin-top:30px;
+    font-size:21px;
+    line-height:2;
+    color:#ccc;
 }
 
-.sibling-card:hover{
- transform:translateY(-7px);
- border-color:rgba(255,77,136,.5);
-}
-
-.sibling-card .emoji{
- font-size:42px;
- margin-bottom:18px;
-}
-
-.sibling-card h3{
- margin-bottom:10px;
-}
-
-.sibling-card p{
- color:#999;
- line-height:1.7;
-}
-
-/* =========================
-   GAME
-========================= */
-
-.game{
- text-align:center;
-}
-
-.game-box{
- max-width:750px;
- margin:auto;
- border:1px solid var(--line);
- background:var(--card);
- border-radius:35px;
- padding:50px 25px;
-}
-
-.heart-button{
- width:130px;
- height:130px;
- border-radius:50%;
- border:1px solid rgba(255,255,255,.2);
- background:radial-gradient(circle,#ff6b9d,#b53e70);
- color:white;
- font-size:55px;
- cursor:pointer;
- box-shadow:0 0 50px rgba(255,77,136,.25);
- transition:.2s;
-}
-
-.heart-button:active{
- transform:scale(.9);
-}
-
-.score{
- margin-top:25px;
- font-size:20px;
- color:#aaa;
-}
-
-.score b{
- color:#fff;
-}
-
-/* =========================
-   FINAL QUESTION
-========================= */
+/* ================= FINAL ================= */
 
 .final{
- min-height:90vh;
- display:flex;
- align-items:center;
- text-align:center;
-}
-
-.final-inner{
- width:min(850px,100%);
- margin:auto;
+    flex-direction:column;
+    text-align:center;
+    background:linear-gradient(to bottom,#050509,#0c0206);
 }
 
 .final h2{
- font-size:clamp(45px,8vw,90px);
- line-height:1;
+    font-size:clamp(35px,6vw,75px);
+    line-height:1.3;
 }
 
 .final h2 span{
- color:var(--pink);
+    color:#ff315b;
 }
 
-.final p{
- margin:30px auto;
- color:#999;
- line-height:1.8;
- max-width:600px;
+.final-message{
+    margin-top:45px;
+    max-width:850px;
+    color:#aaa;
+    line-height:2;
+    font-size:18px;
 }
 
-.actions button{
- padding:16px 30px;
- border-radius:50px;
- border:0;
- cursor:pointer;
- font-weight:bold;
- margin:7px;
+.signature{
+    margin-top:70px;
+    color:#ff315b;
+    font-size:24px;
 }
-
-.yes{
- background:#ff4d88;
- color:white;
-}
-
-.wait{
- background:#fff;
- color:#222;
-}
-
-.answer{
- min-height:45px;
- margin-top:25px;
- color:#ff86ad;
- font-size:20px;
-}
-
-/* =========================
-   FOOTER
-========================= */
 
 footer{
- padding:60px 20px;
- text-align:center;
- border-top:1px solid var(--line);
- color:#777;
+    text-align:center;
+    padding:35px;
+    background:#030305;
+    color:#555;
+    font-size:12px;
 }
 
-footer strong{
- color:#ff6b9d;
-}
-
-/* =========================
-   MODAL
-========================= */
-
-.modal{
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.92);
- z-index:9998;
- display:none;
- align-items:center;
- justify-content:center;
- padding:20px;
-}
-
-.modal.show{
- display:flex;
-}
-
-.modal img{
- max-width:95%;
- max-height:85vh;
- border-radius:20px;
-}
-
-.close{
- position:absolute;
- top:20px;
- right:25px;
- font-size:40px;
- color:white;
- cursor:pointer;
-}
-
-/* =========================
-   PARTICLES
-========================= */
-
-.particle{
- position:fixed;
- width:2px;
- height:2px;
- background:white;
- border-radius:50%;
- opacity:.5;
- pointer-events:none;
- z-index:-1;
-}
+/* ================= HEARTS ================= */
 
 .heart{
- position:fixed;
- pointer-events:none;
- z-index:1000;
- animation:heartUp 3s linear forwards;
+    position:fixed;
+    color:#ff315b;
+    font-size:18px;
+    pointer-events:none;
+    animation:heartFloat 5s linear forwards;
+    z-index:50;
 }
 
-/* =========================
-   ANIMATION
-========================= */
+/* ================= ANIMATIONS ================= */
 
-@keyframes fadeUp{
- from{
-  opacity:0;
-  transform:translateY(30px);
- }
- to{
-  opacity:1;
-  transform:translateY(0);
- }
+@keyframes heartbeat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.3)}
 }
 
-@keyframes bounce{
- 0%,100%{transform:translateY(0)}
- 50%{transform:translateY(10px)}
+@keyframes shine{
+    to{background-position:200% center}
 }
 
-@keyframes musicPulse{
- 50%{box-shadow:0 0 0 12px rgba(255,77,136,.08)}
+@keyframes float{
+    50%{transform:translateY(-10px)}
 }
 
-@keyframes heartUp{
-  from{
-   transform:translateY(0) scale(1);
-   opacity:1;
-  }
-  to{
-   transform:translateY(-100vh) scale(.4) rotate(30deg);
-   opacity:0;
-  }
+@keyframes diamondPulse{
+    0%,100%{transform:rotate(45deg) scale(1)}
+    50%{transform:rotate(45deg) scale(1.08)}
 }
 
-/* =========================
-   MOBILE
-========================= */
+@keyframes heartFloat{
+    from{
+        transform:translateY(0) scale(1);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-100vh) scale(1.8) rotate(30deg);
+        opacity:0;
+    }
+}
 
-@media(max-width:750px){
+/* ================= RESPONSIVE ================= */
 
- section{
-  padding:90px 15px;
- }
+@media(max-width:700px){
 
- .hero h1{
-  letter-spacing:-3px;
- }
+    nav{
+        padding:15px 18px;
+    }
 
- .story{
-  grid-template-columns:1fr;
-  gap:30px;
- }
+    section{
+        padding:90px 7%;
+    }
 
- .story-visual{
-  height:400px;
- }
+    .hero h1{
+        font-size:65px;
+    }
 
- .story-text h3{
-  font-size:34px;
- }
+    .hero p{
+        font-size:16px;
+    }
 
- .confession-box{
-  padding:30px 22px;
- }
+    .photo-grid{
+        grid-template-columns:1fr;
+    }
 
- .memories{
-  grid-template-columns:1fr;
-  grid-auto-rows:280px;
- }
+    .photo-card{
+        height:430px;
+    }
 
- .memory.big{
-  grid-row:span 1;
- }
+    .dream-box{
+        padding:30px 20px;
+    }
 
- .sibling-grid{
-  grid-template-columns:1fr;
- }
+    .diamond{
+        width:120px;
+        height:120px;
+        margin-bottom:60px;
+    }
 
- .music{
-  right:15px;
-  top:15px;
- }
-
+    .diamond-content{
+        font-size:28px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ==================================================
-     INTRO
-================================================== -->
-
-<div id="intro">
-
- <div class="intro-inner">
-
-  <div class="intro-small">
-   A website made for one special person
-  </div>
-
-  <div class="intro-title">
-   For <span>My Sister</span> ❤️
-  </div>
-
-  <p class="intro-text">
-   This isn't just a website.<br>
-   It's a small piece of my heart,
-   turned into something you can open.
-  </p>
-
-  <button class="start" onclick="startExperience()">
-   Enter Our Little World ✨
-  </button>
-
- </div>
-
+<!-- LOADER -->
+<div id="loader">
+    <div class="loader-heart">❤️</div>
+    <div class="loader-text">A STORY WRITTEN FROM THE HEART</div>
 </div>
 
+<!-- MUSIC -->
+<audio id="music" loop>
+    <source src="YOUR_SONG.mp3" type="audio/mpeg">
+</audio>
 
-<!-- ==================================================
-     MUSIC BUTTON
-================================================== -->
+<nav>
+    <div class="logo">♡ US</div>
 
-<button class="music"
-        id="musicBtn"
-        onclick="toggleMusic()"
-        title="Music">
- 🎵
-</button>
+    <button class="music-btn" onclick="toggleMusic()">
+        🎵 Music
+    </button>
+</nav>
 
-
-<!-- ==================================================
-     YOUTUBE MUSIC
-     VIDEO ID FROM USER'S LINK:
-     riU4OScbAdA
-================================================== -->
-
-<iframe
- id="youtube"
- class="youtube"
- src="https://www.youtube.com/embed/riU4OScbAdA?enablejsapi=1&loop=1&playlist=riU4OScbAdA"
- allow="autoplay">
-</iframe>
+<canvas id="stars"></canvas>
 
 
-<!-- ==================================================
-     HERO
-================================================== -->
+<!-- ================= HERO ================= -->
 
-<header class="hero">
+<section class="hero">
 
- <div class="hero-inner">
+    <div class="small-title">
+        A story about a bond
+    </div>
 
-  <div class="eyebrow">
-   For someone who means a lot
-  </div>
+    <h1>TUM<br>MERI DUNIYA</h1>
 
-  <h1>
-   Hey<br>
-   <span class="pink">Sister.</span>
-  </h1>
+    <p>
+        कुछ रिश्ते खून से नहीं बनते...
+        <br>
+        कुछ रिश्ते दिल उन्हें अपना बना लेता है।
+    </p>
 
-  <p class="hero-sub">
-   If you're reading this,
-   maybe you're still angry with me.
-   Maybe you're not.
-   Either way, I wanted to say something
-   that I couldn't properly say in a normal message.
-  </p>
+    <div class="scroll">
+        SCROLL TO READ OUR STORY ↓
+    </div>
 
-  <div class="scroll">
-   SCROLL TO BEGIN ↓
-  </div>
-
- </div>
-
-</header>
+</section>
 
 
-<!-- ==================================================
-     STORY
-================================================== -->
+<!-- ================= STORY 01 ================= -->
 
-<section>
+<section class="story">
 
- <div class="container">
+    <div class="story-number">01 — THE BEGINNING</div>
 
-  <div class="heading">
-   <small>01 — Our Story</small>
-   <h2>It's complicated.</h2>
-   <p>
-    But that's exactly what makes it ours.
-   </p>
-  </div>
+    <h2>तुमसे मिलकर...</h2>
+
+    <div class="story-text">
+
+        तुमसे मिलकर ही मुझे एहसास हुआ कि
+        <span class="highlight">सच्चा प्यार क्या होता है।</span>
+
+        <br><br>
+
+        तुमसे मिलकर ही मैंने जाना कि
+        भाई-बहनों की नोक-झोंक कैसी होती है।
+
+        <br><br>
+
+        तुमसे मिलकर ही मुझे उस बेचैनी का पता चला
+        जो एक मैसेज न आने पर होती है।
+
+        <br><br>
+
+        तुमने ही मुझे असल ज़िंदगी में
+        खुलकर हँसना सिखाया।
+
+    </div>
+
+</section>
 
 
-  <div class="story">
+<!-- ================= STORY 02 ================= -->
 
-   <div class="story-visual">
+<section class="story">
+
+    <div class="story-number">02 — THE BOND</div>
+
+    <h2>सिर्फ़ बहन नहीं...</h2>
+
+    <div class="story-text">
+
+        तुमसे मिलने के बाद ही मुझे सच में एहसास हुआ
+        कि दिल का रिश्ता खून के रिश्ते से भी ज़्यादा मज़बूत हो सकता है।
+
+        <br><br>
+
+        <span class="highlight">
+        तुम मेरे लिए सिर्फ़ एक बहन नहीं हो;
+        तुम मेरी पूरी दुनिया हो।
+        </span>
+
+        <br><br>
+
+        तुमसे बात करने से ही दिन की शुरुआत होती है,
+        और तुमसे बात करके ही दिन का समापन होता है।
+
+    </div>
+
+</section>
+
+
+<!-- ================= STORY 03 ================= -->
+
+<section class="story">
+
+    <div class="story-number">03 — LITTLE THINGS</div>
+
+    <h2>छोटी-छोटी बातें</h2>
+
+    <div class="story-text">
+
+        जब भी मैं तुमसे बात करता हूँ,
+        मेरे चेहरे पर अपने आप मुस्कान आ जाती है।
+
+        <br><br>
+
+        हमेशा बड़ा भाई ही सब कुछ संभाले,
+        ऐसा ज़रूरी नहीं।
+
+        <br><br>
+
+        कभी-कभी छोटी बहन भी
+        अपने बड़े भाई का ख्याल रख सकती है।
+
+        <br><br>
+
+        और शायद यही रिश्ता
+        इतना खूबसूरत बनाता है।
+
+    </div>
+
+</section>
+
+
+<!-- ================= MEMORIES ================= -->
+
+<section class="photo-section">
+
+    <div class="photo-grid">
+
+        <div class="photo-card">
+            <img src="YOUR_PHOTO_1.jpg" alt="Memory">
+            <span>One memory ❤️</span>
+        </div>
+
+        <div class="photo-card">
+            <img src="YOUR_PHOTO_2.jpg" alt="Memory">
+            <span>One smile ✨</span>
+        </div>
+
+        <div class="photo-card">
+            <img src="YOUR_PHOTO_3.jpg" alt="Memory">
+            <span>One beautiful bond 🫂</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STORY 04 ================= -->
+
+<section class="story">
+
+    <div class="story-number">04 — DISTANCE</div>
+
+    <h2>जब तुम पास नहीं होती...</h2>
+
+    <div class="story-text">
+
+        अब, जब मैं तुम्हें नहीं देख पाता,
+        तो ऐसा लगता है जैसे मेरे आसपास सब कुछ शांत हो गया हो।
+
+        <br><br>
+
+        तुम्हें देखकर मेरे चेहरे पर मुस्कान आ जाती है।
+
+        <br><br>
+
+        तुम्हारे बिना सब कुछ उदास लगता है,
+        लेकिन तुम्हारे साथ होने पर
+        सब कुछ अपने आप ठीक हो जाता है।
+
+        <br><br>
+
+        <span class="highlight">
+        बस दस मिनट की बातचीत
+        मेरा पूरा दिन शानदार बना देती है।
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- ================= GRATITUDE ================= -->
+
+<section class="story">
+
+    <div class="story-number">05 — THANK YOU</div>
+
+    <h2>एक शुक्रिया...</h2>
+
+    <div class="story-text">
+
+        तुम्हें मेरी ज़िंदगी में भेजने के लिए
+        मैं भगवान का दिल से शुक्रिया अदा करना चाहता हूँ।
+
+        <br><br>
+
+        कभी-कभी मैं सोचता हूँ कि
+        हम सगे भाई-बहन नहीं हैं।
+
+        <br><br>
+
+        लेकिन फिर एहसास होता है—
+
+        <br><br>
+
+        <span class="highlight">
+        दिल का रिश्ता खून के रिश्ते से कहीं बढ़कर होता है।
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DREAM ================= -->
+
+<section class="dream">
+
+    <div class="story-number">06 — OUR DREAM</div>
+
+    <h2>एक सपना।<br>एक सफ़र।</h2>
+
+    <p class="dream-line">
+
+        कुछ सपने खून के रिश्तों की वजह से नहीं,
+        बल्कि दिल के रिश्तों की वजह से पूरे होते हैं।
+
+        <br><br>
+
+        इसीलिए हम पूरे दिल से
+        अपना सपना पूरा करेंगे।
+
+    </p>
+
+    <div class="dream-box">
+
+        <strong>ONE COLLEGE</strong>
+
+        <br><br>
+
+        ONE DREAM • ONE JOURNEY • TOGETHER
+
+    </div>
+
+</section>
+
+
+<!-- ================= WRITER ================= -->
+
+<section class="story">
+
+    <div class="story-number">07 — THE WRITER</div>
+
+    <h2>तुमने मुझे लिखना सिखाया</h2>
+
+    <div class="story-text">
+
+        मैंने सुना था कि दिल टूटने के बाद ही
+        कोई लड़का शायर बनता है।
+
+        <br><br>
+
+        लेकिन तुमने उस बात को गलत साबित कर दिया।
+
+        <br><br>
+
+        तुमने मुझे शायर तो नहीं बनाया,
+        <span class="highlight">लेखक ज़रूर बना दिया।</span>
+
+        <br><br>
+
+        जो लड़का कभी सपने नहीं देखता था,
+        वह अब तुम्हारे सपने देखता है।
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRAYER ================= -->
+
+<section class="story">
+
+    <div class="story-number">08 — MY PRAYER</div>
+
+    <h2>बस एक दुआ...</h2>
+
+    <div class="story-text">
+
+        मैं हर उस देवता से प्रार्थना करूँगा
+        जो मेरी बात का ज़रा सा भी हिस्सा सुन सके—
+
+        <br><br>
+
+        कि तुम्हारे और तुम्हारे भाई के
+        सभी सपने सच हों।
+
+        <br><br>
+
+        तुम ऐसी ही बड़ी सफलता हासिल करती रहो।
+
+        <br><br>
+
+        और भगवान ने मेरी ज़िंदगी के लिए
+        जो भी थोड़ी-बहुत खुशी तय की है...
+
+        <br><br>
+
+        <span class="highlight">
+        वह तुम्हें भी मिले।
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RED DIAMOND ================= -->
+
+<section class="diamond-section">
+
+    <div class="diamond">
+
+        <div class="diamond-content">
+            ❤️
+        </div>
+
+    </div>
 
     <div class="story-number">
-     CHAPTER 01
+        09 — THE RED DIAMOND
     </div>
 
-    <div class="story-words">
-
-     <h3>Us.</h3>
-
-     <p>
-      Two people who can argue about absolutely anything...
-      and still somehow care about each other.
-     </p>
-
-    </div>
-
-   </div>
-
-
-   <div class="story-text">
-
-    <h3>
-     We fight.<br>
-     We laugh.<br>
-     We annoy each other.
-    </h3>
+    <h2>सबसे कीमती</h2>
 
     <p>
-     Sometimes words come out wrong.
-     Sometimes someone gets hurt.
-     Sometimes both of us need some space.
+
+        मेरे लिए तुम सभी हीरों में
+        सबसे कीमती <span class="highlight">“Red Diamond”</span> हो।
+
+        <br><br>
+
+        तुम मेरे शरीर के लिए खून की तरह हो।
+
+        <br>
+
+        तुम पूर्णिमा के चाँद जैसी हो।
+
+        <br>
+
+        तुम मेरे पूरे दिन में
+        सुकून भरी रात जैसी हो।
+
+        <br><br>
+
+        मेरे लिए कोहिनूर भी
+        तुम्हारे सामने कुछ नहीं है।
+
     </p>
-
-    <p>
-     But one bad moment doesn't erase
-     every good moment that came before it.
-    </p>
-
-    <p>
-     And that's what I wanted you to remember.
-     ❤️
-    </p>
-
-   </div>
-
-  </div>
-
- </div>
 
 </section>
 
 
-<!-- ==================================================
-     CONFESSION
-================================================== -->
-
-<section class="confession">
-
- <div class="container">
-
-  <div class="heading">
-
-   <small>02 — What I Couldn't Say</small>
-
-   <h2>One confession.</h2>
-
-  </div>
-
-
-  <div class="confession-box">
-
-   <div class="confession-line">
-    “I don't always say it...
-    <span>but I care.</span>”
-   </div>
-
-   <button class="reveal-btn"
-           onclick="revealConfession()">
-    Read what I really mean →
-   </button>
-
-   <div class="reveal-text"
-        id="confessionText">
-
-    <p>
-     I might joke around.
-     I might act like nothing matters.
-     I might even annoy you five minutes
-     after saying sorry. 😂
-    </p>
-
-    <br>
-
-    <p>
-     But if you're genuinely hurt,
-     it bothers me more than I usually show.
-    </p>
-
-    <br>
-
-    <p>
-     So this is me dropping the jokes for a moment:
-    </p>
-
-    <br>
-
-    <p style="font-size:28px;color:#fff;">
-     You matter to me. ❤️
-    </p>
-
-   </div>
-
-  </div>
-
- </div>
-
-</section>
-
-
-<!-- ==================================================
-     MEMORIES
-================================================== -->
-
-<section>
-
- <div class="container">
-
-  <div class="heading">
-
-   <small>03 — Memories</small>
-
-   <h2>Keep these forever.</h2>
-
-   <p>
-    Replace the images with your real memories.
-   </p>
-
-  </div>
-
-
-  <div class="memories">
-
-   <div class="memory big"
-        onclick="openPhoto('memory1.jpg')">
-
-    <img src="memory1.jpg"
-         alt="Memory 1"
-         onerror="this.style.display='none'">
-
-    <div class="memory-caption">
-     That one memory ❤️
-    </div>
-
-   </div>
-
-
-   <div class="memory"
-        onclick="openPhoto('memory2.jpg')">
-
-    <img src="memory2.jpg"
-         alt="Memory 2"
-         onerror="this.style.display='none'">
-
-    <div class="memory-caption">
-     Random moment ✨
-    </div>
-
-   </div>
-
-
-   <div class="memory"
-        onclick="openPhoto('memory3.jpg')">
-
-    <img src="memory3.jpg"
-         alt="Memory 3"
-         onerror="this.style.display='none'">
-
-    <div class="memory-caption">
-     One for the memories 🫶
-    </div>
-
-   </div>
-
-
-   <div class="memory"
-        onclick="openPhoto('memory4.jpg')">
-
-    <img src="memory4.jpg"
-         alt="Memory 4"
-         onerror="this.style.display='none'">
-
-    <div class="memory-caption">
-     Another chapter 📸
-    </div>
-
-   </div>
-
-
-   <div class="memory"
-        onclick="openPhoto('memory5.jpg')">
-
-    <img src="memory5.jpg"
-         alt="Memory 5"
-         onerror="this.style.display='none'">
-
-    <div class="memory-caption">
-     More to come ❤️
-    </div>
-
-   </div>
-
-  </div>
-
- </div>
-
-</section>
-
-
-<!-- ==================================================
-     SIBLING REALITY
-================================================== -->
-
-<section>
-
- <div class="container">
-
-  <div class="heading">
-
-   <small>04 — Sibling Reality</small>
-
-   <h2>Let's be honest. 😂</h2>
-
-   <p>
-    Our relationship deserves its own statistics.
-   </p>
-
-  </div>
-
-
-  <div class="sibling-grid">
-
-   <div class="sibling-card">
-
-    <div class="emoji">😂</div>
-
-    <h3>Annoying Each Other</h3>
-
-    <p>
-     Almost professionally trained.
-    </p>
-
-   </div>
-
-
-   <div class="sibling-card">
-
-    <div class="emoji">😤</div>
-
-    <h3>Random Arguments</h3>
-
-    <p>
-     Sometimes the reason isn't even remembered.
-    </p>
-
-   </div>
-
-
-   <div class="sibling-card">
-
-    <div class="emoji">🤫</div>
-
-    <h3>Secretly Caring</h3>
-
-    <p>
-     We may not say it every day,
-     but it's there.
-    </p>
-
-   </div>
-
-
-   <div class="sibling-card">
-
-    <div class="emoji">❤️</div>
-
-    <h3>Still Family</h3>
-
-    <p>
-     This one doesn't have a percentage.
-     It's permanent.
-    </p>
-
-   </div>
-
-  </div>
-
- </div>
-
-</section>
-
-
-<!-- ==================================================
-     HEART GAME
-================================================== -->
-
-<section class="game">
-
- <div class="container">
-
-  <div class="heading">
-
-   <small>05 — A Tiny Game</small>
-
-   <h2>Press the heart.</h2>
-
-   <p>
-    Every click adds one more reason to smile.
-   </p>
-
-  </div>
-
-
-  <div class="game-box">
-
-   <button class="heart-button"
-           onclick="heartClick()">
-    ❤️
-   </button>
-
-   <div class="score">
-    Hearts sent:
-    <b id="score">0</b>
-   </div>
-
-   <p id="gameText"
-      style="margin-top:20px;color:#777;">
-    Start pressing...
-   </p>
-
-  </div>
-
- </div>
-
-</section>
-
-
-<!-- ==================================================
-     FINAL QUESTION
-================================================== -->
+<!-- ================= FINAL ================= -->
 
 <section class="final">
 
- <div class="final-inner">
+    <div class="story-number">
+        THE END?
+    </div>
 
-  <div class="eyebrow">
-   06 — One Last Thing
-  </div>
+    <h2>
 
-  <h2>
-   Can we<br>
-   <span>be okay?</span>
-  </h2>
+        अगर मैं शरीर हूँ,<br>
+        <span>तो तुम उसकी आत्मा हो।</span>
 
-  <p>
-   You don't have to answer immediately.
-   You don't even have to stop being angry immediately.
-   I just wanted you to know that this brother
-   loves and cares about you.
-   ❤️
-  </p>
+    </h2>
 
+    <p class="final-message">
 
-  <div class="actions">
+        तुम मेरी रगों में दौड़ते खून की तरह हो।
 
-   <button class="yes"
-           onclick="forgive()">
-    ❤️ Okay, we're good
-   </button>
+        <br><br>
 
-   <button class="wait"
-           onclick="stillAngry()">
-    😤 I'm still angry
-   </button>
+        तुम मेरे दिल की धड़कन हो।
 
-  </div>
+        <br><br>
 
+        तुम मेरी ज़िंदगी का सिर्फ़ एक हिस्सा नहीं हो।
 
-  <div class="answer"
-       id="answer">
-  </div>
+        <br><br>
 
- </div>
+        <strong>
+        तुम ही वह पूरी दुनिया हो
+        जिसे मैंने अपने दिल में बनाया है।
+        </strong>
+
+    </p>
+
+    <div class="signature">
+        — तुम्हारा भाई ❤️
+    </div>
 
 </section>
 
 
-<!-- ==================================================
-     FOOTER
-================================================== -->
-
 <footer>
 
- Made with ❤️ by <strong>Vijay</strong>
+    Made with ❤️, memories and a bond beyond blood.
 
- <br><br>
+    <br><br>
 
- For one very special sister.
-
- <br><br>
-
- No matter how many fights...
- <br>
- <strong>Always family. ∞</strong>
+    © 2026 • Our Story
 
 </footer>
 
 
-<!-- ==================================================
-     PHOTO MODAL
-================================================== -->
-
-<div class="modal"
-     id="photoModal"
-     onclick="closePhoto()">
-
- <div class="close">×</div>
-
- <img id="modalImage"
-      src=""
-      alt="Memory">
-
-</div>
-
-
 <script>
 
-/* =========================
-   INTRO
-========================= */
+/* ================= LOADER ================= */
 
-function startExperience(){
+window.addEventListener("load",()=>{
 
- document
-  .getElementById("intro")
-  .classList.add("hide");
+    setTimeout(()=>{
 
- startMusic();
+        document.getElementById("loader").style.opacity="0";
 
- createHearts(15);
+        setTimeout(()=>{
+            document.getElementById("loader").style.display="none";
+        },1000);
 
-}
+    },1500);
+
+});
 
 
-/* =========================
-   YOUTUBE MUSIC
-========================= */
+/* ================= MUSIC ================= */
 
-let musicPlaying=false;
-
-function startMusic(){
-
- const frame=document.getElementById("youtube");
-
- frame.contentWindow.postMessage(
-  '{"event":"command","func":"playVideo","args":""}',
-  '*'
- );
-
- musicPlaying=true;
-
- document
-  .getElementById("musicBtn")
-  .classList.add("playing");
-
-}
+const music=document.getElementById("music");
 
 function toggleMusic(){
 
- const frame=document.getElementById("youtube");
+    if(music.paused){
 
- if(!musicPlaying){
+        music.play();
 
-  frame.contentWindow.postMessage(
-   '{"event":"command","func":"playVideo","args":""}',
-   '*'
-  );
+        document.querySelector(".music-btn").innerHTML="⏸ Music";
 
-  musicPlaying=true;
+    }else{
 
-  document
-   .getElementById("musicBtn")
-   .classList.add("playing");
+        music.pause();
 
- }else{
+        document.querySelector(".music-btn").innerHTML="🎵 Music";
 
-  frame.contentWindow.postMessage(
-   '{"event":"command","func":"pauseVideo","args":""}',
-   '*'
-  );
-
-  musicPlaying=false;
-
-  document
-   .getElementById("musicBtn")
-   .classList.remove("playing");
-
- }
+    }
 
 }
 
 
-/* =========================
-   CONFESSION
-========================= */
-
-function revealConfession(){
-
- const box=
-  document.getElementById("confessionText");
-
- box.classList.add("show");
-
- createHearts(10);
-
-}
-
-
-/* =========================
-   PHOTO VIEWER
-========================= */
-
-function openPhoto(src){
-
- const modal=
-  document.getElementById("photoModal");
-
- const image=
-  document.getElementById("modalImage");
-
- image.src=src;
-
- modal.classList.add("show");
-
-}
-
-function closePhoto(){
-
- document
-  .getElementById("photoModal")
-  .classList.remove("show");
-
-}
-
-
-/* =========================
-   HEART GAME
-========================= */
-
-let score=0;
-
-function heartClick(){
-
- score++;
-
- document
-  .getElementById("score")
-  .innerText=score;
-
- const messages=[
-
-  "Okay... that's one. ❤️",
-
-  "Another one! 🥹",
-
-  "You're making this emotional. 😭",
-
-  "Okay, I get it... lots of love. 🫶",
-
-  "Infinite hearts loading... ❤️",
-
-  "Fine. You win. 😂❤️"
-
- ];
-
- document
-  .getElementById("gameText")
-  .innerText=
-   messages[Math.min(score-1,messages.length-1)];
-
- createHearts(3);
-
-}
-
-
-/* =========================
-   FINAL ANSWERS
-========================= */
-
-function forgive(){
-
- document
-  .getElementById("answer")
-  .innerHTML=
-  "🥹❤️ Best answer ever. Now please smile.";
-
- createHearts(35);
-
-}
-
-function stillAngry(){
-
- document
-  .getElementById("answer")
-  .innerHTML=
-  "Okay... 😭 I'll wait. But the apology stays active forever. ❤️";
-
- createHearts(8);
-
-}
-
-
-/* =========================
-   HEARTS
-========================= */
+/* ================= HEARTS ================= */
 
 function createHeart(){
 
- const h=
-  document.createElement("div");
+    const heart=document.createElement("div");
 
- h.className="heart";
+    heart.className="heart";
 
- const icons=[
-  "❤️","💗","💕","💖","💓","🫶","✨"
- ];
+    heart.innerHTML=["❤","♡","♥"][Math.floor(Math.random()*3)];
 
- h.innerHTML=
-  icons[Math.floor(Math.random()*icons.length)];
+    heart.style.left=Math.random()*100+"vw";
 
- h.style.left=
-  Math.random()*100+"vw";
+    heart.style.bottom="-20px";
 
- h.style.bottom="-30px";
+    heart.style.fontSize=(12+Math.random()*18)+"px";
 
- h.style.fontSize=
-  (15+Math.random()*25)+"px";
+    heart.style.animationDuration=(4+Math.random()*4)+"s";
 
- h.style.animationDuration=
-  (2.5+Math.random()*2)+"s";
+    document.body.appendChild(heart);
 
- document.body.appendChild(h);
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
 
- setTimeout(()=>{
-  h.remove();
- },5000);
+setInterval(createHeart,1300);
+
+
+/* ================= STAR BACKGROUND ================= */
+
+const canvas=document.getElementById("stars");
+
+const ctx=canvas.getContext("2d");
+
+let stars=[];
+
+function resize(){
+
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+
+    stars=[];
+
+    for(let i=0;i<130;i++){
+
+        stars.push({
+
+            x:Math.random()*canvas.width,
+            y:Math.random()*canvas.height,
+            r:Math.random()*1.5,
+            speed:Math.random()*.3
+
+        });
+
+    }
 
 }
 
-function createHearts(count){
+resize();
 
- for(let i=0;i<count;i++){
+window.addEventListener("resize",resize);
 
-  setTimeout(()=>{
-   createHeart();
-  },i*70);
+function animateStars(){
 
- }
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 
-}
+    ctx.fillStyle="rgba(255,255,255,.5)";
 
+    stars.forEach(star=>{
 
-/* =========================
-   STARS
-========================= */
+        star.y-=star.speed;
 
-function createStars(){
+        if(star.y<0)
+            star.y=canvas.height;
 
- const stars=
-  document.getElementById("stars");
+        ctx.beginPath();
 
- for(let i=0;i<120;i++){
+        ctx.arc(
+            star.x,
+            star.y,
+            star.r,
+            0,
+            Math.PI*2
+        );
 
-  const p=
-   document.createElement("div");
+        ctx.fill();
 
-  p.className="particle";
+    });
 
-  p.style.left=
-   Math.random()*100+"vw";
-
-  p.style.top=
-   Math.random()*100+"vh";
-
-  p.style.opacity=
-   Math.random();
-
-  const size=
-   Math.random()*3;
-
-  p.style.width=size+"px";
-  p.style.height=size+"px";
-
-  stars.appendChild(p);
-
- }
+    requestAnimationFrame(animateStars);
 
 }
 
-createStars();
+animateStars();
 
 
-/* =========================
-   RANDOM HEARTS
-========================= */
+/* ================= CLICK HEART ================= */
 
-setInterval(()=>{
+document.addEventListener("click",(e)=>{
 
- if(Math.random()>.55){
-  createHeart();
- }
+    for(let i=0;i<5;i++){
 
-},1800);
+        const heart=document.createElement("div");
 
+        heart.className="heart";
 
-/* =========================
-   ESC KEY
-========================= */
+        heart.innerHTML="❤";
 
-document.addEventListener(
- "keydown",
- function(e){
+        heart.style.position="fixed";
 
-  if(e.key==="Escape"){
-   closePhoto();
-  }
+        heart.style.left=e.clientX+(Math.random()*50-25)+"px";
 
- }
-);
+        heart.style.top=e.clientY+(Math.random()*50-25)+"px";
+
+        heart.style.animationDuration="2s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },2000);
+
+    }
+
+});
 
 </script>
 
