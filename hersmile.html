@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Our Little World ❤️</title>
+<title>Tum Meri Duniya ❤️</title>
+
+<meta name="description"
+content="A little story about a bond that was never dependent on blood, distance or photographs.">
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     margin:0;
@@ -19,559 +26,657 @@ html{
 }
 
 body{
-    background:#050507;
-    color:white;
-    font-family:Georgia,"Times New Roman",serif;
+    background:#050608;
+    color:#fff;
+    font-family:Georgia, "Times New Roman", serif;
     overflow-x:hidden;
 }
 
-/* ================= BACKGROUND ================= */
-
-body:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-5;
-    background:
-    radial-gradient(circle at 20% 20%,rgba(255,20,70,.13),transparent 30%),
-    radial-gradient(circle at 80% 80%,rgba(130,0,255,.12),transparent 30%),
-    #050507;
+button{
+    font-family:inherit;
 }
 
-#stars{
-    position:fixed;
-    inset:0;
-    z-index:-4;
+::-webkit-scrollbar{
+    width:7px;
 }
 
-/* ================= INTRO ================= */
+::-webkit-scrollbar-track{
+    background:#050608;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#ff315b;
+    border-radius:20px;
+}
+
+
+/* =========================================================
+   INTRO SCREEN
+========================================================= */
 
 #intro{
     position:fixed;
     inset:0;
     z-index:9999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
     background:
-    radial-gradient(circle,rgba(255,0,60,.1),transparent 45%),
-    #050507;
-    transition:1.2s;
+        radial-gradient(circle at center,
+        rgba(255,49,91,.15),
+        transparent 35%),
+        #050608;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    transition:1s ease;
 }
 
-.intro-box{
-    width:min(600px,90%);
-}
-
-.intro-heart{
-    font-size:70px;
-    animation:pulse 1.5s infinite;
+.intro-content{
+    width:min(700px,90%);
 }
 
 .intro-small{
-    color:#888;
-    letter-spacing:6px;
-    font-size:11px;
-    margin:25px 0;
+    color:#aaa;
+    letter-spacing:5px;
+    font-size:12px;
+    margin-bottom:25px;
 }
 
-.intro-box h1{
-    font-size:clamp(45px,10vw,90px);
-    line-height:.9;
-    background:linear-gradient(90deg,#fff,#ff315b,#fff);
-    background-size:200%;
+.intro-title{
+    font-size:clamp(45px,8vw,90px);
+    line-height:1;
+    margin-bottom:25px;
+
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #ff315b,
+        #fff
+    );
+
     -webkit-background-clip:text;
+    background-clip:text;
     color:transparent;
-    animation:shine 4s linear infinite;
 }
 
-.intro-box p{
+.intro-text{
     color:#aaa;
     line-height:1.8;
-    margin:30px auto;
-}
-
-.name-input{
-    width:100%;
-    padding:16px 20px;
-    border-radius:40px;
-    border:1px solid rgba(255,255,255,.15);
-    background:rgba(255,255,255,.04);
-    color:white;
-    text-align:center;
-    outline:none;
-    font-size:16px;
+    margin-bottom:35px;
 }
 
 .enter-btn{
-    margin-top:15px;
-    border:none;
-    padding:14px 35px;
-    border-radius:40px;
-    background:#ff315b;
-    color:white;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,49,91,.08);
+    color:#fff;
+    padding:15px 35px;
+    border-radius:50px;
     cursor:pointer;
-    font-weight:bold;
+    letter-spacing:2px;
     transition:.3s;
 }
 
 .enter-btn:hover{
-    transform:scale(1.06);
-    box-shadow:0 0 30px rgba(255,49,91,.5);
+    background:#ff315b;
+    transform:translateY(-3px);
+    box-shadow:0 10px 35px rgba(255,49,91,.3);
 }
 
-/* ================= NAV ================= */
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+#stars{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+}
+
+.bg-glow{
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(255,49,91,.06);
+    filter:blur(100px);
+    pointer-events:none;
+    z-index:-2;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 nav{
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    z-index:500;
-    padding:17px 25px;
+    z-index:1000;
+
+    padding:18px 30px;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(0,0,0,.35);
+
+    background:rgba(5,6,8,.65);
     backdrop-filter:blur(15px);
-    border-bottom:1px solid rgba(255,255,255,.06);
+
+    border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 .logo{
+    font-size:20px;
+    letter-spacing:3px;
+}
+
+.logo span{
     color:#ff315b;
-    font-weight:bold;
-    letter-spacing:2px;
 }
 
 .nav-buttons{
     display:flex;
-    gap:8px;
+    gap:10px;
 }
 
 .nav-btn{
+    width:42px;
+    height:42px;
+    border-radius:50%;
     border:1px solid rgba(255,255,255,.15);
-    background:rgba(255,255,255,.05);
-    color:white;
-    padding:8px 13px;
-    border-radius:30px;
+    background:rgba(255,255,255,.04);
+    color:#fff;
     cursor:pointer;
+    transition:.3s;
 }
 
-/* ================= GENERAL ================= */
+.nav-btn:hover{
+    background:#ff315b;
+    transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
 
 section{
     min-height:100vh;
-    padding:110px 7%;
+    padding:120px 7%;
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
 }
 
-.center{
-    text-align:center;
-}
-
-.label{
+.section-label{
     color:#ff315b;
-    letter-spacing:6px;
-    font-size:11px;
-    margin-bottom:25px;
+    letter-spacing:5px;
     text-transform:uppercase;
+    font-size:11px;
+    margin-bottom:20px;
 }
 
-h2{
-    font-size:clamp(40px,7vw,90px);
-    line-height:1;
+.section-title{
+    font-size:clamp(40px,6vw,75px);
+    text-align:center;
+    margin-bottom:30px;
 }
 
-.text{
-    max-width:900px;
-    color:#ccc;
-    font-size:clamp(17px,2vw,23px);
+.section-text{
+    max-width:800px;
+    text-align:center;
+    color:#aaa;
     line-height:2;
-    margin-top:35px;
+    font-size:18px;
 }
 
 .red{
-    color:#ff4268;
+    color:#ff315b;
 }
 
-/* ================= HERO ================= */
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
-    text-align:center;
-    flex-direction:column;
-}
-
-.hero h1{
-    font-size:clamp(65px,14vw,160px);
-    line-height:.8;
-    background:linear-gradient(90deg,#fff,#ff315b,#fff);
-    background-size:200%;
-    -webkit-background-clip:text;
-    color:transparent;
-    animation:shine 5s linear infinite;
-}
-
-.hero-sub{
-    color:#aaa;
-    margin-top:40px;
-    font-size:19px;
-}
-
-.scroll{
-    position:absolute;
-    bottom:30px;
-    color:#666;
-    letter-spacing:4px;
-    font-size:10px;
-}
-
-/* ================= DAILY LIFE ================= */
-
-.daily{
-    flex-direction:column;
-    text-align:center;
-}
-
-.daily-grid{
-    width:min(1000px,100%);
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    margin-top:60px;
-}
-
-.daily-card{
-    padding:35px 20px;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:25px;
-    background:rgba(255,255,255,.025);
-    transition:.4s;
-}
-
-.daily-card:hover{
-    transform:translateY(-10px);
-    border-color:#ff315b;
-    box-shadow:0 15px 50px rgba(255,0,60,.1);
-}
-
-.daily-icon{
-    font-size:35px;
-    margin-bottom:18px;
-}
-
-.daily-card h3{
-    margin-bottom:10px;
-}
-
-.daily-card p{
-    color:#888;
-    line-height:1.7;
-    font-size:14px;
-}
-
-/* ================= MEMORIES ================= */
-
-.memories{
-    flex-direction:column;
-}
-
-.memory-grid{
-    width:min(1100px,100%);
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-top:60px;
-}
-
-.memory{
-    height:380px;
-    border-radius:22px;
-    overflow:hidden;
+    min-height:100vh;
     position:relative;
-    background:#111;
-    border:1px solid rgba(255,255,255,.1);
+    overflow:hidden;
 }
 
-.memory img{
+.hero-subtitle{
+    letter-spacing:7px;
+    color:#aaa;
+    font-size:12px;
+    margin-bottom:25px;
+}
+
+.hero-title{
+    font-size:clamp(65px,12vw,150px);
+    line-height:.85;
+    text-align:center;
+
+    background:linear-gradient(
+        120deg,
+        #fff 20%,
+        #ff315b 50%,
+        #fff 80%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+
+    animation:titleGlow 4s infinite alternate;
+}
+
+@keyframes titleGlow{
+    from{
+        filter:drop-shadow(0 0 0 rgba(255,49,91,0));
+    }
+    to{
+        filter:drop-shadow(0 0 30px rgba(255,49,91,.2));
+    }
+}
+
+.hero-description{
+    max-width:650px;
+    text-align:center;
+    color:#999;
+    line-height:2;
+    margin-top:40px;
+    font-size:18px;
+}
+
+.scroll-down{
+    position:absolute;
+    bottom:35px;
+    color:#666;
+    font-size:11px;
+    letter-spacing:4px;
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(10px);
+    }
+}
+
+
+/* =========================================================
+   PHOTO SECTION
+========================================================= */
+
+.photo-section{
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,49,91,.07),
+            transparent 45%
+        );
+}
+
+.photo-container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:45px;
+    width:100%;
+    max-width:1100px;
+    flex-wrap:wrap;
+}
+
+.person{
+    width:300px;
+    text-align:center;
+}
+
+.photo-frame{
+    width:280px;
+    height:350px;
+    margin:auto;
+
+    padding:8px;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.2),
+            rgba(255,49,91,.4)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.5);
+
+    transition:.6s;
+}
+
+.photo-frame:hover{
+    transform:translateY(-12px) scale(1.02);
+}
+
+.photo-frame img{
     width:100%;
     height:100%;
     object-fit:cover;
-    transition:.7s;
+    border-radius:19px;
+    display:block;
 }
 
-.memory:hover img{
-    transform:scale(1.1);
+.person-name{
+    margin-top:22px;
+    font-size:22px;
 }
 
-.memory-content{
-    position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
-    padding:45px 20px 20px;
-    background:linear-gradient(transparent,rgba(0,0,0,.95));
-}
-
-.memory-content h3{
-    font-size:20px;
-}
-
-.memory-content p{
-    color:#aaa;
+.person-role{
+    color:#777;
+    margin-top:7px;
     font-size:12px;
-    margin-top:6px;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
-/* ================= TIMELINE ================= */
+.heart-center{
+    width:90px;
+    height:90px;
 
-.timeline-section{
-    flex-direction:column;
-}
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-.timeline{
-    position:relative;
-    width:min(850px,100%);
-    margin-top:60px;
-}
+    font-size:45px;
 
-.timeline:before{
-    content:"";
-    position:absolute;
-    left:50%;
-    top:0;
-    bottom:0;
-    width:1px;
-    background:rgba(255,49,91,.3);
-}
-
-.event{
-    width:50%;
-    padding:20px 40px;
-    position:relative;
-}
-
-.event:nth-child(odd){
-    text-align:right;
-    left:0;
-}
-
-.event:nth-child(even){
-    left:50%;
-}
-
-.event:after{
-    content:"";
-    width:12px;
-    height:12px;
-    background:#ff315b;
     border-radius:50%;
+
+    background:rgba(255,49,91,.07);
+
+    box-shadow:
+        0 0 50px rgba(255,49,91,.15);
+
+    animation:heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
+    15%{
+        transform:scale(1.15);
+    }
+    30%{
+        transform:scale(1);
+    }
+    45%{
+        transform:scale(1.1);
+    }
+}
+
+
+/* =========================================================
+   STORY CARDS
+========================================================= */
+
+.story-grid{
+    width:100%;
+    max-width:1050px;
+
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(270px,1fr));
+
+    gap:20px;
+    margin-top:50px;
+}
+
+.story-card{
+    padding:35px;
+
+    min-height:270px;
+
+    background:rgba(255,255,255,.025);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:25px;
+
+    transition:.4s;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.story-card::before{
+    content:"";
     position:absolute;
-    top:30px;
-    box-shadow:0 0 20px #ff315b;
+    width:100px;
+    height:100px;
+
+    background:#ff315b;
+
+    filter:blur(70px);
+    opacity:.08;
+
+    top:-40px;
+    right:-40px;
 }
 
-.event:nth-child(odd):after{
-    right:-6px;
+.story-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(255,49,91,.35);
 }
 
-.event:nth-child(even):after{
-    left:-6px;
-}
-
-.event span{
+.card-number{
     color:#ff315b;
-    font-size:11px;
+    font-size:12px;
     letter-spacing:3px;
 }
 
-.event h3{
-    margin:10px 0;
+.story-card h3{
+    margin:20px 0;
+    font-size:25px;
 }
 
-.event p{
-    color:#888;
-    line-height:1.6;
-    font-size:14px;
+.story-card p{
+    color:#999;
+    line-height:1.9;
 }
 
-/* ================= DREAM ================= */
 
-.dream{
-    text-align:center;
-    flex-direction:column;
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.quote-section{
     background:
-    radial-gradient(circle,rgba(255,49,91,.07),transparent 55%);
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(255,49,91,.04),
+            transparent
+        );
+}
+
+.quote{
+    max-width:950px;
+    text-align:center;
+    font-size:clamp(30px,5vw,65px);
+    line-height:1.4;
+}
+
+.quote span{
+    color:#ff315b;
+}
+
+
+/* =========================================================
+   DISTANCE
+========================================================= */
+
+.distance{
+    position:relative;
+}
+
+.distance-line{
+    width:min(800px,90%);
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #ff315b,
+        transparent
+    );
+
+    margin:50px 0;
+}
+
+.distance-box{
+    max-width:800px;
+    text-align:center;
+}
+
+.distance-box p{
+    color:#999;
+    font-size:20px;
+    line-height:2;
+}
+
+.distance-highlight{
+    color:#fff;
+    font-size:30px;
+    margin-top:35px;
+}
+
+
+/* =========================================================
+   DREAM
+========================================================= */
+
+.dream-section{
+    text-align:center;
 }
 
 .dream-box{
     margin-top:50px;
-    padding:45px;
-    border:1px solid rgba(255,49,91,.3);
+
+    width:min(850px,100%);
+
+    padding:60px 30px;
+
+    border:1px solid rgba(255,49,91,.25);
+
     border-radius:30px;
-    background:rgba(255,255,255,.025);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,49,91,.08),
+            transparent 65%
+        );
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.4);
 }
 
-.dream-box .big{
-    font-size:35px;
+.dream-main{
+    font-size:clamp(35px,6vw,70px);
+    margin-bottom:25px;
+}
+
+.dream-small{
+    color:#888;
+    letter-spacing:4px;
+    font-size:11px;
+}
+
+
+/* =========================================================
+   WRITER
+========================================================= */
+
+.writer{
+    max-width:900px;
+    text-align:center;
+}
+
+.writer-text{
+    margin-top:40px;
+    color:#999;
+    line-height:2;
+    font-size:20px;
+}
+
+.writer-sign{
+    margin-top:40px;
+    font-size:30px;
     color:#ff315b;
 }
 
-.dream-box p{
-    color:#888;
-    margin-top:15px;
+
+/* =========================================================
+   LETTER
+========================================================= */
+
+.letter-section{
+    position:relative;
 }
 
-/* ================= SECRET LETTER ================= */
+.letter-card{
+    width:min(850px,100%);
+    padding:50px;
 
-.secret{
-    flex-direction:column;
-    text-align:center;
+    border-radius:25px;
+
+    background:#0b0d11;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:0 30px 100px rgba(0,0,0,.5);
+
+    cursor:pointer;
+    transition:.5s;
+}
+
+.letter-card:hover{
+    border-color:rgba(255,49,91,.35);
 }
 
 .lock{
-    font-size:70px;
-    margin-bottom:30px;
-    animation:pulse 2s infinite;
-}
-
-.secret-btn{
-    margin-top:35px;
-    padding:15px 35px;
-    border-radius:40px;
-    background:#ff315b;
-    border:none;
-    color:white;
-    cursor:pointer;
-    font-size:15px;
-}
-
-.letter{
-    max-width:800px;
-    margin-top:40px;
-    padding:40px;
-    border-radius:25px;
-    background:
-    linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,0,60,.04));
-    border:1px solid rgba(255,255,255,.1);
-    display:none;
-    line-height:2;
-    color:#ccc;
-    animation:appear 1s;
-}
-
-.letter.show{
-    display:block;
-}
-
-/* ================= RED DIAMOND ================= */
-
-.diamond-section{
-    flex-direction:column;
-    text-align:center;
-}
-
-.diamond{
-    width:170px;
-    height:170px;
-    transform:rotate(45deg);
-    background:linear-gradient(135deg,#ff003c,#650016,#ff5270);
-    box-shadow:0 0 40px #ff1744,0 0 100px rgba(255,0,60,.4);
-    animation:diamond 3s infinite;
-    margin-bottom:80px;
-}
-
-.diamond-inner{
-    width:100%;
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transform:rotate(-45deg);
     font-size:40px;
-}
-
-/* ================= FINAL ================= */
-
-.final{
     text-align:center;
-    flex-direction:column;
-    background:linear-gradient(#050507,#100207);
+    margin-bottom:25px;
 }
 
-.final-line{
-    max-width:900px;
-    font-size:clamp(25px,4vw,48px);
-    line-height:1.6;
-    margin-top:40px;
-}
-
-.signature{
-    margin-top:60px;
-    color:#ff315b;
-    font-size:24px;
-}
-
-footer{
+.letter-title{
     text-align:center;
-    padding:35px;
-    color:#555;
-    font-size:12px;
+    font-size:28px;
 }
 
-/* ================= FLOATING HEART ================= */
-
-.heart{
-    position:fixed;
-    z-index:300;
-    color:#ff315b;
-    pointer-events:none;
-    animation:floatHeart 5s linear forwards;
+.letter-content{
+    display:none;
+    margin-top:35px;
+    color:#aaa;
+    line-height:2.1;
+    font-size:18px;
 }
 
-/* ================= MUSIC VISUALIZER ================= */
-
-.visualizer{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    display:flex;
-    gap:3px;
-    z-index:600;
+.letter-content.show{
+    display:block;
+    animation:fadeUp .8s ease;
 }
 
-.bar{
-    width:3px;
-    height:12px;
-    background:#ff315b;
-    border-radius:10px;
-    animation:bars .7s infinite alternate;
-}
-
-.bar:nth-child(2){animation-delay:.1s}
-.bar:nth-child(3){animation-delay:.2s}
-.bar:nth-child(4){animation-delay:.3s}
-.bar:nth-child(5){animation-delay:.4s}
-
-/* ================= ANIMATIONS ================= */
-
-@keyframes pulse{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.2)}
-}
-
-@keyframes shine{
-    to{background-position:200%}
-}
-
-@keyframes diamond{
-    0%,100%{transform:rotate(45deg) scale(1)}
-    50%{transform:rotate(45deg) scale(1.08)}
-}
-
-@keyframes appear{
+@keyframes fadeUp{
     from{
         opacity:0;
         transform:translateY(20px);
@@ -582,70 +687,224 @@ footer{
     }
 }
 
-@keyframes floatHeart{
+
+/* =========================================================
+   RED DIAMOND
+========================================================= */
+
+.red-diamond{
+    position:relative;
+    overflow:hidden;
+}
+
+.diamond{
+    width:170px;
+    height:170px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff315b,
+            #7d1028
+        );
+
+    transform:rotate(45deg);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin:60px 0;
+
+    box-shadow:
+        0 0 80px rgba(255,49,91,.25);
+
+    animation:diamondGlow 3s infinite alternate;
+}
+
+.diamond-inner{
+    transform:rotate(-45deg);
+    font-size:55px;
+}
+
+@keyframes diamondGlow{
     from{
-        transform:translateY(0);
-        opacity:1;
+        box-shadow:0 0 40px rgba(255,49,91,.15);
     }
     to{
-        transform:translateY(-100vh) rotate(30deg);
-        opacity:0;
+        box-shadow:0 0 100px rgba(255,49,91,.4);
     }
 }
 
-@keyframes bars{
-    from{height:5px}
-    to{height:25px}
+.diamond-text{
+    max-width:800px;
+    text-align:center;
+    color:#aaa;
+    line-height:2;
+    font-size:19px;
 }
 
-/* ================= MOBILE ================= */
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final-section{
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,49,91,.1),
+            transparent 45%
+        );
+
+    text-align:center;
+}
+
+.final-small{
+    color:#777;
+    letter-spacing:5px;
+    font-size:11px;
+    margin-bottom:30px;
+}
+
+.final-title{
+    font-size:clamp(45px,8vw,100px);
+    line-height:1.1;
+}
+
+.final-title span{
+    color:#ff315b;
+}
+
+.final-text{
+    max-width:750px;
+    color:#999;
+    line-height:2;
+    font-size:20px;
+    margin-top:40px;
+}
+
+.final-line{
+    margin-top:60px;
+    font-size:30px;
+    line-height:1.7;
+}
+
+.final-heart{
+    font-size:50px;
+    margin-top:50px;
+    animation:heartbeat 1.5s infinite;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:40px 20px;
+    text-align:center;
+    color:#444;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+.heart{
+    position:fixed;
+    pointer-events:none;
+    font-size:18px;
+    z-index:9998;
+
+    animation:floatHeart 2s ease-out forwards;
+}
+
+@keyframes floatHeart{
+    from{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+    to{
+        opacity:0;
+        transform:translateY(-150px) scale(1.8);
+    }
+}
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+.music-playing{
+    animation:musicPulse 1s infinite alternate;
+}
+
+@keyframes musicPulse{
+    from{
+        box-shadow:0 0 0 rgba(255,49,91,0);
+    }
+    to{
+        box-shadow:0 0 25px rgba(255,49,91,.4);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:700px){
 
     nav{
-        padding:14px;
+        padding:15px 18px;
     }
 
-    .daily-grid,
-    .memory-grid{
-        grid-template-columns:1fr;
+    .logo{
+        font-size:14px;
+        letter-spacing:2px;
     }
 
-    .memory{
-        height:430px;
+    section{
+        padding:100px 20px;
     }
 
-    .timeline:before{
-        left:10px;
+    .photo-container{
+        gap:30px;
     }
 
-    .event,
-    .event:nth-child(even),
-    .event:nth-child(odd){
-        width:100%;
-        left:0;
-        text-align:left;
-        padding-left:40px;
+    .photo-frame{
+        width:230px;
+        height:290px;
     }
 
-    .event:nth-child(odd):after,
-    .event:nth-child(even):after{
-        left:4px;
-        right:auto;
+    .heart-center{
+        width:70px;
+        height:70px;
+        font-size:32px;
+    }
+
+    .story-card{
+        padding:28px;
+    }
+
+    .letter-card{
+        padding:30px 22px;
     }
 
     .diamond{
-        width:120px;
-        height:120px;
-        margin-bottom:60px;
+        width:130px;
+        height:130px;
     }
 
     .diamond-inner{
-        font-size:28px;
-    }
-
-    .letter{
-        padding:25px;
+        font-size:40px;
     }
 
 }
@@ -653,40 +912,34 @@ footer{
 </style>
 </head>
 
+
 <body>
 
+
 <!-- =====================================================
-INTRO
+     INTRO
 ===================================================== -->
 
 <div id="intro">
 
-    <div class="intro-box">
-
-        <div class="intro-heart">❤️</div>
+    <div class="intro-content">
 
         <div class="intro-small">
             THIS IS NOT JUST A WEBSITE
         </div>
 
-        <h1>OUR<br>STORY</h1>
+        <h1 class="intro-title">
+            OUR STORY
+        </h1>
 
-        <p>
-            कुछ रिश्ते समझाए नहीं जाते...
+        <p class="intro-text">
+            कुछ रिश्ते तस्वीरों में कैद नहीं होते...
             <br>
-            बस महसूस किए जाते हैं।
+            वो दिल में रहते हैं।
         </p>
 
-        <input
-            id="nameInput"
-            class="name-input"
-            placeholder="Enter your name..."
-        >
-
-        <br>
-
-        <button class="enter-btn" onclick="enterWorld()">
-            Enter Our World →
+        <button class="enter-btn" onclick="enterStory()">
+            OPEN OUR STORY ❤️
         </button>
 
     </div>
@@ -695,27 +948,40 @@ INTRO
 
 
 <!-- =====================================================
-NAV
+     BACKGROUND
+===================================================== -->
+
+<canvas id="stars"></canvas>
+
+<div class="bg-glow"></div>
+
+
+<!-- =====================================================
+     NAV
 ===================================================== -->
 
 <nav>
 
     <div class="logo">
-        ♡ OUR WORLD
+        TUM <span>❤️</span> MERI DUNIYA
     </div>
 
     <div class="nav-buttons">
 
         <button
-        class="nav-btn"
-        onclick="toggleMusic()">
-        🎵
+            class="nav-btn"
+            id="musicBtn"
+            onclick="toggleMusic()">
+            🎵
         </button>
 
         <button
-        class="nav-btn"
-        onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        ↑
+            class="nav-btn"
+            onclick="window.scrollTo({
+                top:0,
+                behavior:'smooth'
+            })">
+            ↑
         </button>
 
     </div>
@@ -724,297 +990,106 @@ NAV
 
 
 <!-- =====================================================
-CANVAS
+     AUDIO
 ===================================================== -->
 
-<canvas id="stars"></canvas>
-
-
-<!-- =====================================================
-AUDIO
-===================================================== -->
-
-<audio id="music" loop>
-    <source src="YOUR_SONG.mp3" type="audio/mpeg">
+<audio id="song" loop>
+    <source src="song.mp3" type="audio/mpeg">
 </audio>
 
 
 <!-- =====================================================
-VISUALIZER
-===================================================== -->
-
-<div class="visualizer">
-
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-
-</div>
-
-
-<!-- =====================================================
-HERO
+     HERO
 ===================================================== -->
 
 <section class="hero">
 
-    <div class="label">
-        A STORY WRITTEN FROM THE HEART
+    <div class="hero-subtitle">
+        A STORY THAT DISTANCE COULDN'T CHANGE
     </div>
 
-    <h1>
+    <h1 class="hero-title">
         TUM<br>
         MERI DUNIYA
     </h1>
 
-    <div class="hero-sub">
+    <p class="hero-description">
 
-        एक रिश्ता...
+        तुम मेरे लिए सिर्फ़ एक बहन नहीं हो।
         <br>
-        जो शायद खून से नहीं,
-        लेकिन दिल से बना है। ❤️
 
-    </div>
+        तुम मेरी जिंदगी का वो हिस्सा हो
+        जिसे अलग करके मेरी कहानी पूरी ही नहीं होती।
 
-    <div class="scroll">
-        SCROLL ↓
-    </div>
+    </p>
 
-</section>
-
-
-<!-- =====================================================
-STORY
-===================================================== -->
-
-<section class="center">
-
-    <div>
-
-        <div class="label">
-            01 — THE BEGINNING
-        </div>
-
-        <h2>
-            तुमसे मिलकर...
-        </h2>
-
-        <div class="text">
-
-            तुमसे मिलकर ही मुझे एहसास हुआ कि
-            <span class="red">सच्चा प्यार क्या होता है।</span>
-
-            <br><br>
-
-            तुमसे मिलकर ही मैंने जाना कि
-            भाई-बहनों की नोक-झोंक कैसी होती है।
-
-            <br><br>
-
-            तुमसे मिलकर ही मुझे उस बेचैनी का पता चला
-            जो एक मैसेज न आने पर होती है।
-
-            <br><br>
-
-            तुमने ही मुझे असल ज़िंदगी में
-            खुलकर हँसना सिखाया।
-
-        </div>
-
+    <div class="scroll-down">
+        SCROLL TO BEGIN
     </div>
 
 </section>
 
 
 <!-- =====================================================
-DAILY LIFE
+     PHOTO SECTION
 ===================================================== -->
 
-<section class="daily">
+<section class="photo-section">
 
-    <div class="label">
-        02 — EVERYDAY
+    <div class="section-label">
+        TWO PHOTOS
     </div>
 
-    <h2>
-        हमारी छोटी दुनिया
+    <h2 class="section-title">
+        One <span class="red">Bond</span>
     </h2>
 
-    <div class="daily-grid">
+    <p class="section-text">
 
-        <div class="daily-card">
+        तस्वीरों में हम साथ नहीं हैं...
+        <br>
 
-            <div class="daily-icon">🌅</div>
+        लेकिन मेरी कहानी में तुम हर पन्ने पर हो।
 
-            <h3>Morning</h3>
-
-            <p>
-                तुमसे बात करने से ही
-                दिन की शुरुआत होती है।
-            </p>
-
-        </div>
-
-        <div class="daily-card">
-
-            <div class="daily-icon">😂</div>
-
-            <h3>Nok-Jhok</h3>
-
-            <p>
-                थोड़ी लड़ाई,
-                थोड़ी मस्ती,
-                और ढेर सारी यादें।
-            </p>
-
-        </div>
-
-        <div class="daily-card">
-
-            <div class="daily-icon">🌙</div>
-
-            <h3>Night</h3>
-
-            <p>
-                तुमसे बात करके ही
-                दिन का समापन होता है।
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
+    </p>
 
 
-<!-- =====================================================
-BOND
-===================================================== -->
+    <div class="photo-container">
 
-<section class="center">
+        <div class="person">
 
-    <div>
+            <div class="photo-frame">
+                <img src="me.png" alt="Brother">
+            </div>
 
-        <div class="label">
-            03 — THE BOND
-        </div>
+            <div class="person-name">
+                Me
+            </div>
 
-        <h2>
-            सिर्फ़ बहन नहीं...
-        </h2>
-
-        <div class="text">
-
-            तुम मेरे लिए सिर्फ़ एक बहन नहीं हो।
-
-            <br><br>
-
-            तुम मेरी पूरी दुनिया हो।
-
-            <br><br>
-
-            तुमसे मिलने के बाद ही मुझे सच में एहसास हुआ
-            कि दिल का रिश्ता खून के रिश्ते से भी ज़्यादा
-            मज़बूत हो सकता है।
-
-            <br><br>
-
-            हमेशा बड़ा भाई ही सब कुछ संभाले,
-            ऐसा ज़रूरी नहीं।
-
-            <br><br>
-
-            कभी-कभी छोटी बहन भी
-            अपने बड़े भाई का ख्याल रख सकती है।
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-MEMORIES
-===================================================== -->
-
-<section class="memories">
-
-    <div class="center">
-
-        <div class="label">
-            04 — MEMORIES
-        </div>
-
-        <h2>
-            कुछ पल...
-        </h2>
-
-    </div>
-
-
-    <div class="memory-grid">
-
-        <div class="memory">
-
-            <img
-            src="YOUR_PHOTO_1.jpg"
-            alt="Memory">
-
-            <div class="memory-content">
-
-                <h3>
-                    That Smile ❤️
-                </h3>
-
-                <p>
-                    A moment worth remembering.
-                </p>
-
+            <div class="person-role">
+                Your Brother
             </div>
 
         </div>
 
 
-        <div class="memory">
-
-            <img
-            src="YOUR_PHOTO_2.jpg"
-            alt="Memory">
-
-            <div class="memory-content">
-
-                <h3>
-                    That Moment ✨
-                </h3>
-
-                <p>
-                    One memory, forever.
-                </p>
-
-            </div>
-
+        <div class="heart-center">
+            ❤️
         </div>
 
 
-        <div class="memory">
+        <div class="person">
 
-            <img
-            src="YOUR_PHOTO_3.jpg"
-            alt="Memory">
+            <div class="photo-frame">
+                <img src="sister.jpg" alt="Sister">
+            </div>
 
-            <div class="memory-content">
+            <div class="person-name">
+                You
+            </div>
 
-                <h3>
-                    Us 🫂
-                </h3>
-
-                <p>
-                    More than words can explain.
-                </p>
-
+            <div class="person-role">
+                My Red Diamond
             </div>
 
         </div>
@@ -1025,30 +1100,220 @@ MEMORIES
 
 
 <!-- =====================================================
-DISTANCE
+     BEGINNING
 ===================================================== -->
 
-<section class="center">
+<section>
 
-    <div>
+    <div class="section-label">
+        CHAPTER 01
+    </div>
 
-        <div class="label">
-            05 — DISTANCE
+    <h2 class="section-title">
+        The Beginning
+    </h2>
+
+    <p class="section-text">
+
+        तुमसे मिलकर ही मुझे एहसास हुआ
+        कि सच्चा प्यार क्या होता है।
+
+        <br><br>
+
+        तुमसे मिलकर ही मैंने जाना
+        कि भाई-बहनों की नोक-झोंक कैसी होती है।
+
+        <br><br>
+
+        और शायद सबसे खूबसूरत बात यह थी
+        कि एक ऐसा रिश्ता बन गया
+        जिसकी मैंने कभी उम्मीद भी नहीं की थी।
+
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     STORY CARDS
+===================================================== -->
+
+<section>
+
+    <div class="section-label">
+        CHAPTER 02
+    </div>
+
+    <h2 class="section-title">
+        What You Changed
+    </h2>
+
+
+    <div class="story-grid">
+
+
+        <div class="story-card">
+
+            <div class="card-number">
+                01
+            </div>
+
+            <h3>
+                A Smile
+            </h3>
+
+            <p>
+                तुमसे बात करते ही मेरे चेहरे पर
+                अपने आप मुस्कान आ जाती है।
+            </p>
+
         </div>
 
-        <h2>
-            जब तुम पास नहीं होती...
-        </h2>
 
-        <div class="text">
+        <div class="story-card">
 
-            अब, जब मैं तुम्हें नहीं देख पाता,
+            <div class="card-number">
+                02
+            </div>
+
+            <h3>
+                A New Feeling
+            </h3>
+
+            <p>
+                तुमसे ही मुझे उस बेचैनी का पता चला
+                जो एक message न आने पर होती है।
+            </p>
+
+        </div>
+
+
+        <div class="story-card">
+
+            <div class="card-number">
+                03
+            </div>
+
+            <h3>
+                Real Laughter
+            </h3>
+
+            <p>
+                तुमने मुझे असल जिंदगी में
+                खुलकर हंसना सिखाया।
+            </p>
+
+        </div>
+
+
+        <div class="story-card">
+
+            <div class="card-number">
+                04
+            </div>
+
+            <h3>
+                A Different Bond
+            </h3>
+
+            <p>
+                तुमसे मिलने के बाद समझ आया
+                कि दिल का रिश्ता कभी-कभी
+                खून के रिश्ते से भी मजबूत हो सकता है।
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DAILY LIFE
+===================================================== -->
+
+<section>
+
+    <div class="section-label">
+        CHAPTER 03
+    </div>
+
+    <h2 class="section-title">
+        Every Day
+    </h2>
+
+    <div class="quote">
+
+        "तुमसे बात करने से ही
+        <span>दिन की शुरुआत</span> होती है,
+        और तुमसे बात करके ही
+        दिन का समापन।"
+
+    </div>
+
+    <p class="section-text" style="margin-top:50px;">
+
+        कभी-कभी कुछ मिनट की बातचीत
+        पूरे दिन को बदल देती है।
+
+        <br><br>
+
+        और तुम्हारे साथ ऐसा ही है।
+
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     QUOTE
+===================================================== -->
+
+<section class="quote-section">
+
+    <div class="section-label">
+        SOMETHING I REALIZED
+    </div>
+
+    <div class="quote">
+
+        "हमेशा बड़ा भाई ही
+        सब कुछ नहीं संभालता...
+        <br>
+
+        कभी-कभी छोटी बहन भी
+        अपने बड़े भाई का
+        <span>ख्याल रख सकती है।</span>"
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DISTANCE
+===================================================== -->
+
+<section class="distance">
+
+    <div class="section-label">
+        CHAPTER 04
+    </div>
+
+    <h2 class="section-title">
+        Distance
+    </h2>
+
+    <div class="distance-line"></div>
+
+    <div class="distance-box">
+
+        <p>
+
+            अब जब मैं तुम्हें नहीं देख पाता,
             तो सब कुछ थोड़ा अधूरा सा लगता है।
-
-            <br><br>
-
-            तुम्हें देखकर मेरे चेहरे पर
-            अपने आप मुस्कान आ जाती है।
 
             <br><br>
 
@@ -1056,107 +1321,13 @@ DISTANCE
             लेकिन तुम्हारे साथ होने पर
             सब कुछ अपने आप ठीक हो जाता है।
 
-            <br><br>
+        </p>
 
-            <span class="red">
-            बस दस मिनट की बातचीत
-            मेरा पूरा दिन शानदार बना देती है।
-            </span>
+        <div class="distance-highlight">
 
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-TIMELINE
-===================================================== -->
-
-<section class="timeline-section">
-
-    <div class="center">
-
-        <div class="label">
-            06 — OUR JOURNEY
-        </div>
-
-        <h2>
-            हमारी कहानी
-        </h2>
-
-    </div>
-
-
-    <div class="timeline">
-
-        <div class="event">
-
-            <span>CHAPTER 01</span>
-
-            <h3>हम मिले</h3>
-
-            <p>
-                और शायद उसी दिन
-                कहानी ने अपना पहला पन्ना लिखा।
-            </p>
-
-        </div>
-
-
-        <div class="event">
-
-            <span>CHAPTER 02</span>
-
-            <h3>नोक-झोंक</h3>
-
-            <p>
-                छोटी-छोटी लड़ाइयाँ,
-                बड़ी-बड़ी यादें।
-            </p>
-
-        </div>
-
-
-        <div class="event">
-
-            <span>CHAPTER 03</span>
-
-            <h3>एक आदत</h3>
-
-            <p>
-                बात किए बिना दिन अधूरा लगने लगा।
-            </p>
-
-        </div>
-
-
-        <div class="event">
-
-            <span>CHAPTER 04</span>
-
-            <h3>दूरी</h3>
-
-            <p>
-                दूरी बढ़ी,
-                लेकिन रिश्ता नहीं।
-            </p>
-
-        </div>
-
-
-        <div class="event">
-
-            <span>CHAPTER 05</span>
-
-            <h3>एक सपना</h3>
-
-            <p>
-                एक दिन,
-                एक कॉलेज,
-                एक साथ सफ़र।
-            </p>
+            बस दस मिनट की बातचीत...
+            <br>
+            और पूरा दिन शानदार।
 
         </div>
 
@@ -1166,79 +1337,173 @@ TIMELINE
 
 
 <!-- =====================================================
-DREAM
+     MEMORIES
 ===================================================== -->
 
-<section class="dream">
+<section>
 
-    <div class="label">
-        07 — OUR DREAM
+    <div class="section-label">
+        MEMORIES
     </div>
 
-    <h2>
-        एक सपना।<br>
-        एक सफ़र।
+    <h2 class="section-title">
+        Little Things
     </h2>
 
-    <div class="text">
+    <div class="story-grid">
+
+
+        <div class="story-card">
+
+            <div class="card-number">
+                MEMORY
+            </div>
+
+            <h3>
+                Nok-Jhok
+            </h3>
+
+            <p>
+                थोड़ी-बहुत लड़ाई,
+                थोड़ी मस्ती,
+                और बहुत सारी बातें।
+            </p>
+
+        </div>
+
+
+        <div class="story-card">
+
+            <div class="card-number">
+                MEMORY
+            </div>
+
+            <h3>
+                Messages
+            </h3>
+
+            <p>
+                एक छोटा सा message भी
+                कभी-कभी पूरे दिन की खुशी बन जाता है।
+            </p>
+
+        </div>
+
+
+        <div class="story-card">
+
+            <div class="card-number">
+                MEMORY
+            </div>
+
+            <h3>
+                Calls
+            </h3>
+
+            <p>
+                दूर होकर भी ऐसा लगता है
+                जैसे तुम बहुत पास हो।
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DREAM
+===================================================== -->
+
+<section class="dream-section">
+
+    <div class="section-label">
+        CHAPTER 05
+    </div>
+
+    <h2 class="section-title">
+        One Dream
+    </h2>
+
+    <div class="dream-box">
+
+        <div class="dream-main">
+            ONE COLLEGE
+        </div>
+
+        <div class="dream-main">
+            ONE DREAM
+        </div>
+
+        <div class="dream-main">
+            ONE JOURNEY
+        </div>
+
+        <div class="dream-small">
+            TOGETHER
+        </div>
+
+    </div>
+
+    <p class="section-text" style="margin-top:50px;">
 
         कुछ सपने खून के रिश्तों की वजह से नहीं,
         बल्कि दिल के रिश्तों की वजह से पूरे होते हैं।
 
-    </div>
+        <br><br>
 
+        इसीलिए हम पूरे दिल से अपना सपना पूरा करेंगे।
 
-    <div class="dream-box">
-
-        <div class="big">
-            ONE COLLEGE
-        </div>
-
-        <p>
-            ONE DREAM • ONE JOURNEY • TOGETHER
-        </p>
-
-    </div>
+    </p>
 
 </section>
 
 
 <!-- =====================================================
-WRITER
+     WRITER
 ===================================================== -->
 
-<section class="center">
+<section>
 
-    <div>
+    <div class="section-label">
+        CHAPTER 06
+    </div>
 
-        <div class="label">
-            08 — THE WRITER
-        </div>
+    <h2 class="section-title">
+        You Made Me A Writer
+    </h2>
 
-        <h2>
-            तुमने मुझे<br>
-            लिखना सिखाया
-        </h2>
+    <div class="writer">
 
-        <div class="text">
+        <p class="writer-text">
 
             मैंने सुना था कि दिल टूटने के बाद ही
             कोई लड़का शायर बनता है।
 
             <br><br>
 
-            लेकिन तुमने उस बात को गलत साबित कर दिया।
+            लेकिन तुमने इस बात को गलत साबित कर दिया।
 
             <br><br>
 
             तुमने मुझे शायर तो नहीं बनाया,
-            <span class="red">लेखक ज़रूर बना दिया।</span>
+            लेकिन लेखक जरूर बना दिया।
+
+            <br><br>
+
+            और यह सब प्यार की वजह से हुआ।
 
             <br><br>
 
             जो लड़का कभी सपने नहीं देखता था,
             वह अब तुम्हारे सपने देखता है।
 
+        </p>
+
+        <div class="writer-sign">
+            — तुम्हारा भाई ❤️
         </div>
 
     </div>
@@ -1247,140 +1512,180 @@ WRITER
 
 
 <!-- =====================================================
-SECRET LETTER
+     FEAR
 ===================================================== -->
 
-<section class="secret">
+<section class="quote-section">
 
-    <div class="lock">
-        🔐
+    <div class="section-label">
+        ONE FEELING
     </div>
 
-    <div class="label">
-        09 — A SECRET
+    <div class="quote">
+
+        "तुम्हें खोने का डर
+        <span>बहुत परेशान करने वाला है।</span>"
+
     </div>
 
-    <h2>
-        एक बात जो<br>
-        मैंने शायद कभी नहीं कही...
+    <p class="section-text" style="margin-top:40px;">
+
+        शायद इसलिए क्योंकि कुछ लोग
+        जिंदगी का हिस्सा नहीं बनते...
+
+        <br>
+
+        वो जिंदगी का मतलब बन जाते हैं।
+
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     LETTER
+===================================================== -->
+
+<section class="letter-section">
+
+    <div class="section-label">
+        SECRET
+    </div>
+
+    <h2 class="section-title">
+        A Letter For You
     </h2>
 
-    <button
-    class="secret-btn"
-    onclick="openLetter()">
+    <div class="letter-card" onclick="openLetter()">
 
-        Open My Letter ❤️
+        <div class="lock" id="lock">
+            🔒
+        </div>
 
-    </button>
+        <div class="letter-title">
+            Tap To Open
+        </div>
+
+        <div class="letter-content" id="letter">
+
+            <p>
+
+                Dear Sister,
+
+                <br><br>
+
+                तुम्हें शायद अंदाजा भी नहीं है
+                कि तुमने मेरी जिंदगी में कितनी बड़ी जगह बना ली है।
+
+                <br><br>
+
+                तुम मेरी जिंदगी में आईं
+                और मुझे कई ऐसी चीजें महसूस हुईं
+                जिनके बारे में मैंने कभी सोचा भी नहीं था।
+
+                <br><br>
+
+                तुम्हारी एक छोटी सी बात,
+                एक message,
+                एक call,
+                या बस तुम्हारी आवाज...
+
+                <br><br>
+
+                पता नहीं कैसे,
+                लेकिन सब कुछ थोड़ा बेहतर कर देता है।
+
+                <br><br>
+
+                अगर जिंदगी में मुझे कोई ऐसी चीज
+                मिली है जिसे मैं हमेशा संभालकर रखना चाहता हूं,
+                तो वो हमारा यह रिश्ता है।
+
+                <br><br>
+
+                चाहे दूरी कितनी भी हो,
+                चाहे जिंदगी हमें कितनी भी अलग जगहों पर ले जाए...
+
+                <br><br>
+
+                मेरी कहानी में तुम्हारी जगह
+                कभी कम नहीं होगी।
+
+                <br><br>
+
+                तुम्हारा भाई।
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <div
-    id="letter"
-    class="letter">
+<!-- =====================================================
+     PRAYER
+===================================================== -->
 
-        शायद मैं हर बार सही शब्दों में
-        नहीं कह पाता।
+<section>
+
+    <div class="section-label">
+        CHAPTER 07
+    </div>
+
+    <h2 class="section-title">
+        My Prayer
+    </h2>
+
+    <p class="section-text">
+
+        तुम्हें मेरी जिंदगी में भेजने के लिए
+        मैं भगवान का दिल से शुक्रिया अदा करना चाहता हूं।
 
         <br><br>
 
-        शायद हमारी बातें हमेशा perfect नहीं होतीं।
+        मैं हर उस देवता से प्रार्थना करूंगा
+        जो मेरी बात का थोड़ा सा भी हिस्सा सुन सके...
 
         <br><br>
 
-        कभी हम हँसते हैं,
-        कभी लड़ते हैं,
-        कभी एक-दूसरे को परेशान करते हैं।
+        कि तुम्हारे और तुम्हारे भाई के
+        सभी सपने सच हों।
 
         <br><br>
 
-        लेकिन इन सबके बीच एक बात हमेशा
-        वैसी ही रहेगी—
+        तुम ऐसी ही बड़ी सफलता हासिल करती रहो।
 
         <br><br>
 
-        <strong>
-        तुम मेरे लिए बहुत खास हो।
+        और भगवान ने मेरी जिंदगी के लिए
+        जो भी थोड़ी-बहुत खुशी तय की है...
+
+        <br>
+
+        <strong class="red">
+            वह तुम्हें भी मिले।
         </strong>
 
-        <br><br>
-
-        मैं हमेशा चाहता हूँ कि तुम आगे बढ़ो,
-        अपने सपने पूरे करो,
-        और अपनी ज़िंदगी में बहुत बड़ी सफलता हासिल करो।
-
-        <br><br>
-
-        और अगर कभी तुम्हें लगे कि
-        तुम अकेली हो...
-
-        <br><br>
-
-        तो याद रखना—
-
-        <br><br>
-
-        <span class="red">
-        तुम्हारा भाई हमेशा तुम्हारे साथ खड़ा है। ❤️
-        </span>
-
-    </div>
+    </p>
 
 </section>
 
 
 <!-- =====================================================
-PRAYER
+     RED DIAMOND
 ===================================================== -->
 
-<section class="center">
+<section class="red-diamond">
 
-    <div>
-
-        <div class="label">
-            10 — MY PRAYER
-        </div>
-
-        <h2>
-            बस एक दुआ...
-        </h2>
-
-        <div class="text">
-
-            मैं हर उस देवता से प्रार्थना करूँगा
-            जो मेरी बात का ज़रा सा भी हिस्सा सुन सके—
-
-            <br><br>
-
-            कि तुम्हारे और तुम्हारे भाई के
-            सभी सपने सच हों।
-
-            <br><br>
-
-            तुम ऐसी ही बड़ी सफलता हासिल करती रहो।
-
-            <br><br>
-
-            और भगवान ने मेरी ज़िंदगी के लिए
-            जो भी थोड़ी-बहुत खुशी तय की है...
-
-            <br><br>
-
-            <span class="red">
-            वह तुम्हें भी मिले।
-            </span>
-
-        </div>
-
+    <div class="section-label">
+        CHAPTER 08
     </div>
 
-</section>
-
-
-<!-- =====================================================
-RED DIAMOND
-===================================================== -->
-
-<section class="diamond-section">
+    <h2 class="section-title">
+        The Red Diamond
+    </h2>
 
     <div class="diamond">
 
@@ -1390,28 +1695,20 @@ RED DIAMOND
 
     </div>
 
-    <div class="label">
-        11 — THE RED DIAMOND
-    </div>
-
-    <h2>
-        सबसे कीमती
-    </h2>
-
-    <div class="text">
+    <div class="diamond-text">
 
         मेरे लिए तुम सभी हीरों में
-        सबसे कीमती <span class="red">“Red Diamond”</span> हो।
+        सबसे कीमती <strong class="red">Red Diamond</strong> हो।
 
         <br><br>
 
         तुम मेरे शरीर के लिए खून की तरह हो।
 
-        <br>
+        <br><br>
 
-        तुम पूर्णिमा के चाँद जैसी हो।
+        तुम मेरे लिए पूर्णिमा के चांद जैसी हो।
 
-        <br>
+        <br><br>
 
         तुम मेरे पूरे दिन में
         सुकून भरी रात जैसी हो।
@@ -1427,243 +1724,336 @@ RED DIAMOND
 
 
 <!-- =====================================================
-FINAL
+     ANALOGIES
 ===================================================== -->
 
-<section class="final">
+<section>
 
-    <div class="label">
-        THE LAST PAGE
+    <div class="section-label">
+        IF I HAD TO EXPLAIN YOU
     </div>
 
-    <h2>
-        अगर मैं शरीर हूँ...
+    <h2 class="section-title">
+        You Are...
     </h2>
 
-    <div class="final-line">
+    <div class="story-grid">
 
-        <span class="red">
-            तो तुम उसकी आत्मा हो।
-        </span>
 
-        <br><br>
+        <div class="story-card">
 
-        तुम मेरी रगों में दौड़ते
-        खून की तरह हो।
+            <h3>
+                ❤️ Heart
+            </h3>
 
-        <br><br>
+            <p>
+                तुम मेरे दिल की धड़कन हो।
+            </p>
 
-        तुम मेरे दिल की धड़कन हो।
+        </div>
 
-        <br><br>
 
-        तुम मेरी दुनिया का सिर्फ़
-        एक हिस्सा नहीं हो...
+        <div class="story-card">
 
-        <br><br>
+            <h3>
+                🌙 Moon
+            </h3>
 
-        <strong>
-            तुम ही वह पूरी दुनिया हो
-            जिसे मैंने अपने दिल में बनाया है।
-        </strong>
+            <p>
+                तुम मेरे लिए पूर्णिमा के चांद जैसी हो।
+            </p>
 
-    </div>
+        </div>
 
-    <div class="signature">
-        — तुम्हारा भाई ❤️
+
+        <div class="story-card">
+
+            <h3>
+                🩸 Life
+            </h3>
+
+            <p>
+                तुम मेरे शरीर में दौड़ते
+                खून की तरह हो।
+            </p>
+
+        </div>
+
+
+        <div class="story-card">
+
+            <h3>
+                ✨ Soul
+            </h3>
+
+            <p>
+                अगर मैं शरीर हूं,
+                तो तुम उस शरीर की आत्मा हो।
+            </p>
+
+        </div>
+
+
+        <div class="story-card">
+
+            <h3>
+                ⏰ Time
+            </h3>
+
+            <p>
+                अगर मैं घड़ी हूं,
+                तो तुम उसकी घंटे वाली सुई हो।
+            </p>
+
+        </div>
+
+
+        <div class="story-card">
+
+            <h3>
+                💎 Red Diamond
+            </h3>
+
+            <p>
+                इस दुनिया में कोई आम चीज नहीं...
+                तुम मेरी पूरी दुनिया हो।
+            </p>
+
+        </div>
+
+
     </div>
 
 </section>
 
 
+<!-- =====================================================
+     WHOLE WORLD
+===================================================== -->
+
+<section class="quote-section">
+
+    <div class="section-label">
+        THE TRUTH
+    </div>
+
+    <div class="quote">
+
+        "तुम मेरी दुनिया का
+        सिर्फ़ एक हिस्सा नहीं हो..."
+
+        <br><br>
+
+        <span>
+            तुम ही वह पूरी दुनिया हो
+            जिसे मैंने बनाया है।
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL
+===================================================== -->
+
+<section class="final-section">
+
+    <div class="final-small">
+        THE LAST PAGE
+    </div>
+
+    <h1 class="final-title">
+
+        अगर मैं शरीर हूँ...
+
+        <br>
+
+        <span>
+            तुम उसकी आत्मा हो।
+        </span>
+
+    </h1>
+
+    <p class="final-text">
+
+        तस्वीरें हमारे पास अलग-अलग हैं।
+        <br>
+
+        दूरी हमारे बीच है।
+        <br>
+
+        लेकिन रिश्ता...
+
+        <br><br>
+
+        वो हमेशा एक ही रहेगा।
+
+    </p>
+
+    <div class="final-line">
+
+        तुम मेरी बहन नहीं हो सिर्फ़...
+
+        <br>
+
+        <span class="red">
+            तुम मेरी पूरी दुनिया हो।
+        </span>
+
+    </div>
+
+    <div class="final-heart">
+        ❤️
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
-    Made with ❤️ for a bond beyond blood.
-
-    <br><br>
-
-    OUR LITTLE WORLD • 2026
+    MADE WITH LOVE • FOR MY SISTER ❤️
 
 </footer>
 
 
 <script>
 
-/* =====================================================
-ENTER WORLD
-===================================================== */
+/* =========================================================
+   INTRO
+========================================================= */
 
-function enterWorld(){
+function enterStory(){
 
-    const input=document.getElementById("nameInput");
+    const intro = document.getElementById("intro");
 
-    if(input.value.trim()===""){
+    intro.style.opacity = "0";
 
-        input.style.borderColor="#ff315b";
-
-        input.placeholder="Pehle naam toh likho ❤️";
-
-        return;
-
-    }
-
-    localStorage.setItem(
-        "sisterName",
-        input.value.trim()
-    );
-
-    const intro=document.getElementById("intro");
-
-    intro.style.opacity="0";
-
-    setTimeout(()=>{
-
-        intro.style.display="none";
-
-    },1200);
+    setTimeout(() => {
+        intro.style.display = "none";
+    },1000);
 
 }
 
 
-/* =====================================================
-AUTO NAME
-===================================================== */
+/* =========================================================
+   MUSIC
+========================================================= */
 
-window.addEventListener("load",()=>{
+const song = document.getElementById("song");
+const musicBtn = document.getElementById("musicBtn");
 
-    const saved=localStorage.getItem("sisterName");
-
-    if(saved){
-
-        document.getElementById("nameInput").value=saved;
-
-    }
-
-});
-
-
-/* =====================================================
-MUSIC
-===================================================== */
-
-const music=document.getElementById("music");
-
-let playing=false;
+let musicPlaying = false;
 
 function toggleMusic(){
 
-    if(!playing){
+    if(!musicPlaying){
 
-        music.play()
-        .then(()=>{
+        song.play()
+        .then(() => {
 
-            playing=true;
+            musicPlaying = true;
+
+            musicBtn.innerHTML = "⏸️";
+            musicBtn.classList.add("music-playing");
 
         })
-        .catch(()=>{
+        .catch(() => {
 
             alert(
-                "Song file check karo: YOUR_SONG.mp3"
+                "song.mp3 ko isi folder me add karo."
             );
 
         });
 
     }else{
 
-        music.pause();
+        song.pause();
 
-        playing=false;
+        musicPlaying = false;
+
+        musicBtn.innerHTML = "🎵";
+        musicBtn.classList.remove("music-playing");
 
     }
 
 }
 
 
-/* =====================================================
-SECRET LETTER
-===================================================== */
+/* =========================================================
+   LETTER
+========================================================= */
 
 function openLetter(){
 
-    const letter=document.getElementById("letter");
+    const letter =
+        document.getElementById("letter");
 
-    letter.classList.toggle("show");
+    const lock =
+        document.getElementById("lock");
 
     if(letter.classList.contains("show")){
 
-        document.querySelector(".secret-btn")
-        .innerText="Close My Letter";
+        letter.classList.remove("show");
+        lock.innerHTML = "🔒";
 
     }else{
 
-        document.querySelector(".secret-btn")
-        .innerText="Open My Letter ❤️";
+        letter.classList.add("show");
+        lock.innerHTML = "🔓";
 
     }
 
 }
 
 
-/* =====================================================
-FLOATING HEARTS
-===================================================== */
+/* =========================================================
+   STAR BACKGROUND
+========================================================= */
 
-function createHeart(){
+const canvas =
+    document.getElementById("stars");
 
-    const heart=document.createElement("div");
+const ctx =
+    canvas.getContext("2d");
 
-    heart.className="heart";
-
-    heart.innerHTML=
-    ["❤","♡","♥","✦"][Math.floor(Math.random()*4)];
-
-    heart.style.left=
-    Math.random()*100+"vw";
-
-    heart.style.bottom="-20px";
-
-    heart.style.fontSize=
-    (12+Math.random()*20)+"px";
-
-    heart.style.animationDuration=
-    (4+Math.random()*5)+"s";
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{
-
-        heart.remove();
-
-    },9000);
-
-}
-
-setInterval(createHeart,1500);
-
-
-/* =====================================================
-STAR FIELD
-===================================================== */
-
-const canvas=
-document.getElementById("stars");
-
-const ctx=
-canvas.getContext("2d");
-
-let stars=[];
+let stars = [];
 
 function resizeCanvas(){
 
-    canvas.width=
-    window.innerWidth;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    canvas.height=
-    window.innerHeight;
+}
 
-    stars=[];
+resizeCanvas();
 
-    for(let i=0;i<140;i++){
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+
+function createStars(){
+
+    stars = [];
+
+    const count =
+        Math.min(
+            180,
+            Math.floor(
+                window.innerWidth *
+                window.innerHeight /
+                9000
+            )
+        );
+
+    for(let i=0;i<count;i++){
 
         stars.push({
 
@@ -1671,9 +2061,11 @@ function resizeCanvas(){
 
             y:Math.random()*canvas.height,
 
-            r:Math.random()*1.4,
+            r:Math.random()*1.4+.2,
 
-            speed:.1+Math.random()*.4
+            speed:Math.random()*.25+.05,
+
+            alpha:Math.random()*.7+.2
 
         });
 
@@ -1681,12 +2073,7 @@ function resizeCanvas(){
 
 }
 
-resizeCanvas();
-
-window.addEventListener(
-"resize",
-resizeCanvas
-);
+createStars();
 
 
 function animateStars(){
@@ -1698,17 +2085,12 @@ function animateStars(){
         canvas.height
     );
 
-    ctx.fillStyle=
-    "rgba(255,255,255,.55)";
+    stars.forEach(star => {
 
-    stars.forEach(star=>{
+        star.y -= star.speed;
 
-        star.y-=star.speed;
-
-        if(star.y<0){
-
-            star.y=canvas.height;
-
+        if(star.y < 0){
+            star.y = canvas.height;
         }
 
         ctx.beginPath();
@@ -1720,6 +2102,9 @@ function animateStars(){
             0,
             Math.PI*2
         );
+
+        ctx.fillStyle =
+            `rgba(255,255,255,${star.alpha})`;
 
         ctx.fill();
 
@@ -1734,83 +2119,182 @@ function animateStars(){
 animateStars();
 
 
-/* =====================================================
-CLICK HEART EFFECT
-===================================================== */
+/* =========================================================
+   CLICK HEART EFFECT
+========================================================= */
 
 document.addEventListener(
-"click",
-function(e){
+    "click",
+    function(e){
 
-    for(let i=0;i<4;i++){
+        if(
+            e.target.tagName === "BUTTON" ||
+            e.target.closest("button")
+        ){
+            return;
+        }
 
-        const heart=
-        document.createElement("div");
+        const heart =
+            document.createElement("div");
 
-        heart.className="heart";
+        heart.className = "heart";
 
-        heart.innerHTML="❤";
+        heart.innerHTML =
+            Math.random() > .5
+            ? "❤️"
+            : "✨";
 
-        heart.style.left=
-        (e.clientX+
-        Math.random()*50-25)+"px";
+        heart.style.left =
+            e.clientX + "px";
 
-        heart.style.top=
-        (e.clientY+
-        Math.random()*50-25)+"px";
-
-        heart.style.animationDuration=
-        "2s";
+        heart.style.top =
+            e.clientY + "px";
 
         document.body.appendChild(
             heart
         );
 
-        setTimeout(()=>{
+        setTimeout(() => {
 
             heart.remove();
 
-        },2200);
-
-    }
-
-});
-
-
-/* =====================================================
-KEYBOARD SECRET
-===================================================== */
-
-let secret="";
-
-document.addEventListener(
-"keydown",
-function(e){
-
-    secret+=e.key.toLowerCase();
-
-    if(secret.length>12){
-
-        secret=secret.slice(-12);
-
-    }
-
-    if(secret.includes("sister")){
-
-        document.body.style
-        .filter="hue-rotate(20deg)";
-
-        setTimeout(()=>{
-
-            document.body.style.filter="";
-
         },2000);
 
-        secret="";
-
     }
+);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+document
+.querySelectorAll(
+    ".story-card, .photo-frame, .dream-box, .letter-card"
+)
+.forEach(element => {
+
+    element.style.opacity = "0";
+
+    element.style.transform =
+        "translateY(30px)";
+
+    element.style.transition =
+        "opacity .8s ease, transform .8s ease";
+
+    observer.observe(element);
 
 });
+
+
+/* =========================================================
+   KEYBOARD SECRET
+========================================================= */
+
+let secret = "";
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        secret += e.key.toLowerCase();
+
+        if(secret.length > 20){
+
+            secret =
+                secret.slice(-20);
+
+        }
+
+        if(
+            secret.includes("sister")
+        ){
+
+            for(let i=0;i<12;i++){
+
+                setTimeout(() => {
+
+                    createHeartAtRandom();
+
+                },i*120);
+
+            }
+
+            secret = "";
+
+        }
+
+    }
+);
+
+
+function createHeartAtRandom(){
+
+    const heart =
+        document.createElement("div");
+
+    heart.className =
+        "heart";
+
+    heart.innerHTML = "❤️";
+
+    heart.style.left =
+        Math.random() *
+        window.innerWidth +
+        "px";
+
+    heart.style.top =
+        window.innerHeight +
+        "px";
+
+    document.body.appendChild(
+        heart
+    );
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    },2000);
+
+}
+
+
+/* =========================================================
+   PAGE LOAD
+========================================================= */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        document.body.style.opacity = "1";
+
+    }
+);
 
 </script>
 
