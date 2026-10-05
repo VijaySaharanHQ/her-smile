@@ -1,10 +1,11 @@
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Sister ❤️</title>
+
+<title>For My Sister — A Little Piece of Us ❤️</title>
 
 <style>
 *{
@@ -13,239 +14,434 @@
     box-sizing:border-box;
 }
 
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
 body{
-    min-height:100vh;
-    overflow:hidden;
-    font-family:Georgia, "Times New Roman", serif;
     background:
-        radial-gradient(circle at 50% 35%, #35204d 0%, #171126 35%, #090812 75%);
-    color:white;
+        radial-gradient(circle at 50% 20%,#332342 0%,#171222 40%,#08070d 100%);
+    color:#fff;
+    font-family:Georgia,"Times New Roman",serif;
+    overflow-x:hidden;
 }
 
-.screen{
-    position:fixed;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:25px;
-    opacity:0;
-    visibility:hidden;
-    transition:opacity 1s ease, visibility 1s ease;
-}
+/* =========================
+   BACKGROUND
+========================= */
 
-.screen.active{
-    opacity:1;
-    visibility:visible;
-}
-
-.content{
-    width:min(700px, 100%);
-    text-align:center;
-    position:relative;
-    z-index:5;
-}
-
-.small{
-    font-family:Arial,sans-serif;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    font-size:12px;
-    opacity:.6;
-    margin-bottom:25px;
-}
-
-h1{
-    font-size:clamp(42px,9vw,82px);
-    line-height:1;
-    margin-bottom:25px;
-    font-weight:400;
-}
-
-h2{
-    font-size:clamp(30px,6vw,52px);
-    font-weight:400;
-    margin-bottom:20px;
-}
-
-p{
-    font-family:Arial,sans-serif;
-    line-height:1.8;
-    color:#ddd6e7;
-    font-size:16px;
-}
-
-button{
-    margin-top:35px;
-    padding:15px 34px;
-    border:1px solid rgba(255,255,255,.3);
-    border-radius:50px;
-    background:rgba(255,255,255,.08);
-    color:white;
-    cursor:pointer;
-    font-size:14px;
-    letter-spacing:2px;
-    transition:.3s;
-    backdrop-filter:blur(10px);
-}
-
-button:hover{
-    background:white;
-    color:#171126;
-    transform:translateY(-3px);
-}
-
-.heart{
-    font-size:25px;
-    display:block;
-    margin-bottom:20px;
-    animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-    0%,100%{transform:scale(1)}
-    50%{transform:scale(1.18)}
-}
-
-/* Stars */
-.stars{
+.bg{
     position:fixed;
     inset:0;
     pointer-events:none;
+    overflow:hidden;
+    z-index:0;
 }
 
 .star{
     position:absolute;
     width:2px;
     height:2px;
-    background:white;
+    background:#fff;
     border-radius:50%;
-    opacity:.5;
+    opacity:.3;
     animation:twinkle 3s infinite alternate;
 }
 
 @keyframes twinkle{
     from{opacity:.15}
-    to{opacity:.9}
+    to{opacity:.8}
 }
 
-/* Unlock */
-.question{
-    margin:25px auto;
-    width:min(500px,100%);
-    text-align:left;
+.glow{
+    position:absolute;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background:rgba(170,100,220,.08);
+    filter:blur(70px);
+    top:20%;
+    left:50%;
+    transform:translateX(-50%);
 }
 
-.question label{
-    display:block;
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 25px;
+    z-index:50;
+    background:linear-gradient(
+        to bottom,
+        rgba(5,5,10,.8),
+        transparent
+    );
+}
+
+.brand{
     font-family:Arial,sans-serif;
-    font-size:13px;
-    color:#bdb3cc;
-    margin-bottom:8px;
+    font-size:11px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    opacity:.65;
 }
 
-.question input{
-    width:100%;
-    padding:15px 17px;
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,.15);
-    outline:none;
+.music{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.2);
     background:rgba(255,255,255,.06);
-    color:white;
-    font-size:15px;
+    color:#fff;
+    cursor:pointer;
 }
 
-.question input:focus{
-    border-color:rgba(255,255,255,.5);
+/* =========================
+   BOOK AREA
+========================= */
+
+.book-wrapper{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:100px 20px 80px;
+    position:relative;
+    z-index:2;
 }
 
-.error{
-    margin-top:18px;
-    color:#ff9cba;
+.book{
+    width:min(850px,100%);
+    min-height:560px;
+    position:relative;
+    perspective:1800px;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.page{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.98),
+            rgba(244,239,229,.98)
+        );
+    color:#29222d;
+    border-radius:8px 16px 16px 8px;
+
+    padding:65px clamp(25px,7vw,80px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.5),
+        inset 0 0 40px rgba(80,50,30,.06);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    opacity:0;
+    pointer-events:none;
+
+    transform-origin:left center;
+    transform:rotateY(-90deg);
+
+    transition:
+        transform .9s cubic-bezier(.2,.7,.2,1),
+        opacity .5s ease;
+}
+
+.page.active{
+    opacity:1;
+    pointer-events:auto;
+    transform:rotateY(0deg);
+}
+
+.page.old{
+    transform:rotateY(90deg);
+    opacity:0;
+}
+
+/* Page texture */
+
+.page::before{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border:1px solid rgba(70,50,30,.12);
+    border-radius:5px;
+    pointer-events:none;
+}
+
+.page-number{
+    position:absolute;
+    bottom:22px;
+    left:50%;
+    transform:translateX(-50%);
     font-family:Arial,sans-serif;
-    font-size:13px;
-    display:none;
+    font-size:11px;
+    color:#8b7c6c;
+    letter-spacing:2px;
 }
 
-.success{
-    font-size:60px;
-    margin-bottom:20px;
-    animation:unlock .8s ease;
+.chapter{
+    font-family:Arial,sans-serif;
+    text-transform:uppercase;
+    letter-spacing:4px;
+    font-size:11px;
+    color:#9b7289;
+    margin-bottom:22px;
 }
 
-@keyframes unlock{
-    0%{transform:scale(.3);opacity:0}
-    100%{transform:scale(1);opacity:1}
+.page h1{
+    font-size:clamp(38px,7vw,70px);
+    font-weight:400;
+    line-height:1.05;
+    margin-bottom:25px;
 }
 
-/* Progress */
-.progress{
+.page h2{
+    font-size:clamp(30px,5vw,48px);
+    font-weight:400;
+    margin-bottom:22px;
+}
+
+.page p{
+    font-size:17px;
+    line-height:1.9;
+    color:#514754;
+    max-width:650px;
+}
+
+.quote{
+    margin:30px 0;
+    padding-left:20px;
+    border-left:3px solid #b98aa7;
+    font-size:20px;
+    line-height:1.7;
+    font-style:italic;
+    color:#453846;
+}
+
+.signature{
+    margin-top:28px;
+    font-style:italic;
+    color:#806a7c;
+}
+
+/* =========================
+   COVER
+========================= */
+
+.cover{
+    text-align:center;
+    align-items:center;
+}
+
+.cover .heart{
+    font-size:45px;
+    margin-bottom:25px;
+    animation:heartbeat 2s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.12)}
+}
+
+.cover p{
+    max-width:480px;
+}
+
+/* =========================
+   MEMORY CARD
+========================= */
+
+.memory-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    align-items:center;
+}
+
+.photo{
+    height:280px;
+    border-radius:8px;
+    background:
+        linear-gradient(
+            135deg,
+            #e8dce7,
+            #d7c7d5
+        );
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#796779;
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:1px;
+    position:relative;
+    overflow:hidden;
+}
+
+.photo::after{
+    content:"YOUR MEMORY PHOTO";
+    position:absolute;
+    border:1px dashed rgba(80,50,80,.35);
+    inset:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.controls{
     position:fixed;
     bottom:25px;
     left:50%;
     transform:translateX(-50%);
+    z-index:60;
     display:flex;
-    gap:7px;
-    z-index:20;
+    align-items:center;
+    gap:15px;
 }
 
-.dot{
-    width:6px;
-    height:6px;
+.control-btn{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.08);
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+    transition:.3s;
+}
+
+.control-btn:hover{
+    background:white;
+    color:#18111f;
+}
+
+.counter{
+    font-family:Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:2px;
+    opacity:.6;
+    min-width:55px;
+    text-align:center;
+}
+
+/* =========================
+   CHAPTER NAV
+========================= */
+
+.chapter-nav{
+    position:fixed;
+    right:22px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:40;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.nav-dot{
+    width:7px;
+    height:7px;
     border-radius:50%;
     background:rgba(255,255,255,.25);
-    transition:.4s;
+    cursor:pointer;
+    transition:.3s;
 }
 
-.dot.active{
+.nav-dot.active{
     background:white;
     transform:scale(1.5);
 }
 
-/* Music */
-.music{
-    position:fixed;
-    top:20px;
-    right:20px;
-    z-index:30;
-    width:42px;
-    height:42px;
-    padding:0;
-    margin:0;
-    display:flex;
+/* =========================
+   FINAL PAGE
+========================= */
+
+.final{
+    text-align:center;
     align-items:center;
-    justify-content:center;
-    border-radius:50%;
 }
 
-/* Floating hearts */
-.floating{
-    position:fixed;
-    bottom:-30px;
-    font-size:18px;
-    opacity:.5;
-    animation:floatUp 8s linear forwards;
-    pointer-events:none;
+.final .big-heart{
+    font-size:60px;
+    margin-bottom:20px;
 }
 
-@keyframes floatUp{
-    to{
-        transform:translateY(-110vh) rotate(25deg);
-        opacity:0;
-    }
+.final h2{
+    max-width:600px;
 }
 
-@media(max-width:600px){
-    h1{
-        font-size:48px;
+.final p{
+    max-width:550px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+    .book-wrapper{
+        padding:90px 12px 100px;
     }
 
-    p{
-        font-size:14px;
+    .book{
+        min-height:650px;
     }
 
-    .content{
-        max-width:95%;
+    .page{
+        padding:45px 25px;
+    }
+
+    .memory-layout{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .photo{
+        height:180px;
+    }
+
+    .page p{
+        font-size:15px;
+        line-height:1.75;
+    }
+
+    .quote{
+        font-size:17px;
+    }
+
+    .chapter-nav{
+        display:none;
+    }
+
+    .topbar{
+        padding:0 15px;
     }
 }
 </style>
@@ -253,268 +449,666 @@ button:hover{
 
 <body>
 
-<div class="stars" id="stars"></div>
-
-<button class="music" id="musicBtn" onclick="toggleMusic()">♪</button>
-
-<!-- SCREEN 1 -->
-<section class="screen active" id="screen1">
-    <div class="content">
-        <span class="heart">❤️</span>
-
-        <div class="small">A little surprise</div>
-
-        <h1>For My Sister</h1>
-
-        <p>
-            I could have simply sent you a message...
-            <br>
-            but somehow, that didn't feel enough.
-        </p>
-
-        <button onclick="nextScreen(2)">
-            BEGIN THE JOURNEY →
-        </button>
-    </div>
-</section>
-
-
-<!-- SCREEN 2 -->
-<section class="screen" id="screen2">
-    <div class="content">
-
-        <div class="small">Before you continue</div>
-
-        <h2>There's something<br>you should know.</h2>
-
-        <p>
-            This isn't just another webpage.
-            <br><br>
-            Everything you're about to see was made
-            because you're someone who matters to me.
-        </p>
-
-        <button onclick="nextScreen(3)">
-            I'M LISTENING →
-        </button>
-
-    </div>
-</section>
-
-
-<!-- SCREEN 3 -->
-<section class="screen" id="screen3">
-    <div class="content">
-
-        <div class="small">One tiny challenge</div>
-
-        <h2>Prove you're<br>my sister. 😂</h2>
-
-        <p>
-            Answer these three questions.
-            <br>
-            Don't overthink them.
-        </p>
-
-        <div class="question">
-            <label>01 — Who is more annoying? 😌</label>
-            <input id="q1" placeholder="Your answer...">
-        </div>
-
-        <div class="question">
-            <label>02 — Who usually gets angry first?</label>
-            <input id="q2" placeholder="Your answer...">
-        </div>
-
-        <div class="question">
-            <label>03 — Who is going to say sorry first? 😂</label>
-            <input id="q3" placeholder="Your answer...">
-        </div>
-
-        <button onclick="unlock()">
-            UNLOCK 🔐
-        </button>
-
-        <div class="error" id="error">
-            Hmm... these answers don't feel very sister-like. 😂
-            Try again.
-        </div>
-
-    </div>
-</section>
-
-
-<!-- SCREEN 4 -->
-<section class="screen" id="screen4">
-    <div class="content">
-
-        <div class="success">🔓</div>
-
-        <div class="small">Access granted</div>
-
-        <h2>You made it.</h2>
-
-        <p>
-            And now the actual story begins...
-            <br><br>
-            But I'm not going to show you everything at once.
-        </p>
-
-        <button onclick="nextScreen(5)">
-            SHOW ME →
-        </button>
-
-    </div>
-</section>
-
-
-<!-- SCREEN 5 -->
-<section class="screen" id="screen5">
-    <div class="content">
-
-        <span class="heart">✨</span>
-
-        <div class="small">Coming next</div>
-
-        <h2>A Little Piece<br>of Us</h2>
-
-        <p>
-            Our memories.
-            <br>
-            Our stupid fights.
-            <br>
-            The things I never said.
-            <br>
-            And a few surprises...
-        </p>
-
-        <button onclick="alert('This is only V1... The real surprise is still locked. ❤️')">
-            I'LL WAIT ❤️
-        </button>
-
-    </div>
-</section>
-
-
-<div class="progress">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
+<!-- BACKGROUND -->
+<div class="bg">
+    <div class="glow"></div>
+    <div id="stars"></div>
 </div>
 
 
-<!-- Optional music -->
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="brand">
+        A LITTLE PIECE OF US
+    </div>
+
+    <button class="music" onclick="toggleMusic()" id="musicBtn">
+        ♪
+    </button>
+</header>
+
+
+<!-- BOOK -->
+<main class="book-wrapper">
+
+<div class="book" id="book">
+
+
+<!-- =========================
+     PAGE 1 — COVER
+========================= -->
+
+<section class="page active cover">
+
+    <div class="heart">❤️</div>
+
+    <div class="chapter">
+        A Story For My Sister
+    </div>
+
+    <h1>
+        A Little Piece<br>
+        of Us
+    </h1>
+
+    <p>
+        Some relationships are difficult to explain.
+        <br>
+        You simply feel them.
+    </p>
+
+    <div class="signature">
+        — From your brother, Vijay
+    </div>
+
+    <div class="page-number">
+        01
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 2
+========================= -->
+
+<section class="page">
+
+    <div class="chapter">
+        Chapter 01
+    </div>
+
+    <h2>
+        Somehow,<br>
+        You Became Important.
+    </h2>
+
+    <p>
+        Life has a strange way of introducing people
+        into our story.
+    </p>
+
+    <div class="quote">
+        “तुमसे मिलकर ही मुझे एहसास हुआ कि
+        सच्चा प्यार क्या होता है।”
+    </div>
+
+    <p>
+        I don't know exactly when it happened,
+        but somewhere along the way,
+        you stopped being just my sister
+        and became someone whose presence
+        genuinely matters to me.
+    </p>
+
+    <div class="page-number">
+        02
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 3
+========================= -->
+
+<section class="page">
+
+    <div class="chapter">
+        Chapter 02
+    </div>
+
+    <h2>
+        The Fights.<br>
+        The Laughter.
+    </h2>
+
+    <p>
+        Of course, being siblings isn't always
+        a peaceful movie. 😂
+    </p>
+
+    <div class="quote">
+        “तुमसे मिलकर ही मैंने जाना कि
+        भाई-बहनों की नोक-झोंक कैसी होती है।”
+    </div>
+
+    <p>
+        We can annoy each other,
+        misunderstand each other,
+        get angry over absolutely stupid things...
+        and somehow still come back laughing.
+    </p>
+
+    <div class="signature">
+        And honestly? I wouldn't trade that for anything.
+    </div>
+
+    <div class="page-number">
+        03
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 4
+========================= -->
+
+<section class="page">
+
+    <div class="chapter">
+        Chapter 03
+    </div>
+
+    <div class="memory-layout">
+
+        <div class="photo">
+            <!-- Replace this div with:
+            <img src="your-photo.jpg">
+            -->
+        </div>
+
+        <div>
+
+            <h2>
+                The Little Things.
+            </h2>
+
+            <p>
+                Sometimes it's not the big moments
+                that stay with us.
+            </p>
+
+            <div class="quote">
+                “तुमसे मिलकर ही मुझे उस बेचैनी का
+                पता चला जो एक मैसेज न आने पर होती है।”
+            </div>
+
+            <p>
+                A message.
+                A random conversation.
+                A stupid joke.
+                A simple “how are you?”
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="page-number">
+        04
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 5
+========================= -->
+
+<section class="page">
+
+    <div class="chapter">
+        Chapter 04
+    </div>
+
+    <h2>
+        You Made Me<br>
+        Laugh Differently.
+    </h2>
+
+    <div class="quote">
+        “तुमने ही मुझे असल ज़िंदगी में
+        खुलकर हँसना सिखाया।”
+    </div>
+
+    <p>
+        There are people who enter your life
+        and change something without even realizing it.
+    </p>
+
+    <p style="margin-top:20px;">
+        You became one of those people for me.
+    </p>
+
+    <div class="signature">
+        Maybe you don't realize how much that means.
+    </div>
+
+    <div class="page-number">
+        05
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 6
+========================= -->
+
+<section class="page">
+
+    <div class="chapter">
+        Chapter 05
+    </div>
+
+    <h2>
+        Things I Don't<br>
+        Always Say.
+    </h2>
+
+    <p>
+        I may not always say it.
+        I may joke around instead.
+        I may act completely normal.
+    </p>
+
+    <div class="quote">
+        But that doesn't mean I don't care.
+    </div>
+
+    <p>
+        Sometimes I don't know how to put
+        certain feelings into words.
+        So I made this little book instead.
+    </p>
+
+    <div class="signature">
+        Because you deserve to know.
+    </div>
+
+    <div class="page-number">
+        06
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 7
+========================= -->
+
+<section class="page">
+
+    <div class="chapter">
+        Chapter 06
+    </div>
+
+    <h2>
+        If Life Ever<br>
+        Feels Heavy...
+    </h2>
+
+    <p>
+        I want you to remember one thing.
+    </p>
+
+    <div class="quote">
+        You never have to face everything alone.
+    </div>
+
+    <p>
+        Even when we're far apart,
+        even when we're busy,
+        even when we don't talk every day —
+        you still have a brother who cares.
+    </p>
+
+    <div class="signature">
+        Always.
+    </div>
+
+    <div class="page-number">
+        07
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 8
+========================= -->
+
+<section class="page">
+
+    <div class="chapter">
+        Chapter 07
+    </div>
+
+    <h2>
+        More Memories<br>
+        Are Waiting.
+    </h2>
+
+    <p>
+        This book isn't really about the past.
+    </p>
+
+    <div class="quote">
+        It's about everything we haven't
+        experienced yet.
+    </div>
+
+    <p>
+        More conversations.
+        <br>
+        More fights.
+        <br>
+        More laughter.
+        <br>
+        More memories.
+        <br>
+        More stories we haven't written.
+    </p>
+
+    <div class="page-number">
+        08
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 9 — FINAL
+========================= -->
+
+<section class="page final">
+
+    <div class="big-heart">
+        ❤️
+    </div>
+
+    <div class="chapter">
+        One Last Thing
+    </div>
+
+    <h2>
+        I'm Glad<br>
+        You're My Sister.
+    </h2>
+
+    <p>
+        Out of all the people life could have given me,
+        I'm grateful it gave me you.
+    </p>
+
+    <div class="quote">
+        This isn't the end of the story.
+        <br>
+        It's only the beginning.
+    </div>
+
+    <div class="signature">
+        — Vijay
+    </div>
+
+    <button
+        onclick="nextSurprise()"
+        style="
+        background:#302038;
+        color:white;
+        border:0;
+        padding:15px 30px;
+        border-radius:30px;
+        cursor:pointer;
+        margin-top:30px;
+        ">
+        THERE'S SOMETHING ELSE... 🎁
+    </button>
+
+    <div class="page-number">
+        09
+    </div>
+
+</section>
+
+</div>
+</main>
+
+
+<!-- CHAPTER DOTS -->
+
+<div class="chapter-nav" id="chapterNav"></div>
+
+
+<!-- CONTROLS -->
+
+<div class="controls">
+
+    <button class="control-btn" onclick="previousPage()">
+        ←
+    </button>
+
+    <div class="counter" id="counter">
+        01 / 09
+    </div>
+
+    <button class="control-btn" onclick="nextPage()">
+        →
+    </button>
+
+</div>
+
+
+<!-- MUSIC -->
+
 <audio id="bgMusic" loop>
-   https://www.youtube.com/watch?v=riU4OScbAdA
+    <!--
+    Add your music here:
+
+    <source
+        src="music.mp3"
+        type="audio/mpeg">
+
+    -->
 </audio>
 
 
 <script>
 
-let currentScreen = 1;
+/* =========================
+   PAGE SYSTEM
+========================= */
 
-function nextScreen(number){
+const pages =
+    document.querySelectorAll(".page");
 
-    document.getElementById("screen" + currentScreen)
-        .classList.remove("active");
+let currentPage = 0;
 
-    document.getElementById("screen" + number)
-        .classList.add("active");
+const counter =
+    document.getElementById("counter");
 
-    currentScreen = number;
+const nav =
+    document.getElementById("chapterNav");
 
-    updateDots();
 
-    createHeart();
+/* Create navigation dots */
+
+pages.forEach((page,index)=>{
+
+    const dot =
+        document.createElement("div");
+
+    dot.className="nav-dot";
+
+    if(index===0)
+        dot.classList.add("active");
+
+    dot.onclick=()=>{
+        goToPage(index);
+    };
+
+    nav.appendChild(dot);
+
+});
+
+
+const dots =
+    document.querySelectorAll(".nav-dot");
+
+
+function goToPage(index){
+
+    if(index<0 || index>=pages.length)
+        return;
+
+    pages.forEach((page,i)=>{
+
+        page.classList.remove("active","old");
+
+        if(i<index)
+            page.classList.add("old");
+
+    });
+
+    pages[index].classList.add("active");
+
+    currentPage=index;
+
+    updateUI();
+
 }
 
-function updateDots(){
 
-    document.querySelectorAll(".dot").forEach((dot,index)=>{
+/* Next */
+
+function nextPage(){
+
+    if(currentPage < pages.length-1){
+
+        goToPage(currentPage+1);
+
+    }
+
+}
+
+
+/* Previous */
+
+function previousPage(){
+
+    if(currentPage > 0){
+
+        goToPage(currentPage-1);
+
+    }
+
+}
+
+
+/* Update UI */
+
+function updateUI(){
+
+    counter.innerText =
+        String(currentPage+1).padStart(2,"0")
+        +" / "
+        +String(pages.length).padStart(2,"0");
+
+    dots.forEach((dot,index)=>{
 
         dot.classList.toggle(
             "active",
-            index === currentScreen - 1
+            index===currentPage
         );
 
     });
 
 }
 
-function unlock(){
 
-    const a = document.getElementById("q1").value.trim();
-    const b = document.getElementById("q2").value.trim();
-    const c = document.getElementById("q3").value.trim();
+/* Keyboard */
 
-    /*
-       V1 intentionally accepts any non-empty answer.
-       Later we can replace these with your REAL answers.
-    */
+document.addEventListener("keydown",(e)=>{
 
-    if(a && b && c){
+    if(e.key==="ArrowRight")
+        nextPage();
 
-        document.getElementById("error").style.display="none";
+    if(e.key==="ArrowLeft")
+        previousPage();
 
-        nextScreen(4);
-
-    }else{
-
-        document.getElementById("error").style.display="block";
-
-    }
-
-}
-
-function createHeart(){
-
-    const heart=document.createElement("div");
-
-    heart.className="floating";
-    heart.innerHTML=["❤️","💗","✨","♡"][Math.floor(Math.random()*4)];
-
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.animationDuration=(5+Math.random()*5)+"s";
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{
-        heart.remove();
-    },10000);
-}
+});
 
 
-/* Stars */
+/* =========================
+   TOUCH SWIPE
+========================= */
 
-for(let i=0;i<100;i++){
+let touchStartX=0;
 
-    const star=document.createElement("div");
+document.addEventListener("touchstart",(e)=>{
+
+    touchStartX=e.changedTouches[0].screenX;
+
+},{passive:true});
+
+
+document.addEventListener("touchend",(e)=>{
+
+    const touchEndX=
+        e.changedTouches[0].screenX;
+
+    const distance=
+        touchEndX-touchStartX;
+
+    if(Math.abs(distance)<50)
+        return;
+
+    if(distance<0)
+        nextPage();
+    else
+        previousPage();
+
+},{passive:true});
+
+
+/* =========================
+   STARS
+========================= */
+
+const stars=
+    document.getElementById("stars");
+
+for(let i=0;i<120;i++){
+
+    const star=
+        document.createElement("div");
 
     star.className="star";
 
-    star.style.left=Math.random()*100+"%";
-    star.style.top=Math.random()*100+"%";
+    star.style.left=
+        Math.random()*100+"%";
+
+    star.style.top=
+        Math.random()*100+"%";
 
     star.style.animationDelay=
         Math.random()*3+"s";
 
-    document.getElementById("stars")
-        .appendChild(star);
+    stars.appendChild(star);
+
 }
 
 
-/* Music */
+/* =========================
+   MUSIC
+========================= */
 
 function toggleMusic(){
 
-    const music=document.getElementById("bgMusic");
-    const btn=document.getElementById("musicBtn");
+    const music=
+        document.getElementById("bgMusic");
 
-    if(!music.src){
+    const button=
+        document.getElementById("musicBtn");
 
-        alert("Add your music URL inside the <audio> section first.");
+    if(!music.querySelector("source")){
+
+        alert(
+            "Add your music file inside the audio section first."
+        );
+
         return;
 
     }
@@ -522,16 +1116,55 @@ function toggleMusic(){
     if(music.paused){
 
         music.play();
-        btn.innerHTML="🔊";
+
+        button.innerHTML="🔊";
 
     }else{
 
         music.pause();
-        btn.innerHTML="♪";
+
+        button.innerHTML="♪";
 
     }
 
 }
+
+
+/* =========================
+   NEXT SURPRISE
+========================= */
+
+function nextSurprise(){
+
+    document.body.style.transition=
+        "opacity 1.2s ease";
+
+    document.body.style.opacity="0";
+
+    setTimeout(()=>{
+
+        /*
+          V3 will be connected here.
+
+          For now:
+        */
+
+        document.body.style.opacity="1";
+
+        alert(
+            "💌 The next surprise is still being prepared..."
+        );
+
+    },1200);
+
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+updateUI();
 
 </script>
 
