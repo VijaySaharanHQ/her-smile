@@ -1,2077 +1,535 @@
+```html
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>For My Sister ❤️</title>
 
-<meta name="description"
-content="A little corner of the internet made especially for my sister.">
-
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
-    background:#080609;
-    color:#fff;
-    font-family:Georgia,"Times New Roman",serif;
-    overflow-x:hidden;
-}
-
-button{
-    font-family:inherit;
-}
-
-::-webkit-scrollbar{
-    width:6px;
-}
-
-::-webkit-scrollbar-track{
-    background:#080609;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#b51f46;
-    border-radius:20px;
-}
-
-
-/* =========================================================
-   LOADING
-========================================================= */
-
-#loader{
-    position:fixed;
-    inset:0;
-    background:#080609;
-    z-index:99999;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-
-    transition:1.2s ease;
-}
-
-.loader-inner{
-    width:min(650px,88%);
-}
-
-.loader-small{
-    font-size:11px;
-    letter-spacing:6px;
-    color:#777;
-    margin-bottom:28px;
-}
-
-.loader-title{
-    font-size:clamp(38px,7vw,75px);
-    line-height:1.1;
-}
-
-.loader-title span{
-    color:#d52b55;
-}
-
-.loader-sub{
-    color:#777;
-    margin-top:25px;
-    line-height:1.8;
-}
-
-.start{
-    margin-top:35px;
-    padding:15px 32px;
-
-    border:1px solid rgba(255,255,255,.2);
-    border-radius:50px;
-
-    background:rgba(213,43,85,.08);
-    color:#fff;
-
-    cursor:pointer;
-    letter-spacing:2px;
-
-    transition:.35s;
-}
-
-.start:hover{
-    background:#d52b55;
-    transform:translateY(-3px);
-}
-
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-#stars{
-    position:fixed;
-    inset:0;
-    z-index:-5;
-}
-
-.glow{
-    position:fixed;
-    width:500px;
-    height:500px;
-
-    border-radius:50%;
-
-    background:rgba(213,43,85,.055);
-    filter:blur(120px);
-
-    pointer-events:none;
-    z-index:-4;
-}
-
-
-/* =========================================================
-   NAV
-========================================================= */
-
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-
-    z-index:500;
-
-    padding:17px 25px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    background:rgba(8,6,9,.65);
-    backdrop-filter:blur(18px);
-
-    border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-.nav-logo{
-    font-size:13px;
-    letter-spacing:3px;
-    color:#aaa;
-}
-
-.nav-logo span{
-    color:#d52b55;
-}
-
-.nav-actions{
-    display:flex;
-    gap:8px;
-}
-
-.nav-btn{
-    width:40px;
-    height:40px;
-
-    border-radius:50%;
-    border:1px solid rgba(255,255,255,.12);
-
-    background:rgba(255,255,255,.035);
-    color:#fff;
-
-    cursor:pointer;
-    transition:.3s;
-}
-
-.nav-btn:hover{
-    background:#d52b55;
-}
-
-
-/* =========================================================
-   COMMON
-========================================================= */
-
-section{
     min-height:100vh;
-    padding:120px 7%;
+    overflow:hidden;
+    font-family:Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at 50% 35%, #35204d 0%, #171126 35%, #090812 75%);
+    color:white;
+}
 
+.screen{
+    position:fixed;
+    inset:0;
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
-}
-
-.label{
-    color:#d52b55;
-    letter-spacing:5px;
-    font-size:10px;
-    text-transform:uppercase;
-    margin-bottom:22px;
-}
-
-.title{
-    text-align:center;
-    font-size:clamp(40px,6vw,75px);
-    line-height:1.05;
-}
-
-.muted{
-    color:#858085;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-    position:relative;
-    padding-top:150px;
-    text-align:center;
-
-    overflow:hidden;
-}
-
-.hero-photo{
-    width:min(360px,72vw);
-    height:min(470px,95vw);
-
-    object-fit:cover;
-
-    border-radius:180px 180px 25px 25px;
-
-    border:1px solid rgba(255,255,255,.15);
-
-    box-shadow:
-        0 35px 100px rgba(0,0,0,.7),
-        0 0 80px rgba(213,43,85,.1);
-
-    margin-bottom:45px;
-
-    animation:heroFloat 5s ease-in-out infinite;
-}
-
-@keyframes heroFloat{
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-10px);
-    }
-}
-
-.hero h1{
-    font-size:clamp(45px,8vw,100px);
-    line-height:.95;
-}
-
-.hero h1 span{
-    color:#d52b55;
-}
-
-.hero-description{
-    max-width:650px;
-    margin-top:35px;
-
-    color:#8f898f;
-    line-height:2;
-    font-size:18px;
-}
-
-.scroll{
-    position:absolute;
-    bottom:30px;
-
-    color:#555;
-    font-size:9px;
-    letter-spacing:5px;
-
-    animation:bounce 2s infinite;
-}
-
-@keyframes bounce{
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(8px);
-    }
-}
-
-
-/* =========================================================
-   OPENING LETTER
-========================================================= */
-
-.letter-intro{
-    text-align:center;
-}
-
-.letter-intro-box{
-    max-width:800px;
-    margin-top:50px;
-
-    padding:55px 35px;
-
-    border-top:1px solid rgba(213,43,85,.25);
-    border-bottom:1px solid rgba(213,43,85,.25);
-}
-
-.letter-intro-box p{
-    color:#aaa;
-    font-size:22px;
-    line-height:2;
-}
-
-.letter-intro-box strong{
-    color:#fff;
-}
-
-
-/* =========================================================
-   WHY YOU
-========================================================= */
-
-.why-grid{
-    width:min(1000px,100%);
-    margin-top:55px;
-
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fit,minmax(240px,1fr));
-
-    gap:18px;
-}
-
-.why-card{
-    padding:32px;
-
-    min-height:230px;
-
-    background:rgba(255,255,255,.025);
-
-    border:1px solid rgba(255,255,255,.07);
-
-    border-radius:22px;
-
-    transition:.4s;
-}
-
-.why-card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(213,43,85,.3);
-}
-
-.why-number{
-    color:#d52b55;
-    font-size:11px;
-    letter-spacing:3px;
-}
-
-.why-card h3{
-    margin:20px 0 15px;
-    font-size:24px;
-}
-
-.why-card p{
-    color:#898389;
-    line-height:1.9;
-}
-
-
-/* =========================================================
-   BIG QUOTE
-========================================================= */
-
-.big-quote{
-    text-align:center;
-    background:
-        radial-gradient(
-            circle,
-            rgba(213,43,85,.06),
-            transparent 55%
-        );
-}
-
-.big-quote-text{
-    max-width:1000px;
-
-    font-size:clamp(32px,5vw,65px);
-
-    line-height:1.35;
-}
-
-.big-quote-text span{
-    color:#d52b55;
-}
-
-
-/* =========================================================
-   THINGS I NEVER SAY
-========================================================= */
-
-.never-list{
-    width:min(850px,100%);
-    margin-top:55px;
-}
-
-.never-item{
-    display:flex;
-    gap:25px;
-
-    padding:27px 5px;
-
-    border-bottom:1px solid rgba(255,255,255,.07);
-
+    padding:25px;
     opacity:0;
-    transform:translateX(-30px);
-
-    transition:1s;
+    visibility:hidden;
+    transition:opacity 1s ease, visibility 1s ease;
 }
 
-.never-item.visible{
+.screen.active{
     opacity:1;
-    transform:translateX(0);
+    visibility:visible;
 }
 
-.never-icon{
-    color:#d52b55;
-    font-size:20px;
-}
-
-.never-item p{
-    color:#aaa;
-    font-size:19px;
-    line-height:1.7;
-}
-
-
-/* =========================================================
-   DIARY
-========================================================= */
-
-.diary{
+.content{
+    width:min(700px, 100%);
+    text-align:center;
     position:relative;
+    z-index:5;
 }
 
-.diary-page{
-    width:min(850px,100%);
-
-    padding:55px 45px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.015)
-        );
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:5px;
-
-    box-shadow:
-        15px 25px 80px rgba(0,0,0,.45);
-
-    transform:rotate(-1deg);
-}
-
-.diary-page p{
-    color:#999;
-    line-height:2.15;
-    font-size:19px;
-}
-
-.diary-page .hand{
-    color:#d7cdd1;
-    font-size:27px;
-    margin-bottom:30px;
-}
-
-
-/* =========================================================
-   DISTANCE
-========================================================= */
-
-.distance{
-    text-align:center;
-}
-
-.distance-number{
-    font-size:clamp(90px,15vw,180px);
-    color:rgba(213,43,85,.12);
-    font-weight:bold;
-    line-height:1;
-}
-
-.distance-title{
-    font-size:clamp(35px,6vw,70px);
-    margin-top:-25px;
-}
-
-.distance p{
-    max-width:700px;
-    margin-top:35px;
-
-    color:#888;
-    line-height:2;
-    font-size:19px;
-}
-
-
-/* =========================================================
-   DREAM
-========================================================= */
-
-.dream{
-    text-align:center;
-}
-
-.dream-box{
-    width:min(850px,100%);
-
-    margin-top:50px;
-
-    padding:65px 30px;
-
-    border:1px solid rgba(213,43,85,.22);
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(213,43,85,.08),
-            transparent 65%
-        );
-
-    border-radius:30px;
-}
-
-.dream-box h3{
-    font-size:clamp(30px,5vw,60px);
-    line-height:1.2;
-}
-
-.dream-box h3 span{
-    color:#d52b55;
-}
-
-.dream-box p{
-    margin-top:30px;
-    color:#777;
-    letter-spacing:3px;
-    font-size:10px;
-}
-
-
-/* =========================================================
-   PROMISE
-========================================================= */
-
-.promise{
-    text-align:center;
-}
-
-.promise-box{
-    max-width:850px;
-    margin-top:50px;
-}
-
-.promise-box p{
-    color:#999;
-    line-height:2.2;
-    font-size:20px;
-}
-
-.promise-box strong{
-    color:#fff;
-}
-
-
-/* =========================================================
-   SECRET ENVELOPE
-========================================================= */
-
-.secret{
-    text-align:center;
-}
-
-.envelope{
-    margin-top:50px;
-
-    width:min(700px,100%);
-
-    padding:55px 30px;
-
-    border:1px solid rgba(255,255,255,.1);
-
-    background:#0d0b0e;
-
-    cursor:pointer;
-
-    transition:.5s;
-}
-
-.envelope:hover{
-    transform:translateY(-8px);
-    border-color:rgba(213,43,85,.4);
-}
-
-.envelope-icon{
-    font-size:55px;
+.small{
+    font-family:Arial,sans-serif;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    font-size:12px;
+    opacity:.6;
     margin-bottom:25px;
 }
 
-.envelope h3{
-    font-size:27px;
+h1{
+    font-size:clamp(42px,9vw,82px);
+    line-height:1;
+    margin-bottom:25px;
+    font-weight:400;
 }
 
-.envelope small{
+h2{
+    font-size:clamp(30px,6vw,52px);
+    font-weight:400;
+    margin-bottom:20px;
+}
+
+p{
+    font-family:Arial,sans-serif;
+    line-height:1.8;
+    color:#ddd6e7;
+    font-size:16px;
+}
+
+button{
+    margin-top:35px;
+    padding:15px 34px;
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:50px;
+    background:rgba(255,255,255,.08);
+    color:white;
+    cursor:pointer;
+    font-size:14px;
+    letter-spacing:2px;
+    transition:.3s;
+    backdrop-filter:blur(10px);
+}
+
+button:hover{
+    background:white;
+    color:#171126;
+    transform:translateY(-3px);
+}
+
+.heart{
+    font-size:25px;
     display:block;
-    margin-top:12px;
-    color:#666;
+    margin-bottom:20px;
+    animation:pulse 2s infinite;
 }
 
-.secret-content{
-    display:none;
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.18)}
+}
 
-    margin-top:40px;
+/* Stars */
+.stars{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
 
-    color:#999;
-    line-height:2.2;
-    font-size:18px;
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    opacity:.5;
+    animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.15}
+    to{opacity:.9}
+}
+
+/* Unlock */
+.question{
+    margin:25px auto;
+    width:min(500px,100%);
     text-align:left;
 }
 
-.secret-content.open{
+.question label{
     display:block;
-    animation:appear .8s ease;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    color:#bdb3cc;
+    margin-bottom:8px;
 }
 
-@keyframes appear{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.question input{
+    width:100%;
+    padding:15px 17px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.15);
+    outline:none;
+    background:rgba(255,255,255,.06);
+    color:white;
+    font-size:15px;
 }
 
-
-/* =========================================================
-   RED DIAMOND
-========================================================= */
-
-.diamond-section{
-    text-align:center;
+.question input:focus{
+    border-color:rgba(255,255,255,.5);
 }
 
-.diamond{
-    width:150px;
-    height:150px;
+.error{
+    margin-top:18px;
+    color:#ff9cba;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    display:none;
+}
 
-    margin:70px 0;
+.success{
+    font-size:60px;
+    margin-bottom:20px;
+    animation:unlock .8s ease;
+}
 
-    transform:rotate(45deg);
+@keyframes unlock{
+    0%{transform:scale(.3);opacity:0}
+    100%{transform:scale(1);opacity:1}
+}
 
-    background:
-        linear-gradient(
-            135deg,
-            #e73560,
-            #6d1028
-        );
+/* Progress */
+.progress{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:7px;
+    z-index:20;
+}
 
-    box-shadow:
-        0 0 100px rgba(213,43,85,.25);
+.dot{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:rgba(255,255,255,.25);
+    transition:.4s;
+}
 
+.dot.active{
+    background:white;
+    transform:scale(1.5);
+}
+
+/* Music */
+.music{
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:30;
+    width:42px;
+    height:42px;
+    padding:0;
+    margin:0;
     display:flex;
     align-items:center;
     justify-content:center;
-
-    animation:diamond 3s ease-in-out infinite;
+    border-radius:50%;
 }
 
-@keyframes diamond{
-    0%,100%{
-        transform:rotate(45deg) scale(1);
-    }
-
-    50%{
-        transform:rotate(45deg) scale(1.05);
-    }
-}
-
-.diamond span{
-    transform:rotate(-45deg);
-    font-size:50px;
-}
-
-.diamond-text{
-    max-width:800px;
-    color:#999;
-    font-size:20px;
-    line-height:2.1;
-}
-
-
-/* =========================================================
-   FINAL
-========================================================= */
-
-.final{
-    text-align:center;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(213,43,85,.1),
-            transparent 50%
-        );
-}
-
-.final-small{
-    color:#555;
-    letter-spacing:6px;
-    font-size:9px;
-}
-
-.final h2{
-    margin-top:30px;
-
-    font-size:clamp(42px,8vw,100px);
-    line-height:1.05;
-}
-
-.final h2 span{
-    color:#d52b55;
-}
-
-.final p{
-    max-width:750px;
-
-    margin-top:40px;
-
-    color:#999;
-    line-height:2;
-    font-size:20px;
-}
-
-.final-heart{
-    margin-top:55px;
-    font-size:50px;
-
-    animation:heartbeat 1.5s infinite;
-}
-
-@keyframes heartbeat{
-    0%,100%{
-        transform:scale(1);
-    }
-
-    15%{
-        transform:scale(1.16);
-    }
-
-    30%{
-        transform:scale(1);
-    }
-
-    45%{
-        transform:scale(1.1);
-    }
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-    padding:45px 20px;
-
-    text-align:center;
-
-    color:#3f3b3e;
-
-    font-size:10px;
-    letter-spacing:3px;
-}
-
-
-/* =========================================================
-   HEART CLICK
-========================================================= */
-
-.heart{
+/* Floating hearts */
+.floating{
     position:fixed;
-
-    pointer-events:none;
-
-    z-index:9998;
-
+    bottom:-30px;
     font-size:18px;
-
-    animation:heartFloat 1.8s ease-out forwards;
+    opacity:.5;
+    animation:floatUp 8s linear forwards;
+    pointer-events:none;
 }
 
-@keyframes heartFloat{
-    from{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-
+@keyframes floatUp{
     to{
+        transform:translateY(-110vh) rotate(25deg);
         opacity:0;
-        transform:translateY(-150px) scale(1.7);
     }
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:700px){
-
-    nav{
-        padding:14px 16px;
+@media(max-width:600px){
+    h1{
+        font-size:48px;
     }
 
-    .nav-logo{
-        font-size:10px;
+    p{
+        font-size:14px;
     }
 
-    section{
-        padding:105px 20px;
+    .content{
+        max-width:95%;
     }
-
-    .hero-photo{
-        width:250px;
-        height:330px;
-    }
-
-    .letter-intro-box{
-        padding:40px 20px;
-    }
-
-    .letter-intro-box p{
-        font-size:18px;
-    }
-
-    .diary-page{
-        padding:40px 25px;
-    }
-
-    .diary-page p{
-        font-size:17px;
-    }
-
-    .never-item p{
-        font-size:17px;
-    }
-
-    .diamond{
-        width:120px;
-        height:120px;
-    }
-
-    .diamond span{
-        font-size:40px;
-    }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
+<div class="stars" id="stars"></div>
 
-<!-- =====================================================
-     LOADER
-===================================================== -->
+<button class="music" id="musicBtn" onclick="toggleMusic()">♪</button>
 
-<div id="loader">
+<!-- SCREEN 1 -->
+<section class="screen active" id="screen1">
+    <div class="content">
+        <span class="heart">❤️</span>
 
-    <div class="loader-inner">
+        <div class="small">A little surprise</div>
 
-        <div class="loader-small">
-            MADE FOR ONE SPECIAL PERSON
-        </div>
+        <h1>For My Sister</h1>
 
-        <div class="loader-title">
-            I made this<br>
-            <span>for you.</span>
-        </div>
-
-        <p class="loader-sub">
-            क्योंकि कुछ बातें ऐसी होती हैं
-            जिन्हें बोलना मुश्किल होता है...
+        <p>
+            I could have simply sent you a message...
             <br>
-            इसलिए आज उन्हें लिख रहा हूँ।
+            but somehow, that didn't feel enough.
         </p>
 
-        <button class="start" onclick="startStory()">
-            OPEN THIS ❤️
+        <button onclick="nextScreen(2)">
+            BEGIN THE JOURNEY →
+        </button>
+    </div>
+</section>
+
+
+<!-- SCREEN 2 -->
+<section class="screen" id="screen2">
+    <div class="content">
+
+        <div class="small">Before you continue</div>
+
+        <h2>There's something<br>you should know.</h2>
+
+        <p>
+            This isn't just another webpage.
+            <br><br>
+            Everything you're about to see was made
+            because you're someone who matters to me.
+        </p>
+
+        <button onclick="nextScreen(3)">
+            I'M LISTENING →
         </button>
 
     </div>
+</section>
 
+
+<!-- SCREEN 3 -->
+<section class="screen" id="screen3">
+    <div class="content">
+
+        <div class="small">One tiny challenge</div>
+
+        <h2>Prove you're<br>my sister. 😂</h2>
+
+        <p>
+            Answer these three questions.
+            <br>
+            Don't overthink them.
+        </p>
+
+        <div class="question">
+            <label>01 — Who is more annoying? 😌</label>
+            <input id="q1" placeholder="Your answer...">
+        </div>
+
+        <div class="question">
+            <label>02 — Who usually gets angry first?</label>
+            <input id="q2" placeholder="Your answer...">
+        </div>
+
+        <div class="question">
+            <label>03 — Who is going to say sorry first? 😂</label>
+            <input id="q3" placeholder="Your answer...">
+        </div>
+
+        <button onclick="unlock()">
+            UNLOCK 🔐
+        </button>
+
+        <div class="error" id="error">
+            Hmm... these answers don't feel very sister-like. 😂
+            Try again.
+        </div>
+
+    </div>
+</section>
+
+
+<!-- SCREEN 4 -->
+<section class="screen" id="screen4">
+    <div class="content">
+
+        <div class="success">🔓</div>
+
+        <div class="small">Access granted</div>
+
+        <h2>You made it.</h2>
+
+        <p>
+            And now the actual story begins...
+            <br><br>
+            But I'm not going to show you everything at once.
+        </p>
+
+        <button onclick="nextScreen(5)">
+            SHOW ME →
+        </button>
+
+    </div>
+</section>
+
+
+<!-- SCREEN 5 -->
+<section class="screen" id="screen5">
+    <div class="content">
+
+        <span class="heart">✨</span>
+
+        <div class="small">Coming next</div>
+
+        <h2>A Little Piece<br>of Us</h2>
+
+        <p>
+            Our memories.
+            <br>
+            Our stupid fights.
+            <br>
+            The things I never said.
+            <br>
+            And a few surprises...
+        </p>
+
+        <button onclick="alert('This is only V1... The real surprise is still locked. ❤️')">
+            I'LL WAIT ❤️
+        </button>
+
+    </div>
+</section>
+
+
+<div class="progress">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
 </div>
 
 
-<!-- =====================================================
-     BACKGROUND
-===================================================== -->
-
-<canvas id="stars"></canvas>
-<div class="glow"></div>
-
-
-<!-- =====================================================
-     NAV
-===================================================== -->
-
-<nav>
-
-    <div class="nav-logo">
-        FOR MY <span>SISTER</span> ❤️
-    </div>
-
-    <div class="nav-actions">
-
-        <button
-            class="nav-btn"
-            onclick="window.scrollTo({
-                top:0,
-                behavior:'smooth'
-            })">
-            ↑
-        </button>
-
-    </div>
-
-</nav>
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="hero">
-
-    <!-- Replace sister.jpg with your sister's photo -->
-
-    <img
-        src="sister.jpg"
-        alt="My Sister"
-        class="hero-photo"
-    >
-
-    <div class="label">
-        FOR THE GIRL WHO BECAME FAMILY
-    </div>
-
-    <h1>
-        Tum sirf<br>
-        meri <span>sister</span> nahi ho.
-    </h1>
-
-    <p class="hero-description">
-
-        तुम मेरी जिंदगी की उन खूबसूरत वजहों में से एक हो
-        जिनके लिए मैं भगवान को धन्यवाद देता हूँ।
-
-    </p>
-
-    <div class="scroll">
-        KEEP SCROLLING
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     OPENING LETTER
-===================================================== -->
-
-<section class="letter-intro">
-
-    <div class="label">
-        BEFORE YOU READ
-    </div>
-
-    <h2 class="title">
-        एक बात कहना है...
-    </h2>
-
-    <div class="letter-intro-box">
-
-        <p>
-
-            तुमसे मिलकर ही मुझे एहसास हुआ
-            कि <strong>सच्चा प्यार</strong> क्या होता है।
-
-            <br><br>
-
-            तुमसे मिलकर ही मैंने जाना
-            कि भाई-बहनों की नोक-झोंक कैसी होती है।
-
-            <br><br>
-
-            और तुमसे मिलने के बाद समझ आया
-            कि कुछ रिश्तों को नाम देने की जरूरत नहीं होती...
-
-            <br><br>
-
-            <strong>
-                उन्हें बस दिल से महसूस करना होता है।
-            </strong>
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     WHY YOU
-===================================================== -->
-
-<section>
-
-    <div class="label">
-        THINGS YOU CHANGED
-    </div>
-
-    <h2 class="title">
-        तुम क्यों खास हो?
-    </h2>
-
-    <div class="why-grid">
-
-
-        <div class="why-card">
-
-            <div class="why-number">
-                01
-            </div>
-
-            <h3>
-                My Smile
-            </h3>
-
-            <p>
-                जब भी मैं तुमसे बात करता हूँ,
-                मेरे चेहरे पर अपने आप मुस्कान आ जाती है।
-            </p>
-
-        </div>
-
-
-        <div class="why-card">
-
-            <div class="why-number">
-                02
-            </div>
-
-            <h3>
-                My Peace
-            </h3>
-
-            <p>
-                कभी-कभी सिर्फ दस मिनट की बातचीत
-                पूरा दिन बेहतर बना देती है।
-            </p>
-
-        </div>
-
-
-        <div class="why-card">
-
-            <div class="why-number">
-                03
-            </div>
-
-            <h3>
-                My Happiness
-            </h3>
-
-            <p>
-                तुम्हारी खुशी अब सिर्फ तुम्हारी खुशी नहीं रही।
-                वह मेरे लिए भी मायने रखती है।
-            </p>
-
-        </div>
-
-
-        <div class="why-card">
-
-            <div class="why-number">
-                04
-            </div>
-
-            <h3>
-                My Family
-            </h3>
-
-            <p>
-                तुमने मुझे एहसास कराया कि दिल का रिश्ता
-                कभी-कभी खून के रिश्ते से भी ज्यादा मजबूत होता है।
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     BIG QUOTE
-===================================================== -->
-
-<section class="big-quote">
-
-    <div class="label">
-        THE THING I REALIZED
-    </div>
-
-    <div class="big-quote-text">
-
-        "तुम मेरे लिए सिर्फ़ एक बहन नहीं हो...
-
-        <br><br>
-
-        <span>
-            तुम मेरी पूरी दुनिया हो।
-        </span>"
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     THINGS I NEVER SAY
-===================================================== -->
-
-<section>
-
-    <div class="label">
-        THINGS I NEVER SAY
-    </div>
-
-    <h2 class="title">
-        लेकिन महसूस करता हूँ।
-    </h2>
-
-
-    <div class="never-list">
-
-
-        <div class="never-item">
-
-            <div class="never-icon">
-                ♥
-            </div>
-
-            <p>
-                तुम्हारा एक message न आए
-                तो सच में बेचैनी होने लगती है।
-            </p>
-
-        </div>
-
-
-        <div class="never-item">
-
-            <div class="never-icon">
-                ♥
-            </div>
-
-            <p>
-                तुम्हारी आवाज़ सुनते ही
-                पता नहीं क्यों मन थोड़ा शांत हो जाता है।
-            </p>
-
-        </div>
-
-
-        <div class="never-item">
-
-            <div class="never-icon">
-                ♥
-            </div>
-
-            <p>
-                तुम्हारे सपने अब मुझे भी
-                अपने सपनों जैसे लगने लगे हैं।
-            </p>
-
-        </div>
-
-
-        <div class="never-item">
-
-            <div class="never-icon">
-                ♥
-            </div>
-
-            <p>
-                मैं हमेशा बड़ा भाई बनकर तुम्हें संभालूँ,
-                यह जरूरी नहीं।
-                कभी-कभी तुम्हारा ख्याल रखना भी अच्छा लगता है।
-            </p>
-
-        </div>
-
-
-        <div class="never-item">
-
-            <div class="never-icon">
-                ♥
-            </div>
-
-            <p>
-                तुम्हें खोने का डर
-                जितना मैं बताता हूँ,
-                उससे कहीं ज्यादा है।
-            </p>
-
-        </div>
-
-
-        <div class="never-item">
-
-            <div class="never-icon">
-                ♥
-            </div>
-
-            <p>
-                दूरी ने सिर्फ तस्वीरें दूर की हैं...
-                हमारा रिश्ता नहीं।
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     DIARY
-===================================================== -->
-
-<section class="diary">
-
-    <div class="label">
-        FROM MY DIARY
-    </div>
-
-    <h2 class="title">
-        अगर हमारी कहानी एक पन्ना होती...
-    </h2>
-
-
-    <div class="diary-page">
-
-        <div class="hand">
-            Dear Sister,
-        </div>
-
-        <p>
-
-            तुमसे मिलने के बाद मेरी जिंदगी में
-            बहुत सारी चीजें बदल गईं।
-
-            <br><br>
-
-            जो लड़का कभी अपने emotions को
-            शब्दों में नहीं लिख पाता था,
-            वह अब तुम्हारे लिए pages लिखता है।
-
-            <br><br>
-
-            मैंने सुना था कि दिल टूटने के बाद
-            कोई लड़का शायर बनता है।
-
-            <br><br>
-
-            लेकिन तुमने मुझे शायर नहीं बनाया...
-
-            <br>
-
-            <strong>
-                तुमने मुझे लेखक बना दिया।
-            </strong>
-
-            <br><br>
-
-            शायद प्यार हमेशा romantic नहीं होता।
-
-            <br>
-
-            कभी-कभी प्यार का मतलब होता है
-            किसी की खुशी के लिए दिल से दुआ करना।
-
-            <br><br>
-
-            और तुम्हारे लिए मेरी दुआ
-            हमेशा रहेगी।
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     DISTANCE
-===================================================== -->
-
-<section class="distance">
-
-    <div class="label">
-        DISTANCE
-    </div>
-
-    <div class="distance-number">
-        ∞
-    </div>
-
-    <h2 class="distance-title">
-        दूरी कितनी भी हो।
-    </h2>
-
-    <p>
-
-        अब जब मैं तुम्हें नहीं देख पाता,
-        तो कभी-कभी ऐसा लगता है
-        जैसे दिन में कुछ missing है।
-
-        <br><br>
-
-        तुम्हारे बिना सब कुछ थोड़ा उदास लगता है।
-
-        <br><br>
-
-        लेकिन फिर तुम्हारा एक call आता है...
-
-        <br><br>
-
-        और वही दिन फिर से अच्छा हो जाता है।
-
-    </p>
-
-</section>
-
-
-<!-- =====================================================
-     DREAM
-===================================================== -->
-
-<section class="dream">
-
-    <div class="label">
-        OUR DREAM
-    </div>
-
-    <h2 class="title">
-        शायद यही सबसे खूबसूरत सपना है।
-    </h2>
-
-
-    <div class="dream-box">
-
-        <h3>
-            ONE COLLEGE
-            <br>
-            <span>ONE DREAM</span>
-            <br>
-            ONE JOURNEY
-        </h3>
-
-        <p>
-            WE WILL WORK FOR IT.
-        </p>
-
-    </div>
-
-
-    <div style="
-        max-width:750px;
-        margin-top:40px;
-        color:#888;
-        line-height:2;
-        font-size:18px;
-    ">
-
-        कुछ सपने खून के रिश्तों की वजह से नहीं,
-        बल्कि दिल के रिश्तों की वजह से पूरे होते हैं।
-
-        <br><br>
-
-        इसलिए हम अपना सपना
-        पूरे दिल से पूरा करेंगे।
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PROMISE
-===================================================== -->
-
-<section class="promise">
-
-    <div class="label">
-        A PROMISE
-    </div>
-
-    <h2 class="title">
-        एक चीज हमेशा याद रखना।
-    </h2>
-
-    <div class="promise-box">
-
-        <p>
-
-            चाहे जिंदगी हमें कितनी भी दूर ले जाए...
-
-            <br><br>
-
-            चाहे हम कितने भी busy हो जाएँ...
-
-            <br><br>
-
-            चाहे हमारी जिंदगी में कितने भी नए लोग आएँ...
-
-            <br><br>
-
-            <strong>
-                तुम्हारे लिए मेरा रिश्ता और मेरी दुआ
-                हमेशा अपनी जगह पर रहेगी।
-            </strong>
-
-            <br><br>
-
-            तुम्हारी success पर
-            मुझे हमेशा गर्व होगा।
-
-            <br><br>
-
-            और जब कभी तुम्हें लगे कि
-            तुम अकेली हो...
-
-            <br><br>
-
-            <strong>
-                याद रखना — तुम्हारा भाई है।
-            </strong>
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SECRET LETTER
-===================================================== -->
-
-<section class="secret">
-
-    <div class="label">
-        PRIVATE
-    </div>
-
-    <h2 class="title">
-        एक आखिरी बात...
-    </h2>
-
-    <div
-        class="envelope"
-        onclick="openSecret()"
-    >
-
-        <div class="envelope-icon" id="envelopeIcon">
-            💌
-        </div>
-
-        <h3>
-            सिर्फ तुम्हारे लिए।
-        </h3>
-
-        <small>
-            Tap to open
-        </small>
-
-
-        <div
-            class="secret-content"
-            id="secretContent"
-        >
-
-            <p>
-
-                अगर तुम ये पढ़ रही हो,
-                तो बस एक बात याद रखना।
-
-                <br><br>
-
-                तुम मेरी जिंदगी में
-                accident की तरह नहीं आईं।
-
-                <br><br>
-
-                तुम उन खूबसूरत चीजों में से एक हो
-                जिनके लिए मैं जिंदगी भर thankful रहूँगा।
-
-                <br><br>
-
-                कभी-कभी मैं सोचता हूँ
-                कि हम सगे भाई-बहन नहीं हैं।
-
-                <br><br>
-
-                लेकिन फिर खुद ही समझ आता है...
-
-                <br>
-
-                <strong>
-                दिल के रिश्ते को खून के रिश्ते की
-                जरूरत नहीं होती।
-                </strong>
-
-                <br><br>
-
-                मैं हर उस भगवान से
-                तुम्हारे लिए दुआ करूँगा
-                जो मेरी बात सुन सके।
-
-                <br><br>
-
-                तुम्हारे सभी सपने पूरे हों।
-
-                <br>
-
-                तुम्हें वो सारी खुशियाँ मिलें
-                जिनकी तुम हकदार हो।
-
-                <br><br>
-
-                और अगर मेरी जिंदगी की
-                थोड़ी सी भी खुशी तुम्हारे काम आ सके...
-
-                <br><br>
-
-                तो वो भी तुम्हारी।
-
-                <br><br>
-
-                हमेशा खुश रहना।
-
-                <br><br>
-
-                — तुम्हारा भाई ❤️
-
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     RED DIAMOND
-===================================================== -->
-
-<section class="diamond-section">
-
-    <div class="label">
-        WHAT YOU ARE TO ME
-    </div>
-
-    <h2 class="title">
-        My Red Diamond
-    </h2>
-
-    <div class="diamond">
-
-        <span>
-            ❤️
-        </span>
-
-    </div>
-
-
-    <div class="diamond-text">
-
-        मेरे लिए तुम सभी हीरों में
-        सबसे कीमती <strong style="color:#d52b55;">
-        Red Diamond
-        </strong> हो।
-
-        <br><br>
-
-        तुम मेरे शरीर के लिए खून की तरह हो।
-
-        <br><br>
-
-        तुम मेरे लिए पूर्णिमा के चाँद जैसी हो।
-
-        <br><br>
-
-        तुम मेरे पूरे दिन में
-        सुकून भरी रात जैसी हो।
-
-        <br><br>
-
-        मेरे लिए कोहिनूर भी
-        तुम्हारे सामने कुछ नहीं है।
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SOUL
-===================================================== -->
-
-<section class="big-quote">
-
-    <div class="label">
-        THE SIMPLEST WAY TO SAY IT
-    </div>
-
-    <div class="big-quote-text">
-
-        अगर मैं शरीर हूँ...
-
-        <br>
-
-        <span>
-            तुम उसकी आत्मा हो।
-        </span>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     FINAL
-===================================================== -->
-
-<section class="final">
-
-    <div class="final-small">
-        THIS IS NOT THE END
-    </div>
-
-    <h2>
-
-        तुम मेरी जिंदगी का
-        <br>
-
-        <span>
-            हिस्सा नहीं हो।
-        </span>
-
-    </h2>
-
-    <p>
-
-        तुम उन वजहों में से एक हो
-        जिनसे मेरी जिंदगी खूबसूरत है।
-
-        <br><br>
-
-        और शायद यही वजह है
-        कि मैं तुम्हें सिर्फ अपनी sister नहीं कहता...
-
-        <br><br>
-
-        <strong style="color:#fff;">
-            तुम मेरी पूरी दुनिया हो।
-        </strong>
-
-    </p>
-
-    <div class="final-heart">
-        ❤️
-    </div>
-
-</section>
-
-
-<footer>
-
-    MADE WITH LOVE — BY YOUR BROTHER ❤️
-
-</footer>
+<!-- Optional music -->
+<audio id="bgMusic" loop>
+   https://www.youtube.com/watch?v=riU4OScbAdA
+</audio>
 
 
 <script>
 
-/* =========================================================
-   START
-========================================================= */
+let currentScreen = 1;
 
-function startStory(){
+function nextScreen(number){
 
-    const loader =
-        document.getElementById("loader");
+    document.getElementById("screen" + currentScreen)
+        .classList.remove("active");
 
-    loader.style.opacity="0";
+    document.getElementById("screen" + number)
+        .classList.add("active");
 
-    setTimeout(()=>{
-        loader.style.display="none";
-    },1200);
+    currentScreen = number;
 
+    updateDots();
+
+    createHeart();
 }
 
+function updateDots(){
 
-/* =========================================================
-   STAR FIELD
-========================================================= */
+    document.querySelectorAll(".dot").forEach((dot,index)=>{
 
-const canvas =
-    document.getElementById("stars");
-
-const ctx =
-    canvas.getContext("2d");
-
-let stars=[];
-
-function resize(){
-
-    canvas.width =
-        window.innerWidth;
-
-    canvas.height =
-        window.innerHeight;
-
-}
-
-resize();
-
-window.addEventListener(
-    "resize",
-    resize
-);
-
-
-function createStars(){
-
-    stars=[];
-
-    const amount =
-        Math.min(
-            170,
-            Math.floor(
-                window.innerWidth *
-                window.innerHeight /
-                9500
-            )
+        dot.classList.toggle(
+            "active",
+            index === currentScreen - 1
         );
-
-    for(let i=0;i<amount;i++){
-
-        stars.push({
-
-            x:Math.random()*
-                canvas.width,
-
-            y:Math.random()*
-                canvas.height,
-
-            r:Math.random()*1.2+.2,
-
-            speed:Math.random()*.2+.03,
-
-            alpha:Math.random()*.6+.15
-
-        });
-
-    }
-
-}
-
-createStars();
-
-
-function animate(){
-
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    stars.forEach(s=>{
-
-        s.y-=s.speed;
-
-        if(s.y<0){
-            s.y=canvas.height;
-        }
-
-        ctx.beginPath();
-
-        ctx.arc(
-            s.x,
-            s.y,
-            s.r,
-            0,
-            Math.PI*2
-        );
-
-        ctx.fillStyle=
-            `rgba(255,255,255,${s.alpha})`;
-
-        ctx.fill();
 
     });
 
-    requestAnimationFrame(
-        animate
-    );
-
 }
 
-animate();
+function unlock(){
 
+    const a = document.getElementById("q1").value.trim();
+    const b = document.getElementById("q2").value.trim();
+    const c = document.getElementById("q3").value.trim();
 
-/* =========================================================
-   SECRET LETTER
-========================================================= */
+    /*
+       V1 intentionally accepts any non-empty answer.
+       Later we can replace these with your REAL answers.
+    */
 
-function openSecret(){
+    if(a && b && c){
 
-    const content =
-        document.getElementById(
-            "secretContent"
-        );
+        document.getElementById("error").style.display="none";
 
-    const icon =
-        document.getElementById(
-            "envelopeIcon"
-        );
-
-    if(
-        content.classList.contains("open")
-    ){
-
-        content.classList.remove("open");
-        icon.innerHTML="💌";
+        nextScreen(4);
 
     }else{
 
-        content.classList.add("open");
-        icon.innerHTML="💖";
+        document.getElementById("error").style.display="block";
 
     }
 
 }
 
+function createHeart(){
 
-/* =========================================================
-   NEVER SAY ANIMATION
-========================================================= */
+    const heart=document.createElement("div");
 
-const items =
-    document.querySelectorAll(
-        ".never-item"
-    );
+    heart.className="floating";
+    heart.innerHTML=["❤️","💗","✨","♡"][Math.floor(Math.random()*4)];
 
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(5+Math.random()*5)+"s";
 
-const observer =
-    new IntersectionObserver(
-        entries=>{
+    document.body.appendChild(heart);
 
-            entries.forEach(
-                entry=>{
-
-                    if(
-                        entry.isIntersecting
-                    ){
-
-                        entry.target
-                            .classList
-                            .add("visible");
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold:.2
-        }
-    );
+    setTimeout(()=>{
+        heart.remove();
+    },10000);
+}
 
 
-items.forEach(
-    item=>{
-        observer.observe(item);
-    }
-);
+/* Stars */
+
+for(let i=0;i<100;i++){
+
+    const star=document.createElement("div");
+
+    star.className="star";
+
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+
+    star.style.animationDelay=
+        Math.random()*3+"s";
+
+    document.getElementById("stars")
+        .appendChild(star);
+}
 
 
-/* =========================================================
-   CLICK HEART
-========================================================= */
+/* Music */
 
-document.addEventListener(
-    "click",
-    function(e){
+function toggleMusic(){
 
-        if(
-            e.target.closest("button")
-        ){
-            return;
-        }
+    const music=document.getElementById("bgMusic");
+    const btn=document.getElementById("musicBtn");
 
-        const heart =
-            document.createElement(
-                "div"
-            );
+    if(!music.src){
 
-        heart.className="heart";
-
-        heart.innerHTML =
-            Math.random()>.25
-            ? "❤️"
-            : "✨";
-
-        heart.style.left =
-            e.clientX+"px";
-
-        heart.style.top =
-            e.clientY+"px";
-
-        document.body.appendChild(
-            heart
-        );
-
-        setTimeout(
-            ()=>{
-                heart.remove();
-            },
-            1800
-        );
+        alert("Add your music URL inside the <audio> section first.");
+        return;
 
     }
-);
 
+    if(music.paused){
 
-/* =========================================================
-   SECRET KEYBOARD
-========================================================= */
+        music.play();
+        btn.innerHTML="🔊";
 
-let typed="";
+    }else{
 
-document.addEventListener(
-    "keydown",
-    function(e){
-
-        typed +=
-            e.key.toLowerCase();
-
-        if(
-            typed.length>30
-        ){
-
-            typed=
-                typed.slice(-30);
-
-        }
-
-        if(
-            typed.includes("sister")
-        ){
-
-            for(
-                let i=0;
-                i<15;
-                i++
-            ){
-
-                setTimeout(
-                    createRandomHeart,
-                    i*100
-                );
-
-            }
-
-            typed="";
-
-        }
+        music.pause();
+        btn.innerHTML="♪";
 
     }
-);
-
-
-function createRandomHeart(){
-
-    const heart =
-        document.createElement(
-            "div"
-        );
-
-    heart.className="heart";
-
-    heart.innerHTML="❤️";
-
-    heart.style.left =
-        Math.random()*
-        window.innerWidth+
-        "px";
-
-    heart.style.top =
-        window.innerHeight+
-        "px";
-
-    document.body.appendChild(
-        heart
-    );
-
-    setTimeout(
-        ()=>{
-            heart.remove();
-        },
-        1800
-    );
 
 }
 
@@ -2079,3 +537,4 @@ function createRandomHeart(){
 
 </body>
 </html>
+```
