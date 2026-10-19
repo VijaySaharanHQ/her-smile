@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Dussehra, Shambhavi ❤️</title>
+<style>
+:root{--bg:#19080d;--gold:#ffd77a;--pink:#ffb0a5}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#64202a,var(--bg) 70%);color:#fff4e1;font-family:Georgia,serif;text-align:center;min-height:100vh;overflow-x:hidden}
+header{padding:50px 18px 25px}
+.badge{color:var(--gold);letter-spacing:4px;font:12px Arial;text-transform:uppercase}
+h1{font-size:clamp(38px,8vw,72px);color:var(--gold);margin:20px 0;text-shadow:0 0 28px #ffb33b55}
+p{line-height:1.8}
+.hero{max-width:780px;margin:auto;padding:0 20px}
+.card{margin:25px auto;padding:28px;max-width:720px;background:#ffffff0b;border:1px solid #ffd77a55;border-radius:22px;box-shadow:0 20px 70px #0005}
+button{border:1px solid var(--gold);background:linear-gradient(120deg,#ffd77a,#b96b35);color:#321019;border-radius:30px;padding:13px 20px;font-weight:bold;cursor:pointer;margin:6px}
+button:hover{transform:translateY(-2px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:20px}
+.item{padding:17px 10px;border-radius:14px;background:#ffffff0a;border:1px solid #ffffff16}
+.item b{display:block;color:var(--gold);margin-bottom:8px}
+#letter{display:none;white-space:pre-line;text-align:left;line-height:2}
+#fireworks{font-size:28px;min-height:42px}
+.diya{display:inline-block;font-size:28px;animation:glow 1.8s infinite alternate;margin:12px}
+footer{padding:30px;color:#d9bba7;font:12px Arial}
+@keyframes glow{to{filter:drop-shadow(0 0 15px #ffb52d);transform:scale(1.1)}}
+@keyframes float{50%{transform:translateY(-10px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+<div class="badge">A little festive surprise • Made with love</div>
+<div class="diya">🪔</div><div class="diya">✨</div><div class="diya">🪔</div>
+<h1>Happy Dussehra</h1>
+<div style="font-size:clamp(25px,5vw,40px);color:#ffb0a5">Shambhavi ❤️</div>
+<p>May goodness always win, and may your life shine with happiness, courage and peace.</p>
+</header>
+<main class="hero">
+<section class="card">
+<div style="font-size:55px">🏹🌺</div>
+<h2 style="color:var(--gold)">For My Sister, My Pride</h2>
+<p>On this beautiful occasion of Dussehra, I pray that every new beginning brings you hope, every challenge makes you stronger, and every day gives you a reason to smile.</p>
+<p>May Maa Durga bless you with strength, wisdom and protection. May Lord Ram's victory remind you that truth and goodness are always worth choosing.</p>
+<button onclick="reveal()">Open Your Special Message 💌</button>
+<div id="letter">
+<h2 style="color:var(--gold)">Dear Shambhavi,</h2>
+This Dussehra, I just want to wish you endless happiness, confidence, good health and success. Keep believing in yourself, keep growing, and never forget how valuable you are.
+
+May the negativity in life burn away like Ravana's effigy, making space for peace, positivity and beautiful beginnings.
+
+May your smile stay bright and your heart stay brave. You deserve a future full of beautiful opportunities and proud moments.
+
+Happy Dussehra, Shambhavi! ❤️
+
+With lots of love,
+Your Brother
+</div>
+</section>
+<section class="card">
+<h2 style="color:var(--gold)">Nine Beautiful Blessings</h2>
+<div class="grid">
+<div class="item"><b>🌸 Happiness</b>May joy find you</div>
+<div class="item"><b>🛡️ Courage</b>Face every challenge</div>
+<div class="item"><b>📚 Wisdom</b>Choose the right path</div>
+<div class="item"><b>🌟 Success</b>Keep moving forward</div>
+<div class="item"><b>🪔 Peace</b>May your heart feel calm</div>
+<div class="item"><b>💗 Love</b>Stay surrounded by care</div>
+<div class="item"><b>🌿 Health</b>May you stay well</div>
+<div class="item"><b>🙏 Blessings</b>May you feel protected</div>
+<div class="item"><b>✨ Hope</b>May new doors open</div>
+</div>
+</section>
+<section class="card">
+<h2 style="color:var(--gold)">Celebrate the Victory of Good</h2>
+<p>Tap below to light up your Dussehra celebration!</p>
+<div id="fireworks" aria-live="polite">🪔 ✨ 🏹 ✨ 🪔</div>
+<button onclick="celebrate()">Celebrate 🎆</button>
+<button onclick="copyWish()">Copy My Wishes</button>
+<button onclick="shareWish()">Share Wishes</button>
+<p id="status" aria-live="polite"></p>
+</section>
+</main>
+<footer>Made especially for Shambhavi • Happy Dussehra 🪔</footer>
+<script>
+function reveal(){document.getElementById('letter').style.display='block';document.getElementById('letter').scrollIntoView({behavior:'smooth',block:'center'})}
+function celebrate(){const f=document.getElementById('fireworks');f.textContent='🎆 ✨ 🎇 🪔 🎆 ✨ 🎇';f.animate([{transform:'scale(.8)',opacity:.5},{transform:'scale(1.15)',opacity:1},{transform:'scale(1)',opacity:1}],{duration:650});setTimeout(()=>f.textContent='🪔 ✨ 🏹 ✨ 🪔',2200)}
+const wish='Happy Dussehra, Shambhavi! ❤️ May goodness always win and may your life be filled with happiness, courage, wisdom, peace and Maa Durga’s blessings. — Your Brother';
+async function copyWish(){try{await navigator.clipboard.writeText(wish);document.getElementById('status').textContent='Wish copied! ❤️'}catch(e){document.getElementById('status').textContent=wish}}
+async function shareWish(){if(navigator.share){try{await navigator.share({title:'Happy Dussehra, Shambhavi',text:wish})}catch(e){}}else copyWish()}
+</script>
+</body>
+</html>
