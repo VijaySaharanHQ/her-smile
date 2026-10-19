@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#34203f">
+<title>For Himansi 🌷 | Shubh Navratri</title>
+
+<style>
+:root{
+  --night:#21162f;
+  --purple:#34203f;
+  --lavender:#cdb6f2;
+  --gold:#f1d5a3;
+  --cream:#fff7f1;
+  --rose:#f2b8c8;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  overflow-x:hidden;
+  color:var(--cream);
+  font-family:Georgia,"Times New Roman",serif;
+  background:
+    radial-gradient(ellipse at 50% 0%,#74528b 0%,transparent 50%),
+    linear-gradient(145deg,var(--night),var(--purple),#1c1328);
+}
+nav{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:20px 6%;
+  border-bottom:1px solid #f1d5a344;
+  font:11px Arial,sans-serif;letter-spacing:1.5px;
+}
+nav strong{color:var(--gold)}
+main{width:min(860px,90%);margin:auto}
+.hero{
+  text-align:center;padding:78px 0 60px;
+  animation:fadein 1.1s ease both;
+}
+.moon{font-size:40px;color:var(--gold)}
+.eyebrow{
+  margin:22px 0;text-transform:uppercase;
+  letter-spacing:4px;font:11px Arial,sans-serif;color:var(--lavender);
+}
+h1{
+  margin:15px 0;font-weight:normal;
+  font-size:clamp(48px,10vw,88px);line-height:1.08;
+}
+h1 span{color:var(--gold);font-style:italic}
+.intro{max-width:560px;margin:auto;line-height:1.9;color:#f0e3f6}
+.actions{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:12px;margin-top:28px;
+}
+button{
+  border:1px solid var(--gold);border-radius:30px;
+  padding:13px 20px;background:var(--gold);
+  color:#2a1b35;font-weight:bold;cursor:pointer;transition:.2s;
+}
+button:hover{transform:translateY(-2px)}
+button.secondary{background:transparent;color:var(--gold)}
+button:focus-visible{outline:3px solid white;outline-offset:4px}
+.divider{text-align:center;color:var(--gold);margin:15px 0 30px}
+section{padding:30px 0}
+.heading{text-align:center;margin-bottom:25px}
+.heading h2{font-size:clamp(28px,5vw,40px);font-weight:normal;margin-bottom:8px}
+.heading p{line-height:1.8;color:#e6d5ef}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{
+  text-align:center;padding:23px 15px;border-radius:18px;
+  border:1px solid #cdb6f255;background:#ffffff09;
+  transition:transform .25s,background .25s;
+}
+.card:hover{transform:translateY(-5px);background:#ffffff12}
+.symbol{font-size:30px}
+.card h3{font-size:19px;font-weight:normal;color:var(--gold)}
+.card p{font:13px/1.75 Arial,sans-serif;color:#ebdff2}
+.letter{
+  padding:clamp(22px,5vw,42px);
+  border:1px solid #f1d5a366;border-radius:22px;
+  background:#ffffff09;font-size:16px;line-height:2;
+}
+.letter h2{text-align:center;color:var(--gold);font-weight:normal}
+.signature{text-align:right;color:var(--gold);font-style:italic}
+.mantra{text-align:center;padding:35px 0;color:var(--gold);font-size:27px;line-height:1.8}
+footer{
+  text-align:center;padding:27px 12px;
+  border-top:1px solid #f1d5a333;
+  color:#e6d5ef;font:12px/1.9 Arial,sans-serif;
+}
+#toast{
+  display:none;position:fixed;z-index:10;bottom:20px;left:50%;
+  transform:translateX(-50%);max-width:90%;
+  padding:12px 18px;border-radius:30px;
+  background:var(--cream);color:var(--night);font:13px Arial,sans-serif;
+}
+.petal{position:fixed;top:-25px;z-index:5;pointer-events:none;animation:fall linear forwards}
+@keyframes fadein{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+@media(max-width:650px){.grid{grid-template-columns:repeat(2,1fr)}.hero{padding-top:55px}}
+@media(max-width:380px){.grid{grid-template-columns:1fr}nav{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+
+<body>
+<nav>
+<strong>✦ A FESTIVE LITTLE SURPRISE ✦</strong>
+<span>Created with good wishes ❤️</span>
+</nav>
+
+<main>
+<header class="hero">
+<div class="moon">☾ ✧</div>
+<div class="eyebrow">A season of hope and new beginnings</div>
+<h1>For You,<br><span>Himansi</span> 🌷</h1>
+<p class="intro">
+May this Navratri bring a little extra light to your days,
+peace to your heart, courage to your dreams and happiness
+to all the beautiful chapters yet to come.
+</p>
+<div class="actions">
+<button onclick="openBlessings()">Discover Your Blessings ✨</button>
+<button class="secondary" onclick="goLetter()">Read Your Note 💌</button>
+</div>
+</header>
+
+<div class="divider">────── ✧ ──────</div>
+
+<section id="blessings" hidden>
+<div class="heading">
+<h2>Nine Wishes, Just for You</h2>
+<p>Nine reminders inspired by the spirit of Navratri.</p>
+</div>
+<div class="grid">
+<article class="card"><div class="symbol">🌸</div><h3>Joy</h3><p>May you discover happiness in life's little moments.</p></article>
+<article class="card"><div class="symbol">🪷</div><h3>Peace</h3><p>May your heart always find space to breathe and rest.</p></article>
+<article class="card"><div class="symbol">✨</div><h3>Dreams</h3><p>May you keep moving toward what matters to you.</p></article>
+<article class="card"><div class="symbol">🦁</div><h3>Bravery</h3><p>May courage help you through every challenge.</p></article>
+<article class="card"><div class="symbol">🌙</div><h3>Hope</h3><p>May every new morning bring fresh possibilities.</p></article>
+<article class="card"><div class="symbol">💗</div><h3>Kindness</h3><p>May you receive the warmth you give to others.</p></article>
+<article class="card"><div class="symbol">🪔</div><h3>Wisdom</h3><p>May clarity guide you through important choices.</p></article>
+<article class="card"><div class="symbol">🦋</div><h3>Growth</h3><p>May each experience help you grow in your own way.</p></article>
+<article class="card"><div class="symbol">🙏</div><h3>Blessings</h3><p>May Maa Durga guide your path with grace.</p></article>
+</div>
+</section>
+
+<div class="divider">────── ✧ ──────</div>
+
+<section id="letter">
+<div class="letter">
+<h2>💌 A Heartfelt Note for Himansi</h2>
+<p>Hey Himansi! 🌷</p>
+<p>Shubh Navratri! ❤️</p>
+<p>
+Is Navratri par tumhare liye dil se yahi wish hai ki
+Maa Durga tumhari life mein happiness, peace, courage
+aur positivity lekar aayein.
+</p>
+<p>
+Tum jo bhi goals apne liye set karo, unki taraf confidence
+ke saath badhti raho. Har difficult moment ke baad ek nayi
+possibility ho, aur har chhoti achievement tumhe aage badhne
+ki motivation de.
+</p>
+<p>
+I hope tumhari life mein achhe opportunities, genuine
+friendships, beautiful memories aur bahut saare reasons
+to smile aayein. Apne aap par trust rakhna aur apni
+khushiyon ko bhi importance dena.
+</p>
+<p>
+Ye page ek chhota sa festive surprise hai, tumhare liye
+good wishes aur positive vibes ke saath. May this season
+bring fresh hope and lovely beginnings into your life. ✨
+</p>
+<p class="signature">Wishing you happiness always,<br>Your friend ❤️</p>
+</div>
+
+<div class="actions">
+<button onclick="copyWish()">Copy Navratri Wish 📋</button>
+<button class="secondary" onclick="celebrate()">Send Some Sparkles ✨</button>
+<button class="secondary" onclick="sharePage()">Share Page ↗</button>
+</div>
+</section>
+
+<div class="mantra">
+॥ जय माता दी ॥
+<br><span style="font-size:15px;color:#fff7f1">Shubh Navratri, Himansi 🌷</span>
+</div>
+</main>
+
+<footer>
+A little Navratri surprise made with ❤️ for Himansi.<br>
+May you always have hope, courage and reasons to smile.
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+function showToast(message){
+ const el=document.getElementById("toast");
+ el.textContent=message;
+ el.style.display="block";
+ clearTimeout(window.toastTimer);
+ window.toastTimer=setTimeout(()=>el.style.display="none",2800);
+}
+
+function openBlessings(){
+ document.getElementById("blessings").hidden=false;
+ document.getElementById("blessings").scrollIntoView({behavior:"smooth"});
+ celebrate();
+}
+
+function goLetter(){
+ document.getElementById("letter").scrollIntoView({behavior:"smooth"});
+}
+
+async function copyWish(){
+ const message="Shubh Navratri, Himansi! 🌷 May Maa Durga bless you with joy, peace, courage, hope and success. Wishing you a beautiful festive season! ❤️ Jai Mata Di!";
+ try{
+  await navigator.clipboard.writeText(message);
+  showToast("Wish copied! Share it with Himansi ❤️");
+ }catch(error){
+  const area=document.createElement("textarea");
+  area.value=message;
+  document.body.appendChild(area);
+  area.select();
+  const copied=document.execCommand("copy");
+  area.remove();
+  showToast(copied?"Wish copied! ❤️":message);
+ }
+}
+
+function celebrate(){
+ if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+  showToast("Shubh Navratri, Himansi! 🌷");
+  return;
+ }
+ const symbols=["🌷","✨","🌸","💗","✧"];
+ for(let i=0;i<25;i++){
+  const item=document.createElement("span");
+  item.className="petal";
+  item.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  item.style.left=Math.random()*100+"vw";
+  item.style.fontSize=(13+Math.random()*17)+"px";
+  item.style.animationDuration=(2+Math.random()*3)+"s";
+  document.body.appendChild(item);
+  setTimeout(()=>item.remove(),5200);
+ }
+ showToast("Sending positive vibes to Himansi! ✨");
+}
+
+async function sharePage(){
+ const data={
+  title:"A Navratri Surprise for Himansi 🌷",
+  text:"A little festive greeting filled with good wishes.",
+  url:location.href
+ };
+ if(navigator.share){
+  try{await navigator.share(data)}
+  catch(error){if(error.name!=="AbortError")showToast("Sharing isn't available right now.")}
+ }else{
+  try{
+   await navigator.clipboard.writeText(location.href);
+   showToast("Page link copied! ❤️");
+  }catch(error){
+   showToast("Copy the link from your browser's address bar.");
+  }
+ }
+}
+</script>
+</body>
+</html>
