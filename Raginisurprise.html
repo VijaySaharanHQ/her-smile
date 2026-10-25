@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d2a">
+<meta name="description" content="A tiny mystery and a little friendship surprise made for Ragini.">
+<title>A Little Mystery for Ragini ✨</title>
+<style>
+  :root{
+    --night:#070b22; --night2:#10153b; --ink:#f7f3ff; --muted:#c9c6e8;
+    --pink:#ff9cda; --lav:#b8a0ff; --gold:#ffd78a; --cyan:#8cecff;
+    --glass:rgba(20,25,68,.68); --line:rgba(210,204,255,.2);
+    --shadow:0 20px 60px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;min-height:100vh;color:var(--ink);font-family:ui-rounded,"Trebuchet MS",system-ui,-apple-system,sans-serif;
+    background:radial-gradient(ellipse at 15% 15%,#25215d 0,transparent 35%),radial-gradient(ellipse at 85% 75%,#291b55 0,transparent 36%),linear-gradient(145deg,var(--night),#0b1233 60%,#120e30);overflow-x:hidden}
+  button{font:inherit}
+  button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+  .stars,.stars:before,.stars:after{position:fixed;inset:0;pointer-events:none;content:"";z-index:0;background-repeat:repeat}
+  .stars{opacity:.65;background-image:radial-gradient(2px 2px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 90px 80px,#fff,transparent),radial-gradient(1.5px 1.5px at 160px 140px,#d8c8ff,transparent);background-size:210px 190px;animation:twinkle 6s ease-in-out infinite alternate}
+  .stars:before{opacity:.7;background-image:radial-gradient(1px 1px at 70px 100px,#fff,transparent),radial-gradient(2px 2px at 180px 20px,#ffe1a6,transparent);background-size:260px 230px;animation:drift 50s linear infinite}
+  .stars:after{background-image:radial-gradient(1px 1px at 30px 150px,#b7eaff,transparent),radial-gradient(1px 1px at 210px 70px,#fff,transparent);background-size:300px 270px}
+  @keyframes twinkle{to{opacity:.28}} @keyframes drift{to{transform:translateY(-100px)}}
+  .orb{position:fixed;width:260px;height:260px;border-radius:50%;filter:blur(65px);opacity:.14;pointer-events:none;z-index:0}
+  .orb.one{background:#b75cff;top:15%;left:-100px}.orb.two{background:#37c8ff;bottom:8%;right:-100px}
+  .wrap{position:relative;z-index:1;width:min(100% - 28px,920px);margin:0 auto;padding:22px 0 36px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.02em}
+  .brand-icon{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#38306d,#171c49);box-shadow:0 0 24px #a78bfa22}
+  .tiny{font-size:.82rem;color:var(--muted)}
+  .sound-note{border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:#ffffff08;color:var(--muted);font-size:.78rem}
+  main{min-height:70vh}
+  .screen{display:none;animation:appear .55s ease both}
+  .screen.active{display:block}
+  @keyframes appear{from{opacity:0;transform:translateY(12px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+  .hero{min-height:70vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:30px;padding:42px 22px;background:linear-gradient(155deg,rgba(33,32,84,.76),rgba(8,14,42,.72));box-shadow:var(--shadow)}
+  .moon{position:absolute;right:9%;top:8%;font-size:clamp(2.6rem,7vw,4.5rem);filter:drop-shadow(0 0 22px #ffdc9c77);animation:float 5s ease-in-out infinite}
+  .sparkle{position:absolute;color:var(--gold);font-size:1.2rem;animation:float 4s ease-in-out infinite}
+  .s1{top:20%;left:12%}.s2{top:35%;right:15%;animation-delay:1s}.s3{bottom:17%;left:19%;animation-delay:1.8s}.s4{bottom:25%;right:12%;animation-delay:.6s}
+  @keyframes float{50%{transform:translateY(-10px) rotate(7deg)}}
+  .eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--cyan);font-weight:800}
+  h1,h2,h3,p{margin-top:0}
+  h1{font-size:clamp(2.5rem,8vw,5.2rem);line-height:1.02;margin:16px 0;background:linear-gradient(90deg,#fff4ff,var(--pink),var(--lav));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.045em}
+  h2{font-size:clamp(1.7rem,5vw,2.7rem);letter-spacing:-.03em;margin-bottom:12px}
+  h3{font-size:1.12rem;margin-bottom:8px}
+  p{line-height:1.7;color:#e1def9}
+  .lead{font-size:clamp(1rem,2.6vw,1.18rem);max-width:560px;margin:0 auto 24px}
+  .btn{cursor:pointer;border:0;border-radius:999px;padding:13px 21px;color:#171236;font-weight:850;background:linear-gradient(100deg,#ffe6a8,#ffa8dc);box-shadow:0 8px 26px #ff9cda28;transition:transform .2s,filter .2s}
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .btn.secondary{color:var(--ink);background:#ffffff0a;border:1px solid var(--line);box-shadow:none}
+  .btn.purple{background:linear-gradient(100deg,#c9b4ff,#ffb5e3)}
+  .button-row{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .panel{border:1px solid var(--line);border-radius:28px;padding:clamp(22px,5vw,42px);background:linear-gradient(150deg,rgba(24,29,76,.88),rgba(8,13,39,.88));box-shadow:var(--shadow)}
+  .center{text-align:center}.max{max-width:680px;margin:0 auto}
+  .progress{height:4px;background:#ffffff10;border-radius:99px;overflow:hidden;margin:0 0 22px}
+  .progress span{display:block;height:100%;width:12.5%;background:linear-gradient(90deg,var(--cyan),var(--pink));transition:width .4s}
+  .label{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--muted);font-size:.78rem;margin-bottom:18px}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:24px}
+  .choice{min-height:132px;text-align:left;padding:18px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#ffffff0d,#ffffff04);color:var(--ink);cursor:pointer;transition:.22s}
+  .choice:hover{transform:translateY(-3px);border-color:#ffb7e5aa;background:#ffffff12}
+  .choice .emoji{display:block;font-size:1.8rem;margin-bottom:10px}.choice strong{display:block;font-size:1rem;margin-bottom:5px}.choice small{color:var(--muted);line-height:1.4}
+  .reveal{margin-top:18px;padding:22px;border-radius:20px;border:1px solid #ffb4e766;background:linear-gradient(145deg,#a45bd51e,#45b9e51a);animation:appear .35s ease both}
+  .letter{position:relative;overflow:hidden;background:linear-gradient(145deg,#fff0c8,#ffd5e8);color:#33264f;border-radius:18px;padding:clamp(22px,5vw,36px);box-shadow:0 18px 50px #0003;transform:rotate(-.5deg);max-width:590px;margin:22px auto}
+  .letter p{color:#433254}.letter .signature{font-weight:850;color:#6d397b}
+  .vault-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+  .vault-card{min-height:142px;border:1px solid var(--line);border-radius:18px;background:#ffffff08;color:var(--ink);padding:17px 10px;cursor:pointer;transition:.2s}
+  .vault-card:hover{transform:translateY(-3px);background:#ffffff12}.vault-card span{display:block;font-size:1.7rem;margin-bottom:9px}.vault-card strong{font-size:.9rem}.vault-card small{display:block;color:var(--muted);margin-top:6px}
+  .quote{font-size:clamp(1.25rem,4vw,2rem);line-height:1.45;color:#fff1ff;max-width:560px;margin:22px auto}
+  .quote-mark{font-size:3rem;color:var(--pink);line-height:.8}
+  .mini-list{display:grid;gap:10px;text-align:left;max-width:560px;margin:22px auto}
+  .mini-list div{display:flex;gap:12px;align-items:flex-start;padding:13px;border:1px solid var(--line);border-radius:14px;background:#ffffff06}
+  .mini-list span{font-size:1.2rem}
+  .footer{text-align:center;padding:26px 8px 0;color:#a7a4cf;font-size:.8rem}
+  .footer strong{color:#e8dfff}
+  .toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#fce7ff;color:#26173c;padding:12px 18px;border-radius:999px;font-weight:800;box-shadow:var(--shadow);z-index:10;transition:.3s;max-width:90%;text-align:center}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+  .confetti{position:fixed;top:-15px;width:8px;height:12px;border-radius:3px;z-index:20;pointer-events:none;animation:fall 2.8s linear forwards}
+  @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+  .final-orbit{font-size:3.4rem;display:inline-block;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 0 22px #ffaddb55)}
+  .note{font-size:.86rem;color:var(--muted)}
+  @media(max-width:560px){.wrap{width:min(100% - 18px,920px);padding-top:14px}.hero{min-height:72vh;padding:34px 17px;border-radius:23px}.panel{border-radius:22px;padding:23px 16px}.grid{gap:9px}.choice{padding:14px;min-height:132px}.vault-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.vault-card{min-height:125px}.sound-note{display:none}}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div><div class="orb one" aria-hidden="true"></div><div class="orb two" aria-hidden="true"></div>
+<div class="wrap">
+  <header>
+    <div class="brand"><div class="brand-icon" aria-hidden="true">✦</div><div>A LITTLE MYSTERY <div class="tiny">a tiny friendship surprise</div></div></div>
+    <div class="sound-note">🌙 No music • Just good vibes</div>
+  </header>
+  <main>
+    <section class="screen active" id="welcome" aria-labelledby="welcome-title">
+      <div class="hero">
+        <div class="moon" aria-hidden="true">☾</div><span class="sparkle s1" aria-hidden="true">✦</span><span class="sparkle s2" aria-hidden="true">✧</span><span class="sparkle s3" aria-hidden="true">✦</span><span class="sparkle s4" aria-hidden="true">✧</span>
+        <div>
+          <div class="eyebrow">A little something for</div>
+          <h1 id="welcome-title">Ragini</h1>
+          <p class="lead">Some surprises don't need a big reason.<br>Sometimes, a new friendship is reason enough. ✨</p>
+          <button class="btn" onclick="go('intro')">Enter the mystery <span aria-hidden="true">→</span></button>
+          <p class="tiny" style="margin:18px 0 0">🔒 Tiny secret. Kind vibes only.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="intro" aria-labelledby="intro-title">
+      <div class="progress"><span style="width:20%"></span></div>
+      <div class="panel center max">
+        <div class="label">✉️ A note from your new friend</div>
+        <div style="font-size:3rem" aria-hidden="true">🌟</div>
+        <h2 id="intro-title">Hey, Ragini!</h2>
+        <p>I know, we’ve only just become friends — so this isn’t a big dramatic speech. 😄</p>
+        <p>I just thought it would be fun to make a tiny corner of the internet with a little mystery, a few smiles, and some positive vibes.</p>
+        <p>No pressure to react in any particular way. Just explore, tap around, and enjoy the surprise. 💜</p>
+        <div class="button-row"><button class="btn purple" onclick="go('mood')">Okay, show me! ✨</button><button class="btn secondary" onclick="go('welcome')">Back</button></div>
+      </div>
+    </section>
+
+    <section class="screen" id="mood" aria-labelledby="mood-title">
+      <div class="progress"><span style="width:35%"></span></div>
+      <div class="panel center">
+        <div class="label">🗝️ Clue 01 · Choose your path</div>
+        <h2 id="mood-title">Pick a little surprise</h2>
+        <p class="max">Choose whichever matches your mood. Each button opens a different tiny message.</p>
+        <div class="grid">
+          <button class="choice" onclick="showReveal('happy')"><span class="emoji">🌈</span><strong>Need a smile?</strong><small>A quick mood-lifter</small></button>
+          <button class="choice" onclick="showReveal('bored')"><span class="emoji">🎲</span><strong>Bored right now?</strong><small>Try a tiny challenge</small></button>
+          <button class="choice" onclick="showReveal('kind')"><span class="emoji">💌</span><strong>A kind reminder</strong><small>Something worth hearing</small></button>
+          <button class="choice" onclick="showReveal('mystery')"><span class="emoji">🔮</span><strong>Stay curious</strong><small>Unlock a secret clue</small></button>
+        </div>
+        <div class="reveal" id="mood-reveal" hidden aria-live="polite"></div>
+        <div class="button-row"><button class="btn secondary" onclick="go('intro')">← Previous</button><button class="btn purple" onclick="go('vault')">Open the secret vault →</button></div>
+      </div>
+    </section>
+
+    <section class="screen" id="vault" aria-labelledby="vault-title">
+      <div class="progress"><span style="width:52%"></span></div>
+      <div class="panel center">
+        <div class="label">🔐 Clue 02 · Unlocked</div>
+        <div style="font-size:2.5rem" aria-hidden="true">🗝️</div>
+        <h2 id="vault-title">The tiny secret vault</h2>
+        <p>Six little cards. Pick any one to open it — no password required. 😉</p>
+        <div class="vault-grid">
+          <button class="vault-card" onclick="openCard(0)"><span>⭐</span><strong>Good vibes</strong><small>Open card</small></button>
+          <button class="vault-card" onclick="openCard(1)"><span>🪄</span><strong>Mini challenge</strong><small>Open card</small></button>
+          <button class="vault-card" onclick="openCard(2)"><span>🌻</span><strong>Kind reminder</strong><small>Open card</small></button>
+          <button class="vault-card" onclick="openCard(3)"><span>🧩</span><strong>Random thought</strong><small>Open card</small></button>
+          <button class="vault-card" onclick="openCard(4)"><span>🌙</span><strong>Little wish</strong><small>Open card</small></button>
+          <button class="vault-card" onclick="openCard(5)"><span>🎁</span><strong>Final clue</strong><small>Open card</small></button>
+        </div>
+        <div class="reveal" id="vault-reveal" hidden aria-live="polite"></div>
+        <div class="button-row"><button class="btn secondary" onclick="go('mood')">← Previous</button><button class="btn purple" onclick="go('final')">Reveal the final note →</button></div>
+      </div>
+    </section>
+
+    <section class="screen" id="final" aria-labelledby="final-title">
+      <div class="progress"><span style="width:78%"></span></div>
+      <div class="panel center">
+        <div class="label">✨ Final clue · Opened</div>
+        <div class="final-orbit" aria-hidden="true">💫</div>
+        <h2 id="final-title">A little note for you</h2>
+        <div class="letter">
+          <p>Hey Ragini,</p>
+          <p>We’re at the very beginning of this friendship, and that’s what makes it nice — there’s still so much to discover, one conversation at a time.</p>
+          <p>I hope this tiny surprise gave you a smile. May your days have kind people, good opportunities, peaceful moments, and plenty of reasons to laugh.</p>
+          <p>Let’s keep it simple: good vibes, mutual respect, and friendship that grows naturally. 🌷</p>
+          <p class="signature">— Your new friend 💜</p>
+        </div>
+        <p class="note">P.S. You can come back whenever you need a tiny reminder to smile.</p>
+        <div class="button-row"><button class="btn" onclick="celebrate()">One last sparkle ✨</button><button class="btn secondary" onclick="go('welcome')">Start again ↺</button></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">Made with <strong>💜</strong> and a little imagination · <strong>For Ragini</strong><br><span class="tiny">A small surprise for a new friend — no pressure, just positivity.</span></footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+  const screens = [...document.querySelectorAll('.screen')];
+  function go(id){
+    screens.forEach(s=>{s.classList.toggle('active',s.id===id);});
+    window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    const target=document.getElementById(id); if(target) target.setAttribute('tabindex','-1');
+  }
+  const moodMessages = {
+    happy:{title:'A pocket-sized smile 🌈',text:'Tiny reminder: you don’t need a perfect day to find one good moment. Maybe this little surprise can be that moment. ✨'},
+    bored:{title:'Tiny challenge unlocked 🎲',text:'Your mission: find one thing around you that’s the same colour as the sky, send someone a genuinely nice message, or take a 30-second stretch break. Pick one — challenge complete!'},
+    kind:{title:'A kind reminder 💌',text:'You deserve the same patience and kindness that you offer other people. Take things at your own pace. You don’t have to have everything figured out today.'},
+    mystery:{title:'Secret clue 🔮',text:'The mystery was never about a hidden treasure. It was about turning an ordinary day into a slightly more interesting one. Clue complete, detective Ragini! 🕵️‍♀️'}
+  };
+  function showReveal(key){
+    const box=document.getElementById('mood-reveal'),m=moodMessages[key];
+    box.innerHTML='<h3>'+m.title+'</h3><p>'+m.text+'</p>';
+    box.hidden=false; box.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  const vaultMessages=[
+    ['Good vibes only ⭐','May you meet people who respect your boundaries, celebrate your wins, and let you be yourself.'],
+    ['Mini challenge 🪄','Name three tiny things you’re grateful for today. They can be as simple as a tasty snack, a funny video, or a comfy pillow.'],
+    ['Kind reminder 🌻','Progress can be quiet. Even small steps count, and taking a break is allowed too.'],
+    ['Random thought 🧩','Some lovely things start with something simple: a hello, a shared laugh, or a random conversation.'],
+    ['A little wish 🌙','I hope your next few days bring a reason to smile, something new to learn, and a moment of calm just for you.'],
+    ['Final clue 🎁','You made it through the mystery! Your reward: this very official certificate of being a person who deserves kindness. 🏆']
+  ];
+  function openCard(i){
+    const box=document.getElementById('vault-reveal'),m=vaultMessages[i];
+    box.innerHTML='<h3>'+m[0]+'</h3><p>'+m[1]+'</p>';
+    box.hidden=false; box.scrollIntoView({behavior:'smooth',block:'nearest'});
+    toast('Secret card unlocked ✨');
+  }
+  let toastTimer;
+  function toast(message){
+    const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');
+    clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2400);
+  }
+  function celebrate(){
+    toast('Surprise complete, Ragini! Stay awesome 💜');
+    const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce)return;
+    const colors=['#ff9cda','#b8a0ff','#ffd78a','#8cecff','#ffffff'];
+    for(let i=0;i<55;i++){
+      const c=document.createElement('i');c.className='confetti';
+      c.style.left=Math.random()*100+'vw';c.style.background=colors[Math.floor(Math.random()*colors.length)];
+      c.style.animationDelay=(Math.random()*.7)+'s';c.style.transform='rotate('+(Math.random()*360)+'deg)';
+      document.body.appendChild(c);setTimeout(()=>c.remove(),3500);
+    }
+  }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){const box=document.querySelector('.reveal:not([hidden])');if(box){box.hidden=true;}}});
+</script>
+</body>
+</html>
