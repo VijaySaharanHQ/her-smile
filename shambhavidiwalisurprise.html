@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#090817" />
+<title>Happy Diwali, Shambhavi ✨</title>
+<style>
+  :root{
+    --gold:#f8d98b; --gold2:#fff0bf; --cream:#fff8e9;
+    --bg:#090817; --purple:#17102d; --pink:#ffb7d5;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;color:var(--cream);font-family:Georgia,"Times New Roman",serif;
+    background:radial-gradient(ellipse at top,#21143b 0%,#0c0a1b 48%,#05050c 100%);
+    overflow-x:hidden;
+  }
+  button{font:inherit;cursor:pointer}
+  .stars,.fireworks{position:fixed;inset:0;pointer-events:none;z-index:0}
+  .stars{background-image:radial-gradient(1px 1px at 20% 30%,#fff 50%,transparent 100%),radial-gradient(2px 2px at 70% 15%,#f8d98b 50%,transparent 100%),radial-gradient(1px 1px at 85% 65%,#fff 50%,transparent 100%),radial-gradient(1px 1px at 40% 80%,#fff 50%,transparent 100%);opacity:.6}
+  .wrap{position:relative;z-index:1}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:20px clamp(18px,5vw,70px);font-family:Arial,sans-serif;letter-spacing:.12em;font-size:.75rem;color:#e9d6a5}
+  .brand{color:var(--gold);font-weight:bold}
+  .music{border:1px solid #d7b76b66;color:var(--gold2);background:#ffffff08;border-radius:999px;padding:10px 16px}
+  .hero{min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:50px 20px 100px;position:relative}
+  .hero-inner{max-width:850px}
+  .eyebrow{font: .75rem Arial,sans-serif;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+  h1{font-size:clamp(3rem,9vw,7.5rem);line-height:.98;font-weight:normal;margin:0;color:#fff3d2;text-shadow:0 0 30px #f8d98b25}
+  h1 span{display:block;font-style:italic;color:var(--gold)}
+  .hero p{font:1.05rem/1.8 Arial,sans-serif;color:#d9cfe7;max-width:570px;margin:28px auto}
+  .btn{border:1px solid #f8d98b88;background:linear-gradient(135deg,#f7d78b,#b77c2c);color:#211326;border-radius:999px;padding:15px 27px;font:700 .85rem Arial,sans-serif;letter-spacing:.04em;box-shadow:0 8px 35px #e4ae4b25;transition:.25s}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px #e4ae4b45}
+  .scroll-note{position:absolute;bottom:25px;left:0;right:0;font: .7rem Arial,sans-serif;letter-spacing:.2em;color:#b8a9ca}
+  .section{padding:90px 20px;max-width:1100px;margin:auto}
+  .section-title{text-align:center;font-size:clamp(2rem,5vw,3.6rem);font-weight:normal;margin:0 0 16px}
+  .section-title em{color:var(--gold);font-weight:normal}
+  .sub{text-align:center;font: .95rem/1.7 Arial,sans-serif;color:#c9bdd8;max-width:650px;margin:0 auto 45px}
+  .diya-stage{text-align:center;padding:40px 0 20px}
+  .diya{width:180px;height:110px;margin:0 auto 25px;position:relative;cursor:pointer;filter:drop-shadow(0 0 22px #ffb43c33);transition:.5s}
+  .bowl{position:absolute;bottom:0;left:10px;width:160px;height:65px;background:linear-gradient(#f8d98b,#9a4b21);border-radius:10px 10px 80px 80px;border:2px solid #ffdf9d}
+  .flame{position:absolute;left:72px;bottom:52px;width:36px;height:58px;background:radial-gradient(ellipse at 50% 70%,#fffbd0 0 15%,#ffd65d 35%,#ff8b25 65%,transparent 70%);border-radius:70% 10% 70% 10%;transform:rotate(45deg);opacity:.1;transition:.5s}
+  .lit .flame{opacity:1;animation:flicker 1.3s infinite alternate}
+  .lit.diya{filter:drop-shadow(0 0 38px #ffc34f)}
+  @keyframes flicker{from{transform:rotate(42deg) scale(.95)}to{transform:rotate(48deg) scale(1.08)}}
+  .diya-caption{font: .9rem Arial,sans-serif;color:#d8cbe5}
+  .blessing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .blessing{background:linear-gradient(145deg,#ffffff0c,#ffffff03);border:1px solid #f8d98b2b;border-radius:20px;padding:28px 24px;min-height:190px;backdrop-filter:blur(8px)}
+  .blessing .symbol{font-size:1.6rem;color:var(--gold);margin-bottom:15px}
+  .blessing h3{font-size:1.35rem;font-weight:normal;margin:0 0 12px;color:#ffe8b0}
+  .blessing p{font: .9rem/1.7 Arial,sans-serif;color:#cfc2dd;margin:0}
+  .gallery{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch}
+  .photo-frame{border:1px solid #f8d98b55;padding:10px;border-radius:24px;background:linear-gradient(135deg,#f8d98b22,#ffffff05);min-height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .photo-frame img{width:100%;height:100%;max-height:560px;object-fit:cover;border-radius:16px;display:block}
+  .photo-placeholder{font: .9rem/1.8 Arial,sans-serif;text-align:center;color:#cdbfdc;padding:35px}
+  .photo-placeholder strong{display:block;color:var(--gold);font:1.5rem Georgia,serif;margin-bottom:10px}
+  .gallery-note{display:flex;flex-direction:column;justify-content:center;padding:25px}
+  .gallery-note h3{font-size:2.1rem;font-weight:normal;color:var(--gold2)}
+  .gallery-note p{font:1rem/1.9 Arial,sans-serif;color:#d3c6df}
+  .gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .gift{border:1px solid #f8d98b55;background:#ffffff08;border-radius:20px;padding:30px 20px;text-align:center;min-height:220px;transition:.3s}
+  .gift:hover{transform:translateY(-5px);background:#ffffff10}
+  .gift-icon{font-size:2.6rem}
+  .gift h3{font-weight:normal;color:var(--gold2);font-size:1.35rem}
+  .gift p{font: .85rem/1.6 Arial,sans-serif;color:#cbbfda}
+  .gift button{margin-top:8px;background:transparent;border:1px solid #f8d98b66;border-radius:999px;padding:9px 16px;color:var(--gold2);font: .75rem Arial,sans-serif}
+  .letter{max-width:760px;margin:auto;border:1px solid #f8d98b55;border-radius:24px;padding:clamp(25px,5vw,55px);background:linear-gradient(145deg,#fff9e90d,#ffffff03);box-shadow:0 20px 70px #0002}
+  .letter .script{font-style:italic;color:var(--gold);font-size:1.4rem}
+  .letter p{font:1rem/2 Arial,sans-serif;color:#e1d6e8}
+  .signature{font-style:italic;color:var(--gold2);font-size:1.5rem;margin-top:28px}
+  .finale{text-align:center;padding:110px 20px 130px;position:relative;overflow:hidden}
+  .finale h2{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:normal;line-height:1.1;color:#fff0c6}
+  .finale h2 em{color:var(--gold);display:block}
+  .finale p{font:1rem/1.8 Arial,sans-serif;color:#d8cce4;max-width:600px;margin:25px auto}
+  footer{text-align:center;padding:30px 15px 45px;font: .75rem Arial,sans-serif;color:#a99ab9;letter-spacing:.08em}
+  .modal{position:fixed;inset:0;background:#05040de8;z-index:10;display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.show{display:flex}
+  .modal-box{max-width:520px;width:100%;text-align:center;padding:40px 30px;border:1px solid #f8d98b66;border-radius:24px;background:linear-gradient(145deg,#211633,#0c0a18)}
+  .modal-box .big{font-size:3rem}
+  .modal-box h3{font-size:2rem;font-weight:normal;color:var(--gold)}
+  .modal-box p{font:1rem/1.8 Arial,sans-serif;color:#e0d5e8}
+  .close{margin-top:18px;border:1px solid #f8d98b66;background:transparent;color:var(--gold);padding:10px 20px;border-radius:999px}
+  .confetti{position:fixed;top:-20px;z-index:12;pointer-events:none;animation:fall 4s linear forwards;font-size:18px}
+  @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+  @media(max-width:750px){
+    .blessing-grid,.gift-grid{grid-template-columns:1fr}
+    .gallery{grid-template-columns:1fr}
+    .gallery-note{padding:5px 8px}
+    .section{padding:65px 18px}
+    .nav{padding:16px}
+    .brand{font-size:.65rem}
+    .music{padding:9px 12px}
+  }
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<canvas class="fireworks" id="fireworks"></canvas>
+<div class="wrap">
+  <nav class="nav">
+    <div class="brand">A LITTLE DIWALI MAGIC ✦</div>
+    <button class="music" id="musicBtn" aria-label="Toggle background music">♫ Music: Off</button>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">A festival of light • A heart full of love</div>
+      <h1>Happy Diwali,<span>Shambhavi</span></h1>
+      <p>Tonight, every little light carries a wish—and every wish is wrapped in love, warmth, and a little bit of magic just for you.</p>
+      <button class="btn" onclick="lightDiyaAndScroll()">✨ Begin Your Diwali Surprise</button>
+    </div>
+    <div class="scroll-note">SCROLL INTO THE MAGIC ↓</div>
+  </header>
+
+  <section class="section" id="diyaSection">
+    <h2 class="section-title">A little light, <em>a lot of love</em></h2>
+    <p class="sub">Tap the diya to light up this little corner of the universe. May its glow bring peace, happiness, and beautiful new beginnings.</p>
+    <div class="diya-stage">
+      <div class="diya" id="diya" role="button" tabindex="0" aria-label="Light the diya">
+        <div class="flame"></div><div class="bowl"></div>
+      </div>
+      <div class="diya-caption" id="diyaCaption">Tap the diya to make a wish 🪔</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Diwali wishes, <em>from my heart</em></h2>
+    <p class="sub">May this festival bring you everything beautiful that your heart deserves.</p>
+    <div class="blessing-grid">
+      <article class="blessing"><div class="symbol">✧</div><h3>May Your Days Shine</h3><p>May every day ahead be filled with bright opportunities, peaceful moments, and reasons to smile.</p></article>
+      <article class="blessing"><div class="symbol">☼</div><h3>May Dreams Come True</h3><p>May courage guide your dreams, may your efforts bloom, and may life surprise you in the loveliest ways.</p></article>
+      <article class="blessing"><div class="symbol">♡</div><h3>May Love Surround You</h3><p>May you always feel cherished, supported, protected, and reminded of how precious you are.</p></article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">A little gallery of <em>you</em></h2>
+    <p class="sub">Add Shambhavi’s favorite photos here to make this page even more personal.</p>
+    <div class="gallery">
+      <div class="photo-frame">
+        <!-- Replace sister-photo-1.jpg with your photo filename. -->
+        <img src="sister-photo-1.jpg" alt="A favorite photo of Shambhavi" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="photo-placeholder" style="display:none"><strong>Shambhavi ✨</strong>Add your photo here<br>Upload a photo to the repository and name it <code>sister-photo-1.jpg</code>.</div>
+      </div>
+      <div class="gallery-note">
+        <div class="eyebrow">A sister like no other</div>
+        <h3>Your presence makes life brighter.</h3>
+        <p>Some people make ordinary days feel special just by being themselves. You are one of those people. I hope this Diwali brings you as much happiness as your presence brings to the people who love you.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Three little gifts, <em>just for you</em></h2>
+    <p class="sub">Choose a gift and uncover a tiny Diwali surprise.</p>
+    <div class="gift-grid">
+      <div class="gift"><div class="gift-icon">🎁</div><h3>Gift of Joy</h3><p>A little reminder to smile today.</p><button onclick="openGift(0)">Unwrap your gift</button></div>
+      <div class="gift"><div class="gift-icon">🪔</div><h3>Gift of Blessings</h3><p>A wish for your beautiful journey.</p><button onclick="openGift(1)">Unwrap your gift</button></div>
+      <div class="gift"><div class="gift-icon">💌</div><h3>Gift from Your Brother</h3><p>A message straight from my heart.</p><button onclick="openGift(2)">Unwrap your gift</button></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">A note from <em>your brother</em></h2>
+    <p class="sub">A small message, carrying a very big feeling.</p>
+    <div class="letter">
+      <div class="script">Dear Shambhavi,</div>
+      <p>Happy Diwali, my dear sister.</p>
+      <p>I miss you so much. Even when we are not together, you are always close to my heart. I wish I could be there to celebrate this beautiful festival with you, share the laughter, enjoy the lights, and make another lovely memory together.</p>
+      <p>May your life always be filled with happiness, good health, peace, success, and countless reasons to smile. May every diya light up a new hope, every sparkle bring a beautiful opportunity, and every prayer lead you toward the dreams you cherish.</p>
+      <p>You are truly special, and I hope you never forget how much you are loved. Sending you the warmest Diwali hugs, endless blessings, and all the love a brother can send from wherever he is.</p>
+      <p class="signature">With love, from your प्यारा भाई ❤️</p>
+    </div>
+  </section>
+
+  <section class="finale" id="finale">
+    <div class="eyebrow">One last little surprise</div>
+    <h2>May your world be filled with light…<em>Happy Diwali, Shambhavi!</em></h2>
+    <p>May the glow of Diwali stay in your heart long after the lamps have faded. You deserve a life full of beautiful moments, love, laughter, and dreams coming true.</p>
+    <button class="btn" onclick="grandFinale()">✨ Reveal the Grand Finale</button>
+  </section>
+  <footer>MADE WITH LOVE • FROM YOUR BROTHER TO SHAMBHAVI 🪔</footer>
+</div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <div class="big" id="modalIcon">✨</div>
+    <h3 id="modalTitle">A little surprise</h3>
+    <p id="modalText"></p>
+    <button class="close" onclick="closeModal()">Close with love</button>
+  </div>
+</div>
+
+<audio id="bgMusic" loop>
+  <!-- Optional: upload a royalty-free / personally owned MP3 as diwali-music.mp3 -->
+  <source src="diwali-music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const diya = document.getElementById('diya');
+  const diyaCaption = document.getElementById('diyaCaption');
+  function lightDiyaAndScroll(){
+    lightDiya();
+    document.getElementById('diyaSection').scrollIntoView({behavior:'smooth'});
+  }
+  function lightDiya(){
+    diya.classList.add('lit');
+    diyaCaption.textContent = 'Your wish is glowing in the universe ✨';
+    burst(18);
+  }
+  diya.addEventListener('click',lightDiya);
+  diya.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();lightDiya();}});
+  const gifts=[
+    ['🎁','A Gift of Joy','May laughter find you often, may happiness stay a little longer, and may even the simplest moments become beautiful memories.'],
+    ['🪔','A Gift of Blessings','May Goddess Lakshmi bless your home with prosperity, peace, abundance, and the warmth of family. May every new beginning bring hope.'],
+    ['💌','A Gift from Your Brother','No matter how far apart we may be, you will always have a special place in my heart. I miss you so much. Happy Diwali, from your loving brother.']
+  ];
+  function openGift(i){
+    document.getElementById('modalIcon').textContent=gifts[i][0];
+    document.getElementById('modalTitle').textContent=gifts[i][1];
+    document.getElementById('modalText').textContent=gifts[i][2];
+    document.getElementById('modal').classList.add('show');
+    burst(12);
+  }
+  function closeModal(){document.getElementById('modal').classList.remove('show');}
+  document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+  const music=document.getElementById('bgMusic'), musicBtn=document.getElementById('musicBtn');
+  let musicOn=false;
+  musicBtn.addEventListener('click',async()=>{
+    if(!musicOn){
+      try{await music.play();musicOn=true;musicBtn.textContent='♫ Music: On';}
+      catch(e){musicBtn.textContent='♫ Add diwali-music.mp3';}
+    }else{music.pause();musicOn=false;musicBtn.textContent='♫ Music: Off';}
+  });
+
+  function burst(count=30){
+    const emojis=['✨','✦','🌟','💛','🪔'];
+    for(let i=0;i<count;i++){
+      const el=document.createElement('div');el.className='confetti';
+      el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+      el.style.left=Math.random()*100+'vw';
+      el.style.animationDuration=(2.5+Math.random()*3)+'s';
+      el.style.fontSize=(12+Math.random()*20)+'px';
+      document.body.appendChild(el);setTimeout(()=>el.remove(),6000);
+    }
+  }
+
+  // Lightweight canvas fireworks—no external library required.
+  const canvas=document.getElementById('fireworks'),ctx=canvas.getContext('2d');
+  let particles=[];
+  function resize(){canvas.width=innerWidth*devicePixelRatio;canvas.height=innerHeight*devicePixelRatio;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);}
+  addEventListener('resize',resize);resize();
+  function fire(x,y){
+    for(let i=0;i<75;i++){
+      const a=Math.random()*Math.PI*2,s=1.2+Math.random()*4;
+      particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:65+Math.random()*35,max:100,r:1+Math.random()*2});
+    }
+  }
+  function animate(){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    particles=particles.filter(p=>p.life>0);
+    for(const p of particles){
+      p.x+=p.vx;p.y+=p.vy;p.vy+=.025;p.vx*=.99;p.life--;
+      ctx.globalAlpha=Math.max(0,p.life/p.max);
+      ctx.fillStyle=['#ffd979','#fff4c8','#ffb4d7','#c8a6ff'][Math.floor(Math.random()*4)];
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+    }
+    ctx.globalAlpha=1;requestAnimationFrame(animate);
+  }
+  animate();
+  function grandFinale(){
+    burst(80);
+    for(let i=0;i<8;i++)setTimeout(()=>fire(Math.random()*innerWidth,80+Math.random()*innerHeight*.55),i*220);
+    document.getElementById('finale').scrollIntoView({behavior:'smooth'});
+  }
+</script>
+</body>
+</html>
