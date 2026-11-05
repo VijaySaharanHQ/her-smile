@@ -4,11 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080611">
 
 <title>Only For You | Shobha</title>
 
-<meta name="theme-color" content="#080611">
-<meta name="description" content="A cinematic friendship surprise, made only for you.">
+<meta name="description" content="A special cinematic friendship surprise for Shobha.">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap');
@@ -38,8 +38,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Cinematic background */
-
 .background {
   position: fixed;
   inset: 0;
@@ -62,7 +60,7 @@ body {
   );
 }
 
-/* Floating particles */
+/* PARTICLES */
 
 #particles {
   position: fixed;
@@ -86,18 +84,17 @@ body {
 
 @keyframes floatUp {
   0% {
-    transform: translateY(0) translateX(0);
+    transform: translateY(0);
     opacity: 0;
   }
   15% { opacity: 0.8; }
-  85% { opacity: 0.5; }
   100% {
     transform: translateY(-110vh) translateX(50px);
     opacity: 0;
   }
 }
 
-/* Intro */
+/* INTRO */
 
 .intro {
   min-height: 100vh;
@@ -107,6 +104,7 @@ body {
   justify-content: center;
   text-align: center;
   padding: 30px 20px;
+  position: relative;
   animation: fadeIn 2s ease;
 }
 
@@ -174,7 +172,7 @@ body {
   animation: pulse 2s infinite;
 }
 
-/* Gallery */
+/* GALLERY */
 
 .gallery {
   min-height: 100vh;
@@ -321,7 +319,7 @@ body {
   transform: scale(1.4);
 }
 
-/* Message */
+/* MESSAGE */
 
 .message-section {
   padding: 100px 25px;
@@ -360,6 +358,8 @@ body {
   animation: heartbeat 1.8s infinite;
 }
 
+/* FOOTER */
+
 footer {
   text-align: center;
   padding: 30px 20px;
@@ -368,7 +368,7 @@ footer {
   color: #756b81;
 }
 
-/* Music */
+/* MUSIC */
 
 .music-button {
   position: fixed;
@@ -390,11 +390,17 @@ footer {
   animation: pulse 2s infinite;
 }
 
-/* Animations */
+/* ANIMATIONS */
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes pulse {
@@ -406,6 +412,8 @@ footer {
   0%,100% { transform: scale(1); }
   50% { transform: scale(1.2); }
 }
+
+/* MOBILE */
 
 @media (max-width: 600px) {
   .carousel-container {
@@ -440,12 +448,16 @@ footer {
 <div class="background"></div>
 <div id="particles"></div>
 
-<!-- INTRO -->
+<!-- INTRODUCTION -->
 
 <section class="intro" id="home">
-  <div class="eyebrow">A little something for someone special</div>
+
+  <div class="eyebrow">
+    A LITTLE SOMETHING FOR SOMEONE SPECIAL
+  </div>
 
   <h1>Only For You</h1>
+
   <h2>Dear Shobha</h2>
 
   <p>
@@ -458,14 +470,19 @@ footer {
     Open Your Surprise ✨
   </button>
 
-  <div class="scroll-hint">SCROLL TO DISCOVER ↓</div>
+  <div class="scroll-hint">
+    SCROLL TO DISCOVER ↓
+  </div>
+
 </section>
 
 <!-- PHOTO GALLERY -->
 
 <section class="gallery" id="gallery">
 
-  <h2 class="section-title">A Gallery of Memories</h2>
+  <h2 class="section-title">
+    A Gallery of Memories
+  </h2>
 
   <p class="section-subtitle">
     NINE MOMENTS · ONE BEAUTIFUL FRIENDSHIP
@@ -476,11 +493,19 @@ footer {
   </div>
 
   <div class="controls">
-    <button class="control-btn" onclick="prevSlide()" aria-label="Previous photo">‹</button>
 
-    <span class="counter" id="counter">01 / 09</span>
+    <button class="control-btn"
+      onclick="prevSlide()"
+      aria-label="Previous photo">‹</button>
 
-    <button class="control-btn" onclick="nextSlide()" aria-label="Next photo">›</button>
+    <span class="counter" id="counter">
+      01 / 09
+    </span>
+
+    <button class="control-btn"
+      onclick="nextSlide()"
+      aria-label="Next photo">›</button>
+
   </div>
 
   <div class="dots" id="dots"></div>
@@ -497,7 +522,9 @@ footer {
 
   <div class="message-card">
 
-    <div class="eyebrow">A little note from me</div>
+    <div class="eyebrow">
+      A LITTLE NOTE FROM ME
+    </div>
 
     <span class="heart">♡</span>
 
@@ -525,9 +552,9 @@ footer {
 
       Keep smiling, keep shining,
       and always be the amazing person you are.
-    </p>
 
-    <br>
+      <br><br>
+    </p>
 
     <span class="heart">♡</span>
 
@@ -545,8 +572,10 @@ footer {
 
 <!-- MUSIC BUTTON -->
 
-<button class="music-button" id="musicButton"
-        onclick="toggleMusic()" aria-label="Toggle music">
+<button class="music-button"
+  id="musicButton"
+  onclick="toggleMusic()"
+  aria-label="Toggle music">
   ♫
 </button>
 
@@ -557,7 +586,7 @@ footer {
 <script>
 
 // ======================================
-// 1. ADD YOUR NINE PHOTOS HERE
+// 1. YOUR NINE PHOTOS
 // ======================================
 
 const photos = [
@@ -573,7 +602,7 @@ const photos = [
 ];
 
 // ======================================
-// 2. SLIDESHOW SETTINGS
+// 2. CAROUSEL INITIALIZATION
 // ======================================
 
 const carousel = document.getElementById("carousel");
@@ -581,14 +610,14 @@ const dotsContainer = document.getElementById("dots");
 const counter = document.getElementById("counter");
 
 let currentIndex = 0;
+let timer = null;
 let autoPlay = true;
-let timer;
 
 const slides = [];
 const dots = [];
 
 // ======================================
-// 3. CREATE SLIDES
+// 3. CREATE PHOTO SLIDES
 // ======================================
 
 photos.forEach((photo, index) => {
@@ -602,30 +631,39 @@ photos.forEach((photo, index) => {
   img.alt = `Shobha's memory ${index + 1}`;
   img.loading = index === 0 ? "eager" : "lazy";
 
-  // Show placeholder if photo is missing
   img.onerror = function() {
     this.onerror = null;
-    this.src = "https://placehold.co/600x800/171020/e8c987?text=Add+Photo+" + (index + 1);
+    this.src =
+      `https://placehold.co/600x800/171020/e8c987?text=Add+Photo+${index + 1}`;
   };
 
   const caption = document.createElement("div");
   caption.className = "slide-caption";
-  caption.textContent = `Memory ${String(index + 1).padStart(2, "0")}`;
+
+  caption.textContent =
+    `Memory ${String(index + 1).padStart(2, "0")}`;
 
   slide.appendChild(img);
   slide.appendChild(caption);
-  carousel.appendChild(slide);
 
+  carousel.appendChild(slide);
   slides.push(slide);
 
   const dot = document.createElement("button");
+
   dot.className = "dot";
-  dot.setAttribute("aria-label", `Show photo ${index + 1}`);
+  dot.setAttribute(
+    "aria-label",
+    `Show photo ${index + 1}`
+  );
 
   dot.addEventListener("click", () => {
+
     currentIndex = index;
+
     renderSlides();
     restartAutoplay();
+
   });
 
   dotsContainer.appendChild(dot);
@@ -634,7 +672,7 @@ photos.forEach((photo, index) => {
 });
 
 // ======================================
-// 4. 3D CAROUSEL ENGINE
+// 4. 3D SLIDESHOW ENGINE
 // ======================================
 
 function renderSlides() {
@@ -645,21 +683,35 @@ function renderSlides() {
 
     let offset = index - currentIndex;
 
-    // Shortest circular distance
-    if (offset > total / 2) offset -= total;
-    if (offset < -total / 2) offset += total;
+    if (offset > total / 2) {
+      offset -= total;
+    }
+
+    if (offset < -total / 2) {
+      offset += total;
+    }
 
     const absOffset = Math.abs(offset);
 
     slide.style.zIndex = total - absOffset;
-    slide.classList.toggle("active", offset === 0);
+
+    slide.classList.toggle(
+      "active",
+      offset === 0
+    );
 
     if (absOffset > 2) {
+
       slide.style.opacity = "0";
       slide.style.pointerEvents = "none";
+
     } else {
-      slide.style.opacity = absOffset === 0 ? "1" : "0.65";
+
+      slide.style.opacity =
+        absOffset === 0 ? "1" : "0.65";
+
       slide.style.pointerEvents = "auto";
+
     }
 
     const x = offset * 190;
@@ -673,14 +725,20 @@ function renderSlides() {
       scale(${scale})
     `;
 
-    slide.style.filter = offset === 0
-      ? "brightness(1)"
-      : "brightness(0.55)";
+    slide.style.filter =
+      offset === 0
+        ? "brightness(1)"
+        : "brightness(0.55)";
 
   });
 
   dots.forEach((dot, index) => {
-    dot.classList.toggle("active", index === currentIndex);
+
+    dot.classList.toggle(
+      "active",
+      index === currentIndex
+    );
+
   });
 
   counter.textContent =
@@ -689,19 +747,27 @@ function renderSlides() {
 }
 
 // ======================================
-// 5. NAVIGATION
+// 5. NEXT AND PREVIOUS
 // ======================================
 
 function nextSlide() {
-  currentIndex = (currentIndex + 1) % slides.length;
+
+  currentIndex =
+    (currentIndex + 1) % slides.length;
+
   renderSlides();
   restartAutoplay();
+
 }
 
 function prevSlide() {
-  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+
+  currentIndex =
+    (currentIndex - 1 + slides.length) % slides.length;
+
   renderSlides();
   restartAutoplay();
+
 }
 
 // ======================================
@@ -709,27 +775,42 @@ function prevSlide() {
 // ======================================
 
 function startAutoplay() {
+
   clearInterval(timer);
 
   if (autoPlay) {
+
     timer = setInterval(() => {
-      currentIndex = (currentIndex + 1) % slides.length;
+
+      currentIndex =
+        (currentIndex + 1) % slides.length;
+
       renderSlides();
+
     }, 4000);
+
   }
+
 }
 
 function restartAutoplay() {
   startAutoplay();
 }
 
-// Pause automatic slideshow when browser tab is hidden
+// Pause slideshow in hidden browser tabs
+
 document.addEventListener("visibilitychange", () => {
+
   if (document.hidden) {
+
     clearInterval(timer);
+
   } else {
+
     startAutoplay();
+
   }
+
 });
 
 // ======================================
@@ -747,29 +828,38 @@ function startExperience() {
 }
 
 // ======================================
-// 8. BACKGROUND MUSIC
+// 8. OPTIONAL BACKGROUND MUSIC
 // ======================================
 
-const music = document.getElementById("backgroundMusic");
-const musicButton = document.getElementById("musicButton");
+const music =
+  document.getElementById("backgroundMusic");
+
+const musicButton =
+  document.getElementById("musicButton");
 
 async function toggleMusic() {
 
   if (music.paused) {
 
     try {
+
       await music.play();
 
       musicButton.classList.add("playing");
       musicButton.textContent = "♫";
 
     } catch (error) {
-      alert("Please add music.mp3 to your website folder.");
+
+      alert(
+        "Please add music.mp3 to the website root folder."
+      );
+
     }
 
   } else {
 
     music.pause();
+
     musicButton.classList.remove("playing");
     musicButton.textContent = "♫";
 
@@ -778,26 +868,50 @@ async function toggleMusic() {
 }
 
 // ======================================
-// 9. FLOATING PARTICLES
+// 9. FLOATING GOLDEN PARTICLES
 // ======================================
 
-const particleContainer = document.getElementById("particles");
+const particleContainer =
+  document.getElementById("particles");
 
 for (let i = 0; i < 35; i++) {
 
-  const particle = document.createElement("div");
+  const particle =
+    document.createElement("div");
+
   particle.className = "particle";
 
-  particle.style.left = Math.random() * 100 + "%";
-  particle.style.animationDuration = (8 + Math.random() * 15) + "s";
-  particle.style.animationDelay = Math.random() * 10 + "s";
+  particle.style.left =
+    Math.random() * 100 + "%";
+
+  particle.style.animationDuration =
+    (8 + Math.random() * 15) + "s";
+
+  particle.style.animationDelay =
+    Math.random() * 10 + "s";
 
   particleContainer.appendChild(particle);
 
 }
 
 // ======================================
-// 10. INITIALIZE
+// 10. KEYBOARD CONTROLS
+// ======================================
+
+document.addEventListener("keydown", (event) => {
+
+  if (event.key === "ArrowRight") {
+    nextSlide();
+  }
+
+  if (event.key === "ArrowLeft") {
+    prevSlide();
+  }
+
+});
+
+// ======================================
+// 11. INITIALIZE
 // ======================================
 
 renderSlides();
