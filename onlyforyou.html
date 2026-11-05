@@ -1,0 +1,808 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Only For You | Shobha</title>
+
+<meta name="theme-color" content="#080611">
+<meta name="description" content="A cinematic friendship surprise, made only for you.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap');
+
+:root {
+  --gold: #e8c987;
+  --pink: #e8b8d0;
+  --bg: #080611;
+  --white: #fff8f3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Cinematic background */
+
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse at 20% 20%, #422044 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 80%, #17213e 0%, transparent 45%),
+    linear-gradient(135deg, #080611, #130b20, #080611);
+}
+
+.background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(8,6,17,0.4),
+    #080611
+  );
+}
+
+/* Floating particles */
+
+#particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  bottom: -20px;
+  width: 3px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 12px var(--gold);
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  15% { opacity: 0.8; }
+  85% { opacity: 0.5; }
+  100% {
+    transform: translateY(-110vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+/* Intro */
+
+.intro {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 20px;
+  animation: fadeIn 2s ease;
+}
+
+.eyebrow {
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.intro h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(60px, 12vw, 120px);
+  font-weight: 400;
+  line-height: 1;
+  background: linear-gradient(120deg, #fff, #e8c987, #e8b8d0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.intro h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(25px, 5vw, 40px);
+  font-weight: 400;
+  margin-top: 15px;
+  color: #f4dce8;
+}
+
+.intro p {
+  max-width: 500px;
+  font-size: 13px;
+  line-height: 2;
+  color: #c6bdce;
+  margin: 25px 0 35px;
+}
+
+.gold-button {
+  border: 1px solid rgba(232,201,135,0.7);
+  background: rgba(232,201,135,0.08);
+  color: var(--gold);
+  padding: 15px 35px;
+  border-radius: 50px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 11px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.gold-button:hover {
+  background: var(--gold);
+  color: #080611;
+  box-shadow: 0 0 30px rgba(232,201,135,0.25);
+  transform: translateY(-3px);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 25px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #91869d;
+  animation: pulse 2s infinite;
+}
+
+/* Gallery */
+
+.gallery {
+  min-height: 100vh;
+  padding: 80px 20px 100px;
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(35px, 7vw, 65px);
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: 12px;
+  color: #b8aebe;
+  letter-spacing: 2px;
+}
+
+.carousel-container {
+  width: 100%;
+  max-width: 950px;
+  height: 480px;
+  margin: 50px auto 20px;
+  position: relative;
+  perspective: 1200px;
+  overflow: hidden;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.slide {
+  position: absolute;
+  width: min(65%, 420px);
+  height: 400px;
+  left: 50%;
+  top: 50%;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.8s cubic-bezier(.2,.7,.2,1),
+    opacity 0.8s,
+    filter 0.8s;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(232,201,135,0.4);
+  box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+  background: #1c1425;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s;
+}
+
+.slide.active img:hover {
+  transform: scale(1.04);
+}
+
+.slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 50%,
+    rgba(0,0,0,0.65)
+  );
+  pointer-events: none;
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 25px;
+  color: white;
+  text-shadow: 0 2px 10px black;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 30px auto;
+}
+
+.control-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  color: var(--gold);
+  border: 1px solid rgba(232,201,135,0.4);
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.control-btn:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+.counter {
+  font-size: 12px;
+  color: #c6bdce;
+  letter-spacing: 2px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #55495f;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dot.active {
+  background: var(--gold);
+  box-shadow: 0 0 12px var(--gold);
+  transform: scale(1.4);
+}
+
+/* Message */
+
+.message-section {
+  padding: 100px 25px;
+  text-align: center;
+}
+
+.message-card {
+  max-width: 700px;
+  margin: auto;
+  padding: 60px 25px;
+  border: 1px solid rgba(232,201,135,0.25);
+  background: rgba(255,255,255,0.025);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 0 80px rgba(80,30,80,0.15);
+}
+
+.message-card h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 8vw, 75px);
+  font-weight: 400;
+  color: var(--gold);
+  margin: 20px 0;
+}
+
+.message-card p {
+  color: #d0c6d5;
+  line-height: 2.1;
+  font-size: 14px;
+}
+
+.heart {
+  display: inline-block;
+  color: #e8b8d0;
+  font-size: 28px;
+  animation: heartbeat 1.8s infinite;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #756b81;
+}
+
+/* Music */
+
+.music-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 20;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(232,201,135,0.5);
+  background: rgba(12,8,22,0.85);
+  color: var(--gold);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  font-size: 20px;
+}
+
+.music-button.playing {
+  animation: pulse 2s infinite;
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@media (max-width: 600px) {
+  .carousel-container {
+    height: 370px;
+  }
+
+  .slide {
+    width: 75%;
+    height: 310px;
+  }
+
+  .gallery {
+    padding-top: 60px;
+  }
+
+  .message-card {
+    padding: 45px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<div id="particles"></div>
+
+<!-- INTRO -->
+
+<section class="intro" id="home">
+  <div class="eyebrow">A little something for someone special</div>
+
+  <h1>Only For You</h1>
+  <h2>Dear Shobha</h2>
+
+  <p>
+    Some people make ordinary moments feel extraordinary.
+    This little corner of the internet is a collection of
+    beautiful memories, smiles, and a friendship worth celebrating.
+  </p>
+
+  <button class="gold-button" onclick="startExperience()">
+    Open Your Surprise ✨
+  </button>
+
+  <div class="scroll-hint">SCROLL TO DISCOVER ↓</div>
+</section>
+
+<!-- PHOTO GALLERY -->
+
+<section class="gallery" id="gallery">
+
+  <h2 class="section-title">A Gallery of Memories</h2>
+
+  <p class="section-subtitle">
+    NINE MOMENTS · ONE BEAUTIFUL FRIENDSHIP
+  </p>
+
+  <div class="carousel-container">
+    <div class="carousel" id="carousel"></div>
+  </div>
+
+  <div class="controls">
+    <button class="control-btn" onclick="prevSlide()" aria-label="Previous photo">‹</button>
+
+    <span class="counter" id="counter">01 / 09</span>
+
+    <button class="control-btn" onclick="nextSlide()" aria-label="Next photo">›</button>
+  </div>
+
+  <div class="dots" id="dots"></div>
+
+  <p style="margin-top:30px;color:#9d91a8;font-size:12px;">
+    Every picture holds a little piece of a beautiful story.
+  </p>
+
+</section>
+
+<!-- FRIENDSHIP MESSAGE -->
+
+<section class="message-section">
+
+  <div class="message-card">
+
+    <div class="eyebrow">A little note from me</div>
+
+    <span class="heart">♡</span>
+
+    <h2>Only For You</h2>
+
+    <p>
+      Dear Shobha,
+      <br><br>
+
+      This little surprise is just a reminder that
+      some friendships are truly special.
+
+      <br><br>
+
+      May your days be filled with happiness,
+      your dreams find their way to reality,
+      and your smile always have a reason to shine.
+
+      <br><br>
+
+      Thank you for being a wonderful part
+      of this beautiful journey called friendship.
+
+      <br><br>
+
+      Keep smiling, keep shining,
+      and always be the amazing person you are.
+    </p>
+
+    <br>
+
+    <span class="heart">♡</span>
+
+    <p style="margin-top:15px;color:var(--gold);">
+      Made with friendship, just for you.
+    </p>
+
+  </div>
+
+</section>
+
+<footer>
+  A LITTLE SURPRISE · A BEAUTIFUL FRIENDSHIP
+</footer>
+
+<!-- MUSIC BUTTON -->
+
+<button class="music-button" id="musicButton"
+        onclick="toggleMusic()" aria-label="Toggle music">
+  ♫
+</button>
+
+<audio id="backgroundMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+// ======================================
+// 1. ADD YOUR NINE PHOTOS HERE
+// ======================================
+
+const photos = [
+  "images/photo1.jpg",
+  "images/photo2.jpg",
+  "images/photo3.jpg",
+  "images/photo4.jpg",
+  "images/photo5.jpg",
+  "images/photo6.jpg",
+  "images/photo7.jpg",
+  "images/photo8.jpg",
+  "images/photo9.jpg"
+];
+
+// ======================================
+// 2. SLIDESHOW SETTINGS
+// ======================================
+
+const carousel = document.getElementById("carousel");
+const dotsContainer = document.getElementById("dots");
+const counter = document.getElementById("counter");
+
+let currentIndex = 0;
+let autoPlay = true;
+let timer;
+
+const slides = [];
+const dots = [];
+
+// ======================================
+// 3. CREATE SLIDES
+// ======================================
+
+photos.forEach((photo, index) => {
+
+  const slide = document.createElement("div");
+  slide.className = "slide";
+
+  const img = document.createElement("img");
+
+  img.src = photo;
+  img.alt = `Shobha's memory ${index + 1}`;
+  img.loading = index === 0 ? "eager" : "lazy";
+
+  // Show placeholder if photo is missing
+  img.onerror = function() {
+    this.onerror = null;
+    this.src = "https://placehold.co/600x800/171020/e8c987?text=Add+Photo+" + (index + 1);
+  };
+
+  const caption = document.createElement("div");
+  caption.className = "slide-caption";
+  caption.textContent = `Memory ${String(index + 1).padStart(2, "0")}`;
+
+  slide.appendChild(img);
+  slide.appendChild(caption);
+  carousel.appendChild(slide);
+
+  slides.push(slide);
+
+  const dot = document.createElement("button");
+  dot.className = "dot";
+  dot.setAttribute("aria-label", `Show photo ${index + 1}`);
+
+  dot.addEventListener("click", () => {
+    currentIndex = index;
+    renderSlides();
+    restartAutoplay();
+  });
+
+  dotsContainer.appendChild(dot);
+  dots.push(dot);
+
+});
+
+// ======================================
+// 4. 3D CAROUSEL ENGINE
+// ======================================
+
+function renderSlides() {
+
+  const total = slides.length;
+
+  slides.forEach((slide, index) => {
+
+    let offset = index - currentIndex;
+
+    // Shortest circular distance
+    if (offset > total / 2) offset -= total;
+    if (offset < -total / 2) offset += total;
+
+    const absOffset = Math.abs(offset);
+
+    slide.style.zIndex = total - absOffset;
+    slide.classList.toggle("active", offset === 0);
+
+    if (absOffset > 2) {
+      slide.style.opacity = "0";
+      slide.style.pointerEvents = "none";
+    } else {
+      slide.style.opacity = absOffset === 0 ? "1" : "0.65";
+      slide.style.pointerEvents = "auto";
+    }
+
+    const x = offset * 190;
+    const rotation = offset * -35;
+    const scale = offset === 0 ? 1 : 0.75;
+
+    slide.style.transform = `
+      translate(-50%, -50%)
+      translateX(${x}px)
+      rotateY(${rotation}deg)
+      scale(${scale})
+    `;
+
+    slide.style.filter = offset === 0
+      ? "brightness(1)"
+      : "brightness(0.55)";
+
+  });
+
+  dots.forEach((dot, index) => {
+    dot.classList.toggle("active", index === currentIndex);
+  });
+
+  counter.textContent =
+    `${String(currentIndex + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+
+}
+
+// ======================================
+// 5. NAVIGATION
+// ======================================
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % slides.length;
+  renderSlides();
+  restartAutoplay();
+}
+
+function prevSlide() {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  renderSlides();
+  restartAutoplay();
+}
+
+// ======================================
+// 6. AUTOMATIC SLIDESHOW
+// ======================================
+
+function startAutoplay() {
+  clearInterval(timer);
+
+  if (autoPlay) {
+    timer = setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      renderSlides();
+    }, 4000);
+  }
+}
+
+function restartAutoplay() {
+  startAutoplay();
+}
+
+// Pause automatic slideshow when browser tab is hidden
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    clearInterval(timer);
+  } else {
+    startAutoplay();
+  }
+});
+
+// ======================================
+// 7. OPEN SURPRISE
+// ======================================
+
+function startExperience() {
+
+  document.getElementById("gallery").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  startAutoplay();
+
+}
+
+// ======================================
+// 8. BACKGROUND MUSIC
+// ======================================
+
+const music = document.getElementById("backgroundMusic");
+const musicButton = document.getElementById("musicButton");
+
+async function toggleMusic() {
+
+  if (music.paused) {
+
+    try {
+      await music.play();
+
+      musicButton.classList.add("playing");
+      musicButton.textContent = "♫";
+
+    } catch (error) {
+      alert("Please add music.mp3 to your website folder.");
+    }
+
+  } else {
+
+    music.pause();
+    musicButton.classList.remove("playing");
+    musicButton.textContent = "♫";
+
+  }
+
+}
+
+// ======================================
+// 9. FLOATING PARTICLES
+// ======================================
+
+const particleContainer = document.getElementById("particles");
+
+for (let i = 0; i < 35; i++) {
+
+  const particle = document.createElement("div");
+  particle.className = "particle";
+
+  particle.style.left = Math.random() * 100 + "%";
+  particle.style.animationDuration = (8 + Math.random() * 15) + "s";
+  particle.style.animationDelay = Math.random() * 10 + "s";
+
+  particleContainer.appendChild(particle);
+
+}
+
+// ======================================
+// 10. INITIALIZE
+// ======================================
+
+renderSlides();
+
+</script>
+
+</body>
+</html>
