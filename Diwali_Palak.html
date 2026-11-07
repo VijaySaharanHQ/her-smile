@@ -1,14 +1,288 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Happy Diwali, Palak ✨</title><style>
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 20%,#47366d,#100d28 55%);color:#fff;font-family:Georgia,serif;text-align:center}.wrap{max-width:850px;margin:auto;padding:35px 18px}.tag{letter-spacing:4px;color:#d7c6ff;font:12px Arial}h1{font-size:clamp(42px,8vw,82px);color:#ffdc91;margin:22px 0;text-shadow:0 0 25px #bba0ff55}.intro{font:16px/1.8 Arial;color:#eee5ff;max-width:620px;margin:auto}.photo{width:270px;height:270px;max-width:85vw;margin:28px auto;border:2px solid #d7c6ff;border-radius:28px;background:#332451;display:grid;place-items:center;overflow:hidden}.photo img{width:100%;height:100%;object-fit:cover}.section{margin:22px auto;padding:25px;max-width:650px;border:1px solid #bba0ff66;border-radius:22px;background:#ffffff09}.section h2{color:#ffbdda}.section p{font:16px/1.8 Arial;color:#f0eaff}button{padding:12px 20px;margin:8px;border-radius:99px;border:1px solid #ffdc91;background:#38275c;color:white;cursor:pointer}.giftgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.gift{padding:18px;border:1px solid #cbb9ff55;border-radius:15px}.answer{color:#ffdc91;font:14px/1.6 Arial}#end{display:none;color:#ffdc91;font-size:24px;line-height:1.6}footer{font:12px/1.8 Arial;color:#c8bde4;margin:30px}</style></head><body><div class="wrap">
-<div class="tag">A little festival magic for a wonderful friend</div><h1>Happy Diwali,<br>Palak ✨</h1><p class="intro">May your world glow with happiness, your dreams find their way to the stars, and every new beginning bring peace, courage and beautiful surprises.</p>
-<div class="photo"><span id="photoHint">📸 Add <b>palak-photo.jpg</b><br>beside this HTML file</span></div>
-<div class="section"><h2>A Diwali wish from your friend 🪔</h2><p>Wishing you warm lights, joyful moments, sweet memories and countless reasons to smile. May this Diwali bring brightness to your studies, dreams and every path you choose. Keep shining in your own wonderful way!</p></div>
-<div class="section"><h2>Three little surprises 🎁</h2><div class="giftgrid"><div class="gift">🌟 A wish<button onclick="openGift(0)">Open</button><p class="answer" id="a0"></p></div><div class="gift">🌙 A reminder<button onclick="openGift(1)">Open</button><p class="answer" id="a1"></p></div><div class="gift">🪔 A blessing<button onclick="openGift(2)">Open</button><p class="answer" id="a2"></p></div></div></div>
-<div class="section"><h2>One more sparkle?</h2><p>Tap to reveal your final Diwali surprise.</p><button onclick="finale()">Reveal grand finale ✨</button><p id="end">May your days be bright, your heart peaceful,<br>and your future full of possibilities.<br><b>Happy Diwali, Palak!</b></p></div>
-<button onclick="music()">♫ Play / Pause music</button><footer>Optional music: add <b>diwali-music.mp3</b> beside this file. Upload this HTML and your photo to GitHub Pages.</footer><audio id="audio" src="diwali-music.mp3" loop></audio></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Diwali, Palak ✨</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(circle at 20% 20%, #47366d, #100d28 55%);
+    color: #fff;
+    font-family: Georgia, serif;
+    text-align: center;
+}
+
+.wrap {
+    max-width: 850px;
+    margin: auto;
+    padding: 35px 18px;
+}
+
+.tag {
+    letter-spacing: 4px;
+    color: #d7c6ff;
+    font: 12px Arial;
+}
+
+h1 {
+    font-size: clamp(42px, 8vw, 82px);
+    color: #ffdc91;
+    margin: 22px 0;
+    text-shadow: 0 0 25px #bba0ff55;
+}
+
+.intro {
+    font: 16px/1.8 Arial;
+    color: #eee5ff;
+    max-width: 620px;
+    margin: auto;
+}
+
+.photo {
+    width: 270px;
+    height: 270px;
+    max-width: 85vw;
+    margin: 28px auto;
+    border: 2px solid #d7c6ff;
+    border-radius: 28px;
+    background: #332451;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section {
+    margin: 22px auto;
+    padding: 25px;
+    max-width: 650px;
+    border: 1px solid #bba0ff66;
+    border-radius: 22px;
+    background: #ffffff09;
+}
+
+.section h2 {
+    color: #ffbdda;
+}
+
+.section p {
+    font: 16px/1.8 Arial;
+    color: #f0eaff;
+}
+
+button {
+    padding: 12px 20px;
+    margin: 8px;
+    border-radius: 99px;
+    border: 1px solid #ffdc91;
+    background: #38275c;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #ffd98a44;
+}
+
+.giftgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.gift {
+    padding: 18px;
+    border: 1px solid #cbb9ff55;
+    border-radius: 15px;
+}
+
+.answer {
+    color: #ffdc91;
+    font: 14px/1.6 Arial;
+}
+
+#end {
+    display: none;
+    color: #ffdc91;
+    font-size: 24px;
+    line-height: 1.6;
+}
+
+footer {
+    font: 12px/1.8 Arial;
+    color: #c8bde4;
+    margin: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<div class="tag">
+A little festival magic for a wonderful friend
+</div>
+
+<h1>
+Happy Diwali,<br>
+Palak ✨
+</h1>
+
+<p class="intro">
+May your world glow with happiness, your dreams find their way
+to the stars, and every new beginning bring peace, courage
+and beautiful surprises.
+</p>
+
+<div class="photo">
+<img src="palak-photo.jpg" alt="Palak's photo">
+</div>
+
+<div class="section">
+<h2>A Diwali wish from your friend 🪔</h2>
+
+<p>
+Wishing you warm lights, joyful moments, sweet memories
+and countless reasons to smile.
+
+May this Diwali bring brightness to your studies, dreams
+and every path you choose.
+
+Keep shining in your own wonderful way!
+</p>
+</div>
+
+<div class="section">
+
+<h2>Three little surprises 🎁</h2>
+
+<div class="giftgrid">
+
+<div class="gift">
+🌟 A wish
+<br>
+<button onclick="openGift(0)">Open</button>
+<p class="answer" id="a0"></p>
+</div>
+
+<div class="gift">
+🌙 A reminder
+<br>
+<button onclick="openGift(1)">Open</button>
+<p class="answer" id="a1"></p>
+</div>
+
+<div class="gift">
+🪔 A blessing
+<br>
+<button onclick="openGift(2)">Open</button>
+<p class="answer" id="a2"></p>
+</div>
+
+</div>
+</div>
+
+<div class="section">
+
+<h2>One more sparkle?</h2>
+
+<p>
+Tap to reveal your final Diwali surprise.
+</p>
+
+<button onclick="finale()">
+Reveal Grand Finale ✨
+</button>
+
+<p id="end">
+May your days be bright, your heart peaceful,<br>
+and your future full of possibilities.<br>
+<b>Happy Diwali, Palak!</b> 🪔
+</p>
+
+</div>
+
+<button onclick="music()">
+♫ Play / Pause Music
+</button>
+
+<footer>
+Optional music: add <b>diwali-music.mp3</b> beside this file.<br>
+Made with festive wishes by your friend.
+</footer>
+
+<audio id="audio" src="diwali-music.mp3" loop></audio>
+
+</div>
+
 <script>
-let wishes=["May happiness find you in the smallest moments.","Your dreams deserve patience, hope and a little sparkle.","May peace, good health and success accompany you."];
-function openGift(i){document.getElementById("a"+i).textContent=wishes[i]}
-function finale(){document.getElementById("end").style.display="block";for(let i=0;i<30;i++){let s=document.createElement("span");s.textContent=["✨","✦","🪔"][Math.floor(Math.random()*3)];s.style.cssText="position:fixed;left:"+Math.random()*100+"vw;top:"+Math.random()*100+"vh;pointer-events:none";document.body.append(s);setTimeout(()=>s.remove(),1600)}}
-function music(){let a=document.getElementById("audio");if(a.paused)a.play().catch(()=>alert("Add diwali-music.mp3 beside the HTML file first."));else a.pause()}
-</script></body></html>
+
+let wishes = [
+    "May happiness find you in the smallest moments.",
+    "Your dreams deserve patience, hope and a little sparkle.",
+    "May peace, good health and success accompany you."
+];
+
+function openGift(i) {
+    document.getElementById("a" + i).textContent = wishes[i];
+}
+
+function finale() {
+
+    document.getElementById("end").style.display = "block";
+
+    for (let i = 0; i < 30; i++) {
+
+        let s = document.createElement("span");
+
+        s.textContent = ["✨", "✦", "🪔"][
+            Math.floor(Math.random() * 3)
+        ];
+
+        s.style.cssText =
+            "position:fixed;left:" +
+            Math.random() * 100 +
+            "vw;top:" +
+            Math.random() * 100 +
+            "vh;pointer-events:none";
+
+        document.body.append(s);
+
+        setTimeout(() => s.remove(), 1600);
+    }
+}
+
+function music() {
+
+    let a = document.getElementById("audio");
+
+    if (a.paused) {
+
+        a.play().catch(() => {
+            alert("Add diwali-music.mp3 beside the HTML file first.");
+        });
+
+    } else {
+        a.pause();
+    }
+}
+
+</script>
+
+</body>
+</html>
