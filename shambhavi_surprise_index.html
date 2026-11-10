@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100d18">
+<meta name="description" content="A personal mystery and magical photo surprise for Shambhavi.">
+<title>Shambhavi — A Magical Little Wish</title>
+<style>
+:root{--a1:#f4c96b;--a2:#f2a8c8;--bg:#100d18;--panel:#24192b;--text:#fbf8ff;--muted:#c5bfd5;}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 15% 10%,color-mix(in srgb,var(--a1) 18%,transparent),transparent 35%),radial-gradient(ellipse at 90% 35%,color-mix(in srgb,var(--a2) 16%,transparent),transparent 35%),var(--bg);color:var(--text);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 90%);z-index:0}
+button{font:inherit} .wrap{position:relative;z-index:1;max-width:1120px;margin:auto;padding:24px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--muted);font:11px/1.4 Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.pill{border:1px solid #ffffff2a;border-radius:99px;padding:9px 13px;background:#ffffff08}
+.hero{min-height:85vh;display:grid;place-items:center;text-align:center;padding:70px 12px 55px}
+.hero-inner{max-width:800px} .orb{width:112px;height:112px;margin:0 auto 28px;border-radius:50%;display:grid;place-items:center;font-size:43px;background:radial-gradient(circle at 35% 30%,#fff8,var(--a1) 30%,var(--a2) 72%,#33234e);box-shadow:0 0 55px color-mix(in srgb,var(--a1) 45%,transparent),inset 0 0 22px #fff5;animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(7deg)}}
+.eyebrow{font:11px Arial,sans-serif;letter-spacing:.32em;color:var(--a1);text-transform:uppercase}
+h1{font-size:clamp(42px,8vw,86px);font-weight:400;line-height:1.02;letter-spacing:-.045em;margin:20px 0}
+.sub{font:16px/1.8 Arial,sans-serif;color:var(--muted);max-width:590px;margin:0 auto 28px}
+.btn{cursor:pointer;border:1px solid color-mix(in srgb,var(--a1) 75%,white);color:#160f25;background:linear-gradient(110deg,var(--a1),var(--a2));padding:14px 22px;border-radius:999px;font:700 12px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 8px 35px color-mix(in srgb,var(--a1) 20%,transparent);transition:.25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 42px color-mix(in srgb,var(--a1) 34%,transparent)}
+.ghost{background:#ffffff08;color:var(--text);border:1px solid #ffffff38;box-shadow:none}
+section{padding:58px 0} .section-head{text-align:center;margin-bottom:28px} h2{font-size:clamp(30px,5vw,48px);font-weight:400;margin:10px 0} .hint{font:13px/1.7 Arial,sans-serif;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{border:1px solid #ffffff20;border-radius:18px;background:linear-gradient(145deg,#ffffff12,#ffffff04);padding:9px;cursor:pointer;transition:.3s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-7px) rotate(-.5deg);border-color:color-mix(in srgb,var(--a1) 65%,white)}
+.card img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;display:block;background:linear-gradient(135deg,var(--panel),#302744)}
+.card .cap{font:12px/1.5 Arial,sans-serif;color:var(--muted);padding:11px 5px 5px}
+.missing{display:none;aspect-ratio:4/5;border-radius:12px;background:linear-gradient(145deg,#ffffff12,var(--panel));color:var(--muted);align-items:center;justify-content:center;text-align:center;padding:18px;font:12px/1.6 Arial,sans-serif}
+.note{max-width:760px;margin:auto;padding:34px;border:1px solid #ffffff24;border-radius:24px;background:linear-gradient(145deg,#ffffff12,#ffffff05);text-align:center;box-shadow:0 20px 80px #0004}
+.note p{font:15px/1.9 Arial,sans-serif;color:#e2ddec;white-space:pre-line}
+.giftbox{width:170px;height:140px;margin:25px auto;position:relative;cursor:pointer;filter:drop-shadow(0 15px 25px #0008);transition:.3s}
+.giftbox:hover{transform:translateY(-5px) scale(1.03)}
+.gift-lid{position:absolute;left:0;top:15px;width:170px;height:38px;border-radius:8px;background:linear-gradient(90deg,var(--a1),var(--a2));transition:.6s;z-index:2}
+.gift-body{position:absolute;left:9px;top:49px;width:152px;height:91px;border-radius:0 0 12px 12px;background:linear-gradient(110deg,color-mix(in srgb,var(--a1) 80%,#fff),var(--a2))}
+.gift-ribbon{position:absolute;left:73px;top:15px;width:24px;height:125px;background:#fff8;z-index:3}
+.gift-bow{position:absolute;left:56px;top:0;width:58px;height:30px;border:8px solid var(--a1);border-radius:50%;z-index:4}
+.giftbox.open .gift-lid{transform:translateY(-65px) rotate(-15deg)}
+.gift-result{min-height:58px;font:15px/1.7 Arial,sans-serif;color:var(--muted);max-width:560px;margin:0 auto}
+footer{padding:50px 0 35px;text-align:center;color:var(--muted);font:11px Arial,sans-serif;letter-spacing:.14em}
+.modal{position:fixed;inset:0;background:#05040beF;display:none;place-items:center;padding:20px;z-index:10}
+.modal.show{display:grid} .modal-box{max-width:760px;width:100%;text-align:center;position:relative}
+.modal img{max-width:100%;max-height:72vh;object-fit:contain;border-radius:16px;box-shadow:0 20px 80px #0009}
+.close{position:absolute;right:0;top:-42px;background:#ffffff18;color:white;border:1px solid #ffffff44;border-radius:50%;width:34px;height:34px;cursor:pointer}
+.modal-caption{font:14px Arial,sans-serif;color:var(--muted);margin-top:12px}
+.spark{position:fixed;width:3px;height:3px;border-radius:50%;background:#fff;pointer-events:none;z-index:0;opacity:.7;animation:twinkle 3s infinite ease-in-out}
+@keyframes twinkle{50%{opacity:.12;transform:scale(.5)}}
+.music{position:fixed;right:18px;bottom:18px;z-index:5}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr);gap:11px}.wrap{padding:18px}.hero{min-height:78vh}.note{padding:24px 18px}.top{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span>A SPECIAL SURPRISE FOR SHAMBHAVI</span><span class="pill">✦ A little mystery ✦</span></div>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="orb" aria-hidden="true">✧</div>
+      <div class="eyebrow">A surprise is waiting</div>
+      <h1>A Magical Little Wish</h1>
+      <p class="sub">A little magic, a little warmth, and lots of good wishes.<br>A small surprise from your brother, made with love and good wishes.</p>
+      <button class="btn" onclick="document.getElementById('memories').scrollIntoView({behavior:'smooth'})">Enter the surprise&nbsp; ✦</button>
+    </div>
+  </header>
+
+  <section id="memories">
+    <div class="section-head">
+      <div class="eyebrow">Chapter I · The memories</div>
+      <h2>A few little moments</h2>
+      <p class="hint">The photos appear in a different order each time you visit. Tap any frame to view it.</p>
+    </div>
+    <div class="grid" id="gallery"></div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="eyebrow">Chapter II · A message</div>
+      <h2>A blessing for you</h2>
+    </div>
+    <div class="note">
+      <div style="font-size:30px;color:var(--a1)">✧</div>
+      <p id="letter"></p>
+      <div class="eyebrow">A brother's wishes • Made especially for you</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="eyebrow">Chapter III · The mystery gift</div>
+      <h2>One last little surprise</h2>
+      <p class="hint">The gift is waiting. Tap the box to reveal your randomly selected message.</p>
+      <div class="giftbox" id="giftbox" role="button" tabindex="0" aria-label="Open the mystery gift">
+        <div class="gift-bow"></div><div class="gift-lid"></div><div class="gift-body"></div><div class="gift-ribbon"></div>
+      </div>
+      <p class="gift-result" id="giftResult" aria-live="polite">Some surprises are worth opening slowly.</p>
+      <button class="btn ghost" onclick="newGift()">Surprise me again</button>
+    </div>
+  </section>
+
+  <footer>MADE WITH GOOD WISHES · SHAMBHAVI · ✦</footer>
+</div>
+<button class="btn ghost music" id="musicBtn" onclick="toggleMusic()">♫ Music: off</button>
+<audio id="bgMusic" loop preload="none" src="music.mp3"></audio>
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box"><button class="close" onclick="closeModal()" aria-label="Close">×</button><img id="modalImg" alt="Selected memory"><div class="modal-caption" id="modalCaption"></div></div>
+</div>
+<script>
+const photos = [
+{ src: 'images/sister-photo-1.jpg', caption: 'A lovely moment to remember' },
+{ src: 'images/sister-photo-2.jpg', caption: 'A little sparkle of happiness' },
+{ src: 'images/sister-photo-3.jpg', caption: 'A frame full of warmth' },
+{ src: 'images/sister-photo-4.jpg', caption: 'A memory to treasure' },
+{ src: 'images/sister-photo-5.jpg', caption: 'A beautiful part of the journey' },
+{ src: 'images/sister-photo-6.jpg', caption: 'A little sunshine' },
+{ src: 'images/sister-photo-7.jpg', caption: 'A moment just for you' },
+{ src: 'images/sister-photo-8.jpg', caption: 'More wonderful days ahead' }
+];
+const gifts = [
+  "May you always have the strength to follow your dreams and the courage to be yourself.",
+  "May happiness and light always find you.",
+  "A new day can bring a new reason to smile. Stay open to the good things ahead.",
+  "Your story is still unfolding. Make it a good one, one small step at a time."
+];
+const gallery = document.getElementById('gallery');
+function shuffle(items) {
+  const a = [...items];
+  for (let i=a.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+function renderGallery() {
+  gallery.innerHTML = '';
+  shuffle(photos).forEach((photo, index) => {
+    const card = document.createElement('div'); card.className='card';
+    const img = document.createElement('img'); img.src=photo.src; img.alt=photo.caption; img.loading='lazy';
+    const missing = document.createElement('div'); missing.className='missing'; missing.textContent='Add your photo here'; 
+    img.onerror=()=>{img.style.display='none';missing.style.display='flex';};
+    const cap=document.createElement('div');cap.className='cap';cap.textContent=photo.caption;
+    card.append(img,missing,cap);
+    card.addEventListener('click',()=>{if(img.naturalWidth>0)openModal(photo.src,photo.caption);});
+    gallery.appendChild(card);
+  });
+}
+function openModal(src,caption) {
+  document.getElementById('modalImg').src=src;
+  document.getElementById('modalCaption').textContent=caption;
+  document.getElementById('modal').classList.add('show');
+}
+function closeModal() {document.getElementById('modal').classList.remove('show');}
+document.getElementById('letter').textContent = "Shambhavi, may your days be filled with courage, peace, learning, and countless reasons to smile. May every new beginning bring you confidence, every challenge teach you something valuable, and every dream find its path with time and effort. Keep being curious, kind, and wonderfully yourself. Always wishing the very best for you.";
+const giftbox=document.getElementById('giftbox');
+function newGift() {
+  giftbox.classList.remove('open');
+  document.getElementById('giftResult').textContent='A little mystery is waiting...';
+  setTimeout(()=>{
+    giftbox.classList.add('open');
+    const options=gifts.filter(x=>x!==document.getElementById('giftResult').textContent);
+    document.getElementById('giftResult').textContent=options[Math.floor(Math.random()*options.length)];
+  },180);
+}
+giftbox.addEventListener('click',newGift);
+giftbox.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();newGift();}});
+const music=document.getElementById('bgMusic'), musicBtn=document.getElementById('musicBtn');
+async function toggleMusic() {
+  if(music.paused) {
+    try {await music.play();musicBtn.textContent='♫ Music: on';}
+    catch(e) {musicBtn.textContent='♫ Add music.mp3';}
+  } else {music.pause();musicBtn.textContent='♫ Music: off';}
+}
+for(let i=0;i<42;i++) {
+  const s=document.createElement('i');s.className='spark';
+  s.style.left=Math.random()*100+'vw';s.style.top=Math.random()*100+'vh';
+  s.style.animationDelay=Math.random()*3+'s';s.style.opacity=(.15+Math.random()*.65).toFixed(2);
+  document.body.appendChild(s);
+}
+renderGallery();
+</script>
+</body>
+</html>
